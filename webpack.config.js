@@ -15,7 +15,10 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+      { enforce: 'pre', test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'},
+      { test: /\.json$/, loader: 'json-loader'},
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      { test: /\.css$/, use: [ 'style-loader', { loader: 'css-loader', options: { url: false } } ] }
     ]
   },
   plugins: [HTMLWebpackPluginConfig]

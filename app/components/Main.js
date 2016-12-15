@@ -1,4 +1,4 @@
-const React = require('react');
+const React = require('react')
 
 const Main = React.createClass({
   render: function () {
@@ -8,6 +8,6 @@ const Main = React.createClass({
       </div>
     )
   }
-});
+})
 
-module.exports = Main;
+module.exports = Main

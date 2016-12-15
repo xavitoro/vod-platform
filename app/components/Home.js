@@ -1,4 +1,4 @@
-const React = require('react');
+const React = require('react')
 
 const Home = React.createClass({
   render: function () {
@@ -6,6 +6,6 @@ const Home = React.createClass({
       <div> Hello from Home! </div>
     )
   }
-});
+})
 
-module.exports = Home;
+module.exports = Home
