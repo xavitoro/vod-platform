@@ -5,7 +5,7 @@ import RecipeOverview from './RecipeOverview'
 function RecipeList (props) {
   return (
     <div className='recipe-catalog'>
-      <div>
+      <div className= 'container'>
         {props.recipes
           .map((recipe) => {
             return (
