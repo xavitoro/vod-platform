@@ -1,6 +1,6 @@
-const React = require('react')
+import React from 'react'
 const PropTypes = React.PropTypes
-const Moment = require('react-moment')
+import Moment from 'react-moment'
 import RecipeComponent from './RecipeComponent'
 
 //props.recipe.name ..

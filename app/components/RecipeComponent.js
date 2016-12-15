@@ -1,6 +1,6 @@
-const React = require('react')
+import React from 'react'
 const PropTypes = React.PropTypes
-const { Link } = require('react-router')
+import { Link } from 'react-router'
 import Moment from 'react-moment'
 // const Moment = require('react-moment').default
 
@@ -16,7 +16,6 @@ function RecipeComponent (props) {
         <p>({props.categories.join(' | ')})</p>
         <p>{props.description}</p>
       </div>
-      <button>READ MORE</button>
     </div>
   )
 }

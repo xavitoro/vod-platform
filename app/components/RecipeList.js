@@ -1,8 +1,6 @@
-const React = require('react')
+import React from 'react'
 const PropTypes = React.PropTypes
-const RecipeOverview = require('./RecipeOverview')
-
-const { arrayOf } = React.PropTypes
+import RecipeOverview from './RecipeOverview'
 
 function RecipeList (props) {
   return (
