@@ -1,7 +1,5 @@
 import React from 'react'
-const PropTypes = React.PropTypes
 import { Link } from 'react-router'
-import Moment from 'react-moment'
 import RecipeComponent from './RecipeComponent'
 import { StyleSheet, css } from 'aphrodite'
 
@@ -10,8 +8,8 @@ import { StyleSheet, css } from 'aphrodite'
 
 function RecipeOverview (props) {
   return (
-    <div className='row'>
-      <div className= {`col-lg-4 col-xs-4 bg-warning ${css(styles.recipeoverview)}`}>
+    <div className='grid-row'>
+      <div className= {`grid-item col-lg-4 col-xs-4 bg-warning ${css(styles.recipeoverview)}`}>
         <RecipeComponent {...props}/>
         <Link to={`/recipe-details/${props._id}`} >
           <button>READ MORE</button>

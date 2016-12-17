@@ -1,21 +1,34 @@
 import React from 'react'
 const PropTypes = React.PropTypes
-import { Link } from 'react-router'
 import Moment from 'react-moment'
 // const Moment = require('react-moment').default
 import { StyleSheet, css } from 'aphrodite'
 
 function RecipeComponent (props) {
   return (
-    <div className='show-recipe'>
-      <img className={css(styles.thumbnail)} src={`/public/img/recipes/${props.videoThumbnail}`} />
-      <div>
-        <h4>{props.author.name}</h4>
-        <img className={css(styles.author)} src={`/public/img/recipes/${props.author.thumbnail}`} />
-        <h3>{props.title}</h3>
-        <p><Moment unix format='MM/YYYY'>{props.created}</Moment></p>
-        <p>({props.categories.join(' | ')})</p>
-        <p>{props.description}</p>
+    <div className='card-recipe'>
+      <div className ='recipe-video-preview-holder'>
+        <img className= {`recipe-video-preview ${css(styles.thumbnail)}`} src={`/public/img/recipes/${props.videoThumbnail}`} />
+      </div>
+      <div className='card-recipe-inner'>
+        <h3 className='recipe-title'>
+          {props.title}
+        </h3>
+      </div>
+      <div className='recipe-author'>
+        <img className= {`recipe-author-thumbnail ${css(styles.author)}`} src={`/public/img/recipes/${props.author.thumbnail}`} />
+        <h4 className='recipe-author-name'>{props.author.name}</h4>
+      </div>
+      <div className={`card-content ${css(styles.cardcontent)}`}>
+        <div className={`creation-date ${css(styles.date)}`}>
+          Date: <Moment unix format='MM/YYYY'>{props.created}</Moment>
+        </div>
+        <div className="recipe categories">
+          Categories: {props.categories.join(' | ')}
+        </div>
+        <div className="recipe-description">
+          {props.description}
+        </div>
       </div>
     </div>
   )
@@ -39,14 +52,26 @@ module.exports = RecipeComponent
 
 const styles = StyleSheet.create({
   thumbnail: {
-    width: 100,
-    float: 'left',
+    width: '100%',
   },
-
   author: {
-    width: 50,
-    height: 50,
+    width: 30,
+    height: 30,
     borderRadius: 50,
     float: 'left',
+    'margin-right': 10,
   },
+  author: {
+    width: 30,
+    height: 30,
+    borderRadius: 50,
+    float: 'left',
+    'margin-right': 10,
+  },
+  cardcontent: {
+    float: 'left',
+  },
+  date: {
+    float: 'right',
+  }
 })
