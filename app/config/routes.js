@@ -1,18 +1,16 @@
-const React = require('react')
-const ReactRouter = require('react-router')
-const Router = ReactRouter.Router
-const Route = ReactRouter.Route
-const hashHistory = ReactRouter.hashHistory
-const IndexRoute = ReactRouter.IndexRoute
-const Main = require('../components/Main')
-const RecipeList = require('../components/RecipeList')
-const Recipe = require('../components/Recipe')
-const preload = require('../../public/dataRecipe.json')
+import React from 'react'
+import { Router, Route, hashHistory, IndexRoute } from 'react-router'
+import Main from '../components/Main'
+import RecipeList from '../components/RecipeList'
+import Recipe from '../components/Recipe'
+import preload from '../../public/dataRecipe.json'
+import RecipeListContainer from '../containers/RecipeListContainer'
 
 const routes = (
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={(props) => <RecipeList recipes={preload.recipes} {...props} />}/>
+      {/* <IndexRoute component={RecipeListContainer}/> // once the API is properly connected */}
     </Route>
     <Route path='/recipe-details/:id' component={Main}>
       <IndexRoute component={(props) => {
