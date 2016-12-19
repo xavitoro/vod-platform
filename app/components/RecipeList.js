@@ -4,14 +4,16 @@ import RecipeOverview from './RecipeOverview'
 
 function RecipeList (props) {
   return (
-    <div className='container subsection-recipes'>
+    <div className="container subsection-recipes">
+      <div className="row">
         {props.recipes
           .map((recipe) => {
             return (
               <RecipeOverview {...recipe} key={recipe._id} />
             )
           })}
-    </div>
+          </div>
+        </div>
   )
 }
 RecipeList.propTypes = {

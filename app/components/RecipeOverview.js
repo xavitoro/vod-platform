@@ -8,13 +8,11 @@ import { StyleSheet, css } from 'aphrodite'
 
 function RecipeOverview (props) {
   return (
-    <div className='grid-row'>
-      <div className= {`grid-item col-lg-4 col-xs-4 bg-warning ${css(styles.recipeoverview)}`}>
-        <RecipeComponent {...props}/>
-        <Link to={`/recipe-details/${props._id}`} >
-          <button>READ MORE</button>
-        </Link>
-      </div>
+    <div className={`grid-item col-md-6 bg-warning ${css(styles.recipeoverview)}`}>
+      <RecipeComponent {...props}/>
+      <Link to={`/recipe-details/${props._id}`} >
+        <button>READ MORE</button>
+      </Link>
     </div>
   )
 }
