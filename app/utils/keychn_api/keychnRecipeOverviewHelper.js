@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 function getRecipeOverviewInfo () {
-  return axios.get('https://api.keychn.com/recipes-overview/');
+  return axios.get('https://api.keychn.com/recipes-overview/'); // it returns an object containing an array of recipes with the overview information
 }
 
 var helpers = {

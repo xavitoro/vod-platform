@@ -18,6 +18,7 @@ const routes = (
               return <Recipe recipe={recipe[0]} {...props} /> }}
       />
     </Route>
+    {/* <Route path='/recipe-details/:id' component={RecipeContainer}></Route> //once the API is properly connected  */}
   </Router>
 )
 
