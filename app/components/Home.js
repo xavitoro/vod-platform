@@ -1,11 +1,9 @@
 import React from 'react'
 
-const Home = React.createClass({
-  render: function () {
-    return (
-      <div> Hello from Home! </div>
-    )
-  }
-})
+function Home() {
+  return (
+    <div> Hello from Footer! </div>
+  )
+}
 
-module.exports = Home
+module.exports = Footer

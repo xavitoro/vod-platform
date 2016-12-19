@@ -1,28 +1,26 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-const Header = React.createClass({
-  render: function () {
-    return (
-      <header className={`navigation__header ${css(styles.header)}`}>
-        <nav role='navigation' className='navbar header-navigation-holder'>
-          <div className='header__inner'>
-            <div className='navbar-header'>
-              <a href='http://learnlayout.com/inline-block.html' className='header__logo-link'>
-                <img className={`header__logo ${css(styles.icon)}`} src= '../../public/img/KeychnSignature.png' alt='Logo mobile' />
-              </a>
-            </div>
-            <div id='header-navigation' className='collapse navbar-collapse header__navigation'>
-            <ul className='nav navbar-nav header__navigation-list'>
-              <li className=''><a className='recipe_list-link'href='/ '>Recipes</a></li>
-            </ul>
-            </div>
+function Header() {
+  return (
+    <header className={`navigation__header ${css(styles.header)}`}>
+      <nav role='navigation' className='navbar header-navigation-holder'>
+        <div className='header__inner'>
+          <div className='navbar-header'>
+            <a href='/' className='header__logo-link'>
+              <img className={`header__logo ${css(styles.icon)}`} src= '../../public/img/KeychnSignature.png' alt='Logo mobile' />
+            </a>
           </div>
-        </nav>
-      </header >
-    )
-  }
-})
+          <div id='header-navigation' className='collapse navbar-collapse header__navigation'>
+          <ul className='nav navbar-nav header__navigation-list'>
+            <li className=''><a className='recipe_list-link'href='/'>Recipes</a></li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </header >
+  )
+}
 
 module.exports = Header
 

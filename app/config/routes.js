@@ -3,6 +3,8 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router'
 import Main from '../components/Main'
 import RecipeList from '../components/RecipeList'
 import Recipe from '../components/Recipe'
+import Terms from '../components/Terms'
+import PrivacyPolicy from '../components/PrivacyPolicy'
 import preload from '../../public/dataRecipe.json'
 import RecipeListContainer from '../containers/RecipeListContainer'
 
@@ -12,6 +14,7 @@ const routes = (
       <IndexRoute component={(props) => <RecipeList recipes={preload.recipes} {...props} />}/>
       {/* <IndexRoute component={RecipeListContainer}/> // once the API is properly connected */}
     </Route>
+
     <Route path='/recipe-details/:id' component={Main}>
       <IndexRoute component={(props) => {
               const recipe = preload.recipes.filter((recipe) => props.params.id === recipe._id)
@@ -19,6 +22,10 @@ const routes = (
       />
     </Route>
     {/* <Route path='/recipe-details/:id' component={RecipeContainer}></Route> //once the API is properly connected  */}
+
+    <Route path='/terms' component={Terms}></Route>
+    <Route path='/privacy-policy' component={PrivacyPolicy}>
+    </Route>
   </Router>
 )
 
