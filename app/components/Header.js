@@ -12,9 +12,9 @@ function Header() {
             </a>
           </div>
           <div id='header-navigation' className='collapse navbar-collapse header__navigation'>
-          <ul className='nav navbar-nav header__navigation-list'>
-            <li className=''><a className='recipe_list-link'href='/'>Recipes</a></li>
-          </ul>
+            <ul className='nav navbar-nav header__navigation-list'>
+              <li className=''><a className='recipe_list-link'href='/'>Recipes</a></li>
+            </ul>
           </div>
         </div>
       </nav>

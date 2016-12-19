@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link } from 'react-router'
 import { StyleSheet, css } from 'aphrodite'
 
 function Footer() {
@@ -14,8 +15,8 @@ function Footer() {
           </div>
         <div className='col-sm-6 footer-social'>
           <ul className='nav navbar-nav navbar-right'>
-            <li><a className='terms' href='/terms'>Terms</a></li>
-            <li><a className='privacy' href='/privacy-policy'>Privacy</a></li>
+            <li><Link to={'/terms'} >Terms</Link></li>
+            <li><Link to={'/privacy-policy'} >Privacy</Link></li>
             <li><a href='http://blog.keychn.com'>Blog</a></li>
             <li><a href='mailto:mise@keychn.com'>Contact</a></li>
           </ul>
