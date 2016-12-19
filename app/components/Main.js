@@ -7,7 +7,6 @@ const Main = React.createClass({
     return (
       <div className='main-container'>
         <Header />
-
         {this.props.children}
         <Footer />
       </div>

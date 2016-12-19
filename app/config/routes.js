@@ -13,18 +13,16 @@ const routes = (
     <Route path='/' component={Main}>
       <IndexRoute component={(props) => <RecipeList recipes={preload.recipes} {...props} />}/>
       {/* <IndexRoute component={RecipeListContainer}/> // once the API is properly connected */}
-    </Route>
+      <Route path='recipe-details/:id'>
+        <IndexRoute component={(props) => {
+          const recipe = preload.recipes.filter((recipe) => props.params.id === recipe._id)
+          return <Recipe recipe={recipe[0]} {...props} /> }}
+        />
+      </Route>
+      {/* <Route path='/recipe-details/:id' component={RecipeContainer}></Route> //once the API is properly connected  */}
 
-    <Route path='/recipe-details/:id' component={Main}>
-      <IndexRoute component={(props) => {
-              const recipe = preload.recipes.filter((recipe) => props.params.id === recipe._id)
-              return <Recipe recipe={recipe[0]} {...props} /> }}
-      />
-    </Route>
-    {/* <Route path='/recipe-details/:id' component={RecipeContainer}></Route> //once the API is properly connected  */}
-
-    <Route path='/terms' component={Terms}></Route>
-    <Route path='/privacy-policy' component={PrivacyPolicy}>
+      <Route path='terms' component={Terms}></Route>
+      <Route path='privacy-policy' component={PrivacyPolicy}></Route>
     </Route>
   </Router>
 )

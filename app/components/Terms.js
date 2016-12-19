@@ -1,11 +1,8 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
 
 function Terms() {
   return (
     <div>
-      <Header />
       <div className="row">
         <div className="col-md-2"></div>
         <div className="col-md-8">
@@ -149,7 +146,6 @@ function Terms() {
         </div>
         <div className="col-md-2"></div>
       </div>
-      <Footer />
     </div>
   )
 }

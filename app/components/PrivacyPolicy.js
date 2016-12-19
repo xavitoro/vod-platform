@@ -1,11 +1,8 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
 
 function PrivacyPolicy() {
   return (
     <div className = 'terms'>
-      <Header />
       <div className="row">
         <div className="col-md-2"></div>
         <div className="col-md-8">
@@ -92,7 +89,6 @@ function PrivacyPolicy() {
         </div>
         <div className="col-md-2"></div>
       </div>
-      <Footer />
     </div>
   )
 }
