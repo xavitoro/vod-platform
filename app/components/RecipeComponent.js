@@ -9,11 +9,9 @@ from 'aphrodite'
 
 function RecipeComponent(props) {
   return (
-    <div className='card-recipe'>
+    <div className='card-recipe col-md-12'>
       <div className='recipe-video-preview-holder'>
-        <img onResize={
-            () => this.state.height=this.state.width / 1.62 // TODO Tengo que hacer que funcione
-          }
+        <img
           className={
             `img-responsive recipe-video-preview ${css(styles.thumbnail)}`
           }
@@ -48,10 +46,7 @@ function RecipeComponent(props) {
             `creation-date ${css(styles.date)}`
           }>
           Date:
-            <Moment unix format='MM/YYYY'> {
-                props.created
-              }
-            </Moment>
+            <Moment unix format='MM/YYYY'>{props.created}</Moment>
           </div>
         <div className="recipe categories">
           Categories: {

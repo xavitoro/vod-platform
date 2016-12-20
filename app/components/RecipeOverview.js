@@ -8,10 +8,10 @@ import { StyleSheet, css } from 'aphrodite'
 
 function RecipeOverview (props) {
   return (
-    <div className={`grid-item col-md-6 bg-warning ${css(styles.recipeoverview)}`}>
+    <div className={`grid-item col-md-6 ${css(styles.recipeoverview)}`}>
       <RecipeComponent {...props}/>
-      <Link to={`/recipe-details/${props._id}`} >
-        <button>READ MORE</button>
+      <Link to={`/recipe-details/${props._id}`} className={`${css(styles.link)}`} >
+        Read more...
       </Link>
     </div>
   )
@@ -20,7 +20,13 @@ module.exports = RecipeOverview
 
 const styles = StyleSheet.create({
   recipeoverview: {
-    outline: '1px solid black !important',
-    marginTop: 10,
+    //outline: '1px solid black !important',
+    //marginTop: 10,
+    padding: 24
+  },
+  link: {
+    //outline: '1px solid black !important',
+    //marginTop: 10,
+    marginLeft: 54
   },
 })
