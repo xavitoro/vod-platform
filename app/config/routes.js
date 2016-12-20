@@ -7,6 +7,7 @@ import Terms from '../components/Terms'
 import PrivacyPolicy from '../components/PrivacyPolicy'
 import preload from '../../public/dataRecipe.json'
 import RecipeListContainer from '../containers/RecipeListContainer'
+import RecipeFormContainer from '../containers/RecipeFormContainer'
 
 const routes = (
   <Router history={hashHistory}>
@@ -20,9 +21,9 @@ const routes = (
         />
       </Route>
       {/* <Route path='/recipe-details/:id' component={RecipeContainer}></Route> //once the API is properly connected  */}
-
-      <Route path='terms' component={Terms}></Route>
-      <Route path='privacy-policy' component={PrivacyPolicy}></Route>
+      <Route path='/recipe/create' component={RecipeFormContainer} />
+      <Route path='terms' component={Terms} />
+      <Route path='privacy-policy' component={PrivacyPolicy} />
     </Route>
   </Router>
 )
