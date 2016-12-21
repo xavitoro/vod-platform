@@ -1,8 +1,7 @@
 import React from 'react'
-import {
-  StyleSheet, css
-}
-from 'aphrodite'
+import { Link } from 'react-router'
+
+import { StyleSheet, css } from 'aphrodite'
 
 const Header=React.createClass({
   render: function() {
@@ -29,6 +28,7 @@ const Header=React.createClass({
                       Recipes
                     </a>
                   </li>
+                  <li className=''><Link to='/recipe/create' href='/'>Create Recipe</Link></li>
                 </ul>
                 <ul className='nav navbar-nav navbar-right header__navigation-list'>
                   <li className=''>
