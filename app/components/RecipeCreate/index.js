@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 @reduxForm({
   form: 'recipeCreateForm'
@@ -14,7 +14,7 @@ export default class RecipeCreateForm extends Component {
           </fieldset>
           <p>Recipe Text Details</p>
           <div className='form-group col-md-12'>
-            <input className='form-control' placeholder='Recipe title' type='text' />
+            <Field name='title' component='input' className='form-control' placeholder='Recipe title' type='text' />
           </div>
           <div className='form-group col-md-12'>
             <input className='form-control' name='recipeSlug' placeholder='Recipe slug' type='text' />
