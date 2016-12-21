@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
+import { Link } from 'react-router'
 
 function Header() {
   return (
@@ -14,6 +15,7 @@ function Header() {
           <div id='header-navigation' className='collapse navbar-collapse header__navigation'>
             <ul className='nav navbar-nav header__navigation-list'>
               <li className=''><a className='recipe_list-link'href='/'>Recipes</a></li>
+              <li className=''><Link to='/recipe/create' href='/'>Create Recipe</Link></li>
             </ul>
           </div>
         </div>
