@@ -4,7 +4,7 @@
   "description": "video platform containing cooking videos",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "nodemon server/index.js",
     "prod": "webpack -p",
     "lint": "eslint app/**/*.js webpack.config.js"
   },
@@ -17,7 +17,15 @@
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-moment": "0.0.3",
-    "react-router": "^3.0.0"
+    "react-router": "^3.0.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.17.2",
+    "mongoose": "^4.7.0",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-core": "6.16.0",
@@ -40,6 +48,12 @@
     "json-loader": "0.5.4",
     "style-loader": "0.13.1",
     "webpack": "^1.12.11",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+     "babel-cli": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "chai": "^3.5.0",
+    "colors": "^1.1.2",
+    "mocha": "^3.1.2",
+    "supertest": "^2.0.1"
   }
 }
