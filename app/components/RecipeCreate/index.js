@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
+import { reduxForm } from 'redux-form';
 
-export default class RecipeForm extends Component {
+@reduxForm({
+  form: 'recipeCreateForm'
+})
+export default class RecipeCreateForm extends Component {
   render () {
     return (
       <div>
