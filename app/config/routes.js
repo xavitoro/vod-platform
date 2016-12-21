@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route, hashHistory, IndexRoute } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import Main from '../components/Main'
 import RecipeList from '../components/RecipeList'
 import Recipe from '../components/Recipe'
@@ -10,7 +10,7 @@ import RecipeListContainer from '../containers/RecipeListContainer'
 import RecipeFormContainer from '../containers/RecipeFormContainer'
 
 const routes = (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={(props) => <RecipeList recipes={preload.recipes} {...props} />}/>
       {/* <IndexRoute component={RecipeListContainer}/> // once the API is properly connected */}
