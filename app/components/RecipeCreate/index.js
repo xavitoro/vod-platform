@@ -34,15 +34,25 @@ const requiredFields = [
   //   "tip": "Crunchy outside, soft inside!"
   // },
 ]
-function CustomInput({input, placeholder, type, meta: {touched: {touched, error}}}) {
-  console.log(input)
+function CustomInput({input, placeholder, type, options, min, max, change, meta: {touched: {touched, error}}}) {
+  console.log(input, change, 'CustomInput')
+
+  const field = (type==='select') ?
+    <Select {...input} options={options}
+      onChange={(option) => input.onChange(option.value)}
+      onBlur={(option) => input.onChange(option.value)} />
+    :
+    <input {...input} className='form-control' placeholder={placeholder}/>
+
   return (
     <div className='form-group col-md-12'>
-      <input {...input} className='form-control' placeholder={placeholder}/>
+      {field}
       {touched && error && <span>{error}</span>}
     </div>
   )
 }
+
+
 
 function submit(values) {
 
@@ -57,7 +67,7 @@ export default class RecipeCreateForm extends Component {
     e.preventDefault()
   }
   render () {
-    const {submitting, handleSubmit} = this.props
+    const {submitting, handleSubmit, change} = this.props
     return (
        <div className="container subsection-recipes">
         <form id='create-new-video-recipe-form' onSubmit={handleSubmit(submit)}>
@@ -82,12 +92,18 @@ export default class RecipeCreateForm extends Component {
             type='text' />
 
           <p>Recipe Category</p>
-          <select className='form-control' name='selectRecipeCategory' >
-            <option value='default' selected>Choose one category</option>
-            <option value='spanish'>Spanish</option>
-            <option value='asian' >Asian</option>
-            <option value='mexican' >Mexican</option>
-          </select>
+          <Field
+          name='categories'
+          component={CustomInput}
+          change={change}
+          type='select'
+          options={[
+            {value: '', label: 'Choose one category'},
+            {value: 'spanish', label: 'Spanish'},
+            {value: 'asian', label: 'Asian'},
+            {value: 'mexican', label: 'Mexican'},
+          ]}
+          />
 
           <p>Recipe Tags (select multiple)</p>
           <select className='form-control' name='selectRecipeTags' multiple>
