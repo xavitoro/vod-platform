@@ -39,7 +39,7 @@ function formatSelectValue(data) {
   if (!Array.isArray(data)) {
     return data.value
   }
-  return data.map(opt => opt.value).join(',')
+  return data.map(opt => opt.value)
 }
 
 function CustomInput({
@@ -52,7 +52,6 @@ function CustomInput({
       placeholder={placeholder}
       options={options}
       multi={multi}
-      delimiter=','
       onChange={(option) => { input.onChange(formatSelectValue(option))} }
       onBlur={(option) => input.onChange(option.value)} />
     :
