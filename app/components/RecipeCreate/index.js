@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import { Field, Fields, FieldArray, reduxForm,  SubmissionError } from 'redux-form';
+import { Field, Fields, FieldArray, reduxForm,  SubmissionError } from 'redux-form'
+import Select from 'react-select'
 
 const requiredFields = [
   'title',
