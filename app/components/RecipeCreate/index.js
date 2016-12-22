@@ -1,7 +1,38 @@
 import React, {Component} from 'react'
-import { Field, reduxForm,  SubmissionError } from 'redux-form';
+import { Field, Fields, FieldArray, reduxForm,  SubmissionError } from 'redux-form';
 
-
+const requiredFields = [
+  'title',
+  'slug',
+  'description',
+  'categories',
+  'tags',
+  'learningPath',
+  'courseType',
+  'pictureIngredients',
+  'picturePlating',
+  'videoThumbnail',
+  'videoPreview',
+  'videoPreview',
+  'length',
+  'servings',
+  'difficulty',
+  // 'author': [
+  //   "name",
+  //   "thumbnail",
+  //   "description"
+  // ],
+  // "ingredients": [{
+	// 		"name": "bread",
+	// 		"quantity": "2",
+	// 		"unit": "slices"
+  // }],
+  // "steps": [{
+  //   "picture": "4.jpg",
+  //   "description": "Toast the bread slices.",
+  //   "tip": "Crunchy outside, soft inside!"
+  // },
+]
 function CustomInput({input, placeholder, type, meta: {touched: {touched, error}}}) {
   console.log(input)
   return (
@@ -13,6 +44,7 @@ function CustomInput({input, placeholder, type, meta: {touched: {touched, error}
 }
 
 function submit(values) {
+
   console.log(values, 'values')
 }
 
@@ -27,22 +59,27 @@ export default class RecipeCreateForm extends Component {
     const {submitting, handleSubmit} = this.props
     return (
        <div className="container subsection-recipes">
-        <form id='create-new-video-recipe-form' onSubmit={this.preventSubmit}>
+        <form id='create-new-video-recipe-form' onSubmit={handleSubmit(submit)}>
           <fieldset>
             <legend>Add a new Videos to Keychn VOD Platform</legend>
           </fieldset>
           <p>Recipe Text Details</p>
-            <Field
-              name='title'
-              component={CustomInput}
-              placeholder='Recipe title'
-              type='text' />
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeSlug' placeholder='Recipe slug' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeDescription' placeholder='Recipe description' type='text' />
-          </div>
+          <Field
+            name='title'
+            component={CustomInput}
+            placeholder='Recipe title'
+            type='text' />
+          <Field
+            name='slug'
+            component={CustomInput}
+            placeholder='Recipe slug'
+            type='text' />
+          <Field
+            name='description'
+            component={CustomInput}
+            placeholder='Recipe description'
+            type='text' />
+
           <p>Recipe Category</p>
           <select className='form-control' name='selectRecipeCategory' >
             <option value='default' selected>Choose one category</option>
@@ -79,30 +116,46 @@ export default class RecipeCreateForm extends Component {
           </select>
 
           <p>Recipe Pictures URLs</p>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeIngredientsPicture' placeholder='Recipe ingredients picture' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeFinalPicture' placeholder='Recipe final picture' type='text' />
-          </div>
+          <Field
+            name='pictureIngredients'
+            component={CustomInput}
+            placeholder='Recipe ingredients picture'
+            type='text' />
+          <Field
+            name='picturePlating'
+            component={CustomInput}
+            placeholder='Recipe final picture'
+            type='text' />
+
           <p>Recipe Video URLs</p>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeThumbnail' placeholder='Recipe thumbnail for the video' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeVideoPreview' placeholder='Recipe video preview' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeVideoFull' placeholder='Recipe video full-length' type='text' />
-          </div>
+          <Field
+            name='videoThumbnail'
+            component={CustomInput}
+            placeholder='Recipe thumbnail for the video'
+            type='text' />
+          <Field
+            name='videoPreview'
+            component={CustomInput}
+            placeholder='Recipe video preview'
+            type='text' />
+          <Field
+            name='videoFull'
+            component={CustomInput}
+            placeholder='Recipe video full-length'
+            type='text' />
 
           <p>Recipe Detailed Information</p>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeLength' placeholder='Recipe length (minutes)' type='number' min='5' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeServings' placeholder='Recipe servings (people)' type='number' min='1' />
-          </div>
+           <Field
+            name='length'
+            component={CustomInput}
+            placeholder='Recipe length (minutes)'
+            type='number' min='5' />
+           <Field
+            name='servings'
+            component={CustomInput}
+            placeholder='Recipe servings (people)'
+            type='number' min='1' />
+
           <p>Recipe Difficulty</p>
           <select className='form-control' name='selectRecipeDifficulty'>
             <option value='default' selected>Choose the difficulty</option>
@@ -111,7 +164,7 @@ export default class RecipeCreateForm extends Component {
             <option value='recipe-difficulty-easy'>Hard</option>
           </select>
 
-          <p>Author Information</p>
+         {/* <p>Author Information</p>
           <div className='form-group col-md-12'>
             <input className='form-control' name='authorThumbnail' placeholder='Author thumbnail URL' type='text' />
           </div>
@@ -142,7 +195,7 @@ export default class RecipeCreateForm extends Component {
               <input type='text' name='p_new_step_tips' className='form-group col-md-12'  placeholder='Tip' />
               <a href='#' id='addNewStep'>Add Step</a>
             </li>
-          </ol>
+          </ol>*/}
 
           <div>
             <input
