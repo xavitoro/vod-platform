@@ -37,7 +37,7 @@ const requiredFields = [
 
 function formatSelectValue(data) {
   if (!Array.isArray(data)) {
-    return data.value
+    return data && data.value
   }
   return data.map(opt => opt.value)
 }
@@ -53,7 +53,7 @@ function CustomInput({
       options={options}
       multi={multi}
       onChange={(option) => { input.onChange(formatSelectValue(option))} }
-      onBlur={(option) => input.onChange(option.value)} />
+      onBlur={(option) => input.onChange(formatSelectValue(option))} />
     :
     <input {...input} className='form-control' placeholder={placeholder}/>
 
@@ -136,21 +136,34 @@ export default class RecipeCreateForm extends Component {
           />
 
           <p> Cooking Path (select multiple)</p>
-          <select className='form-control' name='selectLearningPath' multiple>
-            <option value='default' selected>Choose one or more learning paths </option>
-            <option value='spanish-basics'>Learn the Spanish basics</option>
-            <option value='modern-techniques-ferran' >Learn the modern techniques with Ferran</option>
-            <option value='french-basics' >Learn the French basics</option>
-            <option value='italian-basics' >Learn the Italian basics</option>
-          </select>
+          <Field
+            name='learningPath'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose one or more learning paths '
+            multi={true}
+            simpleValue={true}
+            options={[
+             {value: 'spanish-basics', label: 'Learn the Spanish basics'},
+             {value: 'modern-techniques-ferran', label: 'Learn the modern techniques with Ferran'},
+             {value: 'french-basics', label: 'Learn the French basics'},
+             {value: 'italian-basics', label: 'Learn the Italian basics'}
+            ]}
+          />
 
           <p>Recipe Type</p>
-          <select className='form-control' name='selectRecipeType'>
-            <option value='default' selected>Choose one recipe type</option>
-            <option value='starter-course'>Starter</option>
-            <option value='main-course' >Main</option>
-            <option value='dessert-course' >Dessert</option>
-          </select>
+           <Field
+            name='courseType'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose one category'
+            options={[
+              {value: '', label: 'Choose one recipe type'},
+              {value: 'starter-course', label: 'Starter'},
+              {value: 'main-course', label: 'Main'},
+              {value: 'dessert-course', label: 'Dessert'}
+            ]}
+          />
 
           <p>Recipe Pictures URLs</p>
           <Field
@@ -194,12 +207,18 @@ export default class RecipeCreateForm extends Component {
             type='number' min='1' />
 
           <p>Recipe Difficulty</p>
-          <select className='form-control' name='selectRecipeDifficulty'>
-            <option value='default' selected>Choose the difficulty</option>
-            <option value='recipe-difficulty-easy'>Easy</option>
-            <option value='recipe-difficulty-easy'>Medium</option>
-            <option value='recipe-difficulty-easy'>Hard</option>
-          </select>
+          <Field
+            name='difficulty'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose the difficulty'
+            options={[
+              {value: '', label: 'Choose the difficulty'},
+              {value: 'easy', label: 'Easy'},
+              {value: 'medium', label: 'Medium'},
+              {value: 'hard', label: 'Hard'}
+            ]}
+          />
 
          {/* <p>Author Information</p>
           <div className='form-group col-md-12'>
