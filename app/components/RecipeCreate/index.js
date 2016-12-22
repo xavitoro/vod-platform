@@ -1,21 +1,42 @@
 import React, {Component} from 'react'
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm,  SubmissionError } from 'redux-form';
+
+
+function CustomInput({input, placeholder, type, meta: {touched: {touched, error}}}) {
+  console.log(input)
+  return (
+    <div className='form-group col-md-12'>
+      <input {...input} className='form-control' placeholder={placeholder}/>
+      {touched && error && <span>{error}</span>}
+    </div>
+  )
+}
+
+function submit(values) {
+  console.log(values, 'values')
+}
 
 @reduxForm({
-  form: 'recipeCreateForm'
+  form: 'recipeCreateForm',
 })
 export default class RecipeCreateForm extends Component {
+  preventSubmit(e) {
+    e.preventDefault()
+  }
   render () {
+    const {submitting, handleSubmit} = this.props
     return (
-      <div>
-        <form id='create-new-video-recipe-form'>
+       <div className="container subsection-recipes">
+        <form id='create-new-video-recipe-form' onSubmit={this.preventSubmit}>
           <fieldset>
             <legend>Add a new Videos to Keychn VOD Platform</legend>
           </fieldset>
           <p>Recipe Text Details</p>
-          <div className='form-group col-md-12'>
-            <Field name='title' component='input' className='form-control' placeholder='Recipe title' type='text' />
-          </div>
+            <Field
+              name='title'
+              component={CustomInput}
+              placeholder='Recipe title'
+              type='text' />
           <div className='form-group col-md-12'>
             <input className='form-control' name='recipeSlug' placeholder='Recipe slug' type='text' />
           </div>
@@ -124,7 +145,11 @@ export default class RecipeCreateForm extends Component {
           </ol>
 
           <div>
-            <input className='btn btn-primary' id='submit-button' type='submit' value='Add New Recipe' />
+            <input
+              className='btn btn-primary'
+              type='submit'
+              value='Add New Recipe'
+              onSubmit={handleSubmit(submit)} />
           </div>
 
         </form>

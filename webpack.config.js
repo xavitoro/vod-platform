@@ -6,6 +6,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+  devtool: "#inline-source-map",
   entry: [
     './app/index.js'
   ],
