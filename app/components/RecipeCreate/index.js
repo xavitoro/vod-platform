@@ -34,12 +34,26 @@ const requiredFields = [
   //   "tip": "Crunchy outside, soft inside!"
   // },
 ]
-function CustomInput({input, placeholder, type, options, min, max, change, meta: {touched: {touched, error}}}) {
-  console.log(input, change, 'CustomInput')
 
+function formatSelectValue(data) {
+  if (!Array.isArray(data)) {
+    return data.value
+  }
+  return data.map(opt => opt.value).join(',')
+}
+
+function CustomInput({
+  input, placeholder, type, options, multi,
+  min, max,  meta: {touched: {touched, error}}
+}) {
   const field = (type==='select') ?
-    <Select {...input} options={options}
-      onChange={(option) => input.onChange(option.value)}
+    <Select
+      {...input}
+      placeholder={placeholder}
+      options={options}
+      multi={multi}
+      delimiter=','
+      onChange={(option) => { input.onChange(formatSelectValue(option))} }
       onBlur={(option) => input.onChange(option.value)} />
     :
     <input {...input} className='form-control' placeholder={placeholder}/>
@@ -67,7 +81,7 @@ export default class RecipeCreateForm extends Component {
     e.preventDefault()
   }
   render () {
-    const {submitting, handleSubmit, change} = this.props
+    const {submitting, handleSubmit} = this.props
     return (
        <div className="container subsection-recipes">
         <form id='create-new-video-recipe-form' onSubmit={handleSubmit(submit)}>
@@ -93,27 +107,34 @@ export default class RecipeCreateForm extends Component {
 
           <p>Recipe Category</p>
           <Field
-          name='categories'
-          component={CustomInput}
-          change={change}
-          type='select'
-          options={[
-            {value: '', label: 'Choose one category'},
-            {value: 'spanish', label: 'Spanish'},
-            {value: 'asian', label: 'Asian'},
-            {value: 'mexican', label: 'Mexican'},
-          ]}
+            name='categories'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose one category'
+            options={[
+              {value: '', label: 'Choose one category'},
+              {value: 'spanish', label: 'Spanish'},
+              {value: 'asian', label: 'Asian'},
+              {value: 'mexican', label: 'Mexican'},
+            ]}
           />
 
           <p>Recipe Tags (select multiple)</p>
-          <select className='form-control' name='selectRecipeTags' multiple>
-            <option value='default' selected>Choose one or more tags</option>
-            <option value='healthy' >healthy</option>
-            <option value='veggie' >veggie</option>
-            <option value='baked' >baked</option>
-            <option value='grilled' >grilled</option>
-            <option value='roasted' >roasted</option>
-          </select>
+          <Field
+            name='tags'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose one or more tags'
+            multi={true}
+            simpleValue={true}
+            options={[
+              {value: 'healthy', label: 'healthy'},
+              {value: 'veggie', label: 'veggie'},
+              {value: 'baked', label: 'baked'},
+              {value: 'grilled', label: 'grilled'},
+              {value: 'roasted', label: 'roasted'}
+            ]}
+          />
 
           <p> Cooking Path (select multiple)</p>
           <select className='form-control' name='selectLearningPath' multiple>
