@@ -1,96 +1,185 @@
 import React, {Component} from 'react'
-import { Field, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm,  SubmissionError } from 'redux-form'
+import CustomInput from './CustomInput'
+import Ingredients from './Ingredients'
+import Steps from './Steps'
+import {required} from './validations'
+import {fetchRecipeInfo} from '../../data/recipe'
+
+function submit(values) {
+  //validation
+  //
+  console.log(values, 'values')
+}
+
 
 @reduxForm({
-  form: 'recipeCreateForm'
+  form: 'recipeCreateForm',
 })
 export default class RecipeCreateForm extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchRecipeInfo())
+  }
+  preventSubmit(e) {
+    e.preventDefault()
+  }
   render () {
+    const {submitting, handleSubmit} = this.props
     return (
-      <div>
-        <form id='create-new-video-recipe-form'>
+       <div className="container subsection-recipes">
+        <form id='create-new-video-recipe-form' onSubmit={handleSubmit(submit)}>
           <fieldset>
             <legend>Add a new Videos to Keychn VOD Platform</legend>
           </fieldset>
           <p>Recipe Text Details</p>
-          <div className='form-group col-md-12'>
-            <Field name='title' component='input' className='form-control' placeholder='Recipe title' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeSlug' placeholder='Recipe slug' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeDescription' placeholder='Recipe description' type='text' />
-          </div>
+          <Field
+            name='title'
+            component={CustomInput}
+            placeholder='Recipe title'
+            type='text'
+            validate={required} />
+          <Field
+            name='slug'
+            component={CustomInput}
+            placeholder='Recipe slug'
+            type='text'
+            validate={required} />
+          <Field
+            name='description'
+            component={CustomInput}
+            placeholder='Recipe description'
+            type='text'
+            validate={required} />
+
           <p>Recipe Category</p>
-          <select className='form-control' name='selectRecipeCategory' >
-            <option value='default' selected>Choose one category</option>
-            <option value='spanish'>Spanish</option>
-            <option value='asian' >Asian</option>
-            <option value='mexican' >Mexican</option>
-          </select>
+          <Field
+            name='categories'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose one category'
+            options={[
+              {value: '', label: 'Choose one category'},
+              {value: 'spanish', label: 'Spanish'},
+              {value: 'asian', label: 'Asian'},
+              {value: 'mexican', label: 'Mexican'},
+            ]}
+            validate={required}
+          />
 
           <p>Recipe Tags (select multiple)</p>
-          <select className='form-control' name='selectRecipeTags' multiple>
-            <option value='default' selected>Choose one or more tags</option>
-            <option value='healthy' >healthy</option>
-            <option value='veggie' >veggie</option>
-            <option value='baked' >baked</option>
-            <option value='grilled' >grilled</option>
-            <option value='roasted' >roasted</option>
-          </select>
+          <Field
+            name='tags'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose one or more tags'
+            multi={true}
+            simpleValue={true}
+            options={[
+              {value: 'healthy', label: 'healthy'},
+              {value: 'veggie', label: 'veggie'},
+              {value: 'baked', label: 'baked'},
+              {value: 'grilled', label: 'grilled'},
+              {value: 'roasted', label: 'roasted'}
+            ]}
+            validate={required}
+          />
 
           <p> Cooking Path (select multiple)</p>
-          <select className='form-control' name='selectLearningPath' multiple>
-            <option value='default' selected>Choose one or more learning paths </option>
-            <option value='spanish-basics'>Learn the Spanish basics</option>
-            <option value='modern-techniques-ferran' >Learn the modern techniques with Ferran</option>
-            <option value='french-basics' >Learn the French basics</option>
-            <option value='italian-basics' >Learn the Italian basics</option>
-          </select>
+          <Field
+            name='learningPath'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose one or more learning paths '
+            multi={true}
+            simpleValue={true}
+            options={[
+             {value: 'spanish-basics', label: 'Learn the Spanish basics'},
+             {value: 'modern-techniques-ferran', label: 'Learn the modern techniques with Ferran'},
+             {value: 'french-basics', label: 'Learn the French basics'},
+             {value: 'italian-basics', label: 'Learn the Italian basics'}
+            ]}
+            validate={required}
+          />
 
           <p>Recipe Type</p>
-          <select className='form-control' name='selectRecipeType'>
-            <option value='default' selected>Choose one recipe type</option>
-            <option value='starter-course'>Starter</option>
-            <option value='main-course' >Main</option>
-            <option value='dessert-course' >Dessert</option>
-          </select>
+           <Field
+            name='courseType'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose one category'
+            options={[
+              {value: '', label: 'Choose one recipe type'},
+              {value: 'starter-course', label: 'Starter'},
+              {value: 'main-course', label: 'Main'},
+              {value: 'dessert-course', label: 'Dessert'}
+            ]}
+            validate={required}
+          />
 
           <p>Recipe Pictures URLs</p>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeIngredientsPicture' placeholder='Recipe ingredients picture' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeFinalPicture' placeholder='Recipe final picture' type='text' />
-          </div>
+          <Field
+            name='pictureIngredients'
+            component={CustomInput}
+            placeholder='Recipe ingredients picture'
+            type='text'
+            validate={required} />
+          <Field
+            name='picturePlating'
+            component={CustomInput}
+            placeholder='Recipe final picture'
+            type='text'
+            validate={required} />
+
           <p>Recipe Video URLs</p>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeThumbnail' placeholder='Recipe thumbnail for the video' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeVideoPreview' placeholder='Recipe video preview' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeVideoFull' placeholder='Recipe video full-length' type='text' />
-          </div>
+          <Field
+            name='videoThumbnail'
+            component={CustomInput}
+            placeholder='Recipe thumbnail for the video'
+            type='text'
+            validate={required} />
+          <Field
+            name='videoPreview'
+            component={CustomInput}
+            placeholder='Recipe video preview'
+            type='text'
+            validate={required} />
+          <Field
+            name='videoFull'
+            component={CustomInput}
+            placeholder='Recipe video full-length'
+            type='text'
+            validate={required} />
 
           <p>Recipe Detailed Information</p>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeLength' placeholder='Recipe length (minutes)' type='number' min='5' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='recipeServings' placeholder='Recipe servings (people)' type='number' min='1' />
-          </div>
-          <p>Recipe Difficulty</p>
-          <select className='form-control' name='selectRecipeDifficulty'>
-            <option value='default' selected>Choose the difficulty</option>
-            <option value='recipe-difficulty-easy'>Easy</option>
-            <option value='recipe-difficulty-easy'>Medium</option>
-            <option value='recipe-difficulty-easy'>Hard</option>
-          </select>
+           <Field
+            name='length'
+            component={CustomInput}
+            placeholder='Recipe length (minutes)'
+            type='number' min='5'
+            validate={required} />
+           <Field
+            name='servings'
+            component={CustomInput}
+            placeholder='Recipe servings (people)'
+            type='number' min='1'
+            validate={required} />
 
-          <p>Author Information</p>
+          <p>Recipe Difficulty</p>
+          <Field
+            name='difficulty'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose the difficulty'
+            options={[
+              {value: '', label: 'Choose the difficulty'},
+              {value: 'easy', label: 'Easy'},
+              {value: 'medium', label: 'Medium'},
+              {value: 'hard', label: 'Hard'}
+            ]}
+            validate={required}
+          />
+
+         {/* <p>Author Information</p>
           <div className='form-group col-md-12'>
             <input className='form-control' name='authorThumbnail' placeholder='Author thumbnail URL' type='text' />
           </div>
@@ -99,32 +188,16 @@ export default class RecipeCreateForm extends Component {
           </div>
           <div className='form-group col-md-12'>
             <input className='form-control' name='authorDescription' placeholder='Author description' type='text' />
-          </div>
-          <p>Recipe Ingredients </p>
-          <ol id='ingredientList' className='form-group col-md-12'>
-            <li>
-              <input type='text' name='p_new_qty' placeholder='Quantity ingredient (e.g. 2)' />
-              <input type='text' name='p_new_qty_unit' placeholder='Quantity unit (e.g. slice)' />
-              <input type='text' name='p_new_ingredient' placeholder='Ingredient (e.g. bread)' />
-              <a href='#' id='addNewIngredient'>Add Ingredient</a>
-            </li>
-          </ol>
+          </div>*/}
 
-          <p>Recipe Steps </p>
-          <ol id='stepList' className='form-group col-md-12'>
-            <li>
-              <h4>Step</h4>
-              <input type='text' name='p_new_step_picture' className='form-group col-md-12'
-                     placeholder='Picture URL' />
-              <input type='text' name='p_new_step_description' className='form-group col-md-12'
-                placeholder='Description' />
-              <input type='text' name='p_new_step_tips' className='form-group col-md-12'  placeholder='Tip' />
-              <a href='#' id='addNewStep'>Add Step</a>
-            </li>
-          </ol>
-
+          <FieldArray name='ingredients' component={Ingredients} />
+          <FieldArray name='steps' component={Steps} />
           <div>
-            <input className='btn btn-primary' id='submit-button' type='submit' value='Add New Recipe' />
+            <input
+              className='btn btn-primary'
+              type='submit'
+              value='Add New Recipe'
+              onSubmit={handleSubmit(submit)} />
           </div>
 
         </form>

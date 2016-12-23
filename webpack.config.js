@@ -6,6 +6,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+  devtool: "#inline-source-map",
   entry: [
     './app/index.js'
   ],
@@ -18,7 +19,7 @@ module.exports = {
       // { enforce: 'pre', test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'},
       { test: /\.json$/, loader: 'json-loader'},
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-      { test: /\.css$/, use: [ 'style-loader', { loader: 'css-loader', options: { url: false } } ] }
+      { test: /\.css$/, loaders: [ 'style-loader', 'css-loader' ]}
     ]
   },
   plugins: [HTMLWebpackPluginConfig]
