@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import { Field, Fields, FieldArray, reduxForm,  SubmissionError } from 'redux-form'
-import Select from 'react-select'
+import { Field, FieldArray, reduxForm,  SubmissionError } from 'redux-form'
+import CustomInput from './CustomInput'
+import Ingredients from './Ingredients'
 
 const requiredFields = [
   'title',
@@ -34,38 +35,6 @@ const requiredFields = [
   //   "tip": "Crunchy outside, soft inside!"
   // },
 ]
-
-function formatSelectValue(data) {
-  if (!Array.isArray(data)) {
-    return data && data.value
-  }
-  return data.map(opt => opt.value)
-}
-
-function CustomInput({
-  input, placeholder, type, options, multi,
-  min, max,  meta: {touched: {touched, error}}
-}) {
-  const field = (type==='select') ?
-    <Select
-      {...input}
-      placeholder={placeholder}
-      options={options}
-      multi={multi}
-      onChange={(option) => { input.onChange(formatSelectValue(option))} }
-      onBlur={(option) => input.onChange(formatSelectValue(option))} />
-    :
-    <input {...input} className='form-control' placeholder={placeholder}/>
-
-  return (
-    <div className='form-group col-md-12'>
-      {field}
-      {touched && error && <span>{error}</span>}
-    </div>
-  )
-}
-
-
 
 function submit(values) {
   //validation
@@ -230,18 +199,11 @@ export default class RecipeCreateForm extends Component {
           </div>
           <div className='form-group col-md-12'>
             <input className='form-control' name='authorDescription' placeholder='Author description' type='text' />
-          </div>
-          <p>Recipe Ingredients </p>
-          <ol id='ingredientList' className='form-group col-md-12'>
-            <li>
-              <input type='text' name='p_new_qty' placeholder='Quantity ingredient (e.g. 2)' />
-              <input type='text' name='p_new_qty_unit' placeholder='Quantity unit (e.g. slice)' />
-              <input type='text' name='p_new_ingredient' placeholder='Ingredient (e.g. bread)' />
-              <a href='#' id='addNewIngredient'>Add Ingredient</a>
-            </li>
-          </ol>
+          </div>*/}
 
-          <p>Recipe Steps </p>
+          <FieldArray name='ingredients' component={Ingredients} />
+
+         {/* <p>Recipe Steps </p>
           <ol id='stepList' className='form-group col-md-12'>
             <li>
               <h4>Step</h4>
