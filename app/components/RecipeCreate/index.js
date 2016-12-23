@@ -68,7 +68,8 @@ function CustomInput({
 
 
 function submit(values) {
-
+  //validation
+  //
   console.log(values, 'values')
 }
 
