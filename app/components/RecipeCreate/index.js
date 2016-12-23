@@ -4,6 +4,7 @@ import CustomInput from './CustomInput'
 import Ingredients from './Ingredients'
 import Steps from './Steps'
 import {required} from './validations'
+import {fetchRecipeInfo} from '../../data/recipe'
 
 function submit(values) {
   //validation
@@ -11,10 +12,15 @@ function submit(values) {
   console.log(values, 'values')
 }
 
+
 @reduxForm({
   form: 'recipeCreateForm',
 })
 export default class RecipeCreateForm extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchRecipeInfo())
+    console.log(this.props)
+  }
   preventSubmit(e) {
     e.preventDefault()
   }
