@@ -2,7 +2,12 @@ import React, {Component} from 'react'
 import {Field} from 'redux-form'
 import CustomInput from './CustomInput'
 import {required} from './validations'
+import {connect} from 'react-redux'
+import {getSelectOptions} from '../../utils/form'
 
+@connect((state) => {
+  return {ingredientOptions: getSelectOptions(state.ingredients)}
+})
 export default class Ingredients extends Component {
   componentDidMount() {
     const {fields} = this.props
@@ -11,7 +16,7 @@ export default class Ingredients extends Component {
     }
   }
   render() {
-    const {fields} = this.props
+    const {fields, ingredientOptions} = this.props
     return (
       <div>
         <p>Recipe Ingredients </p>
@@ -23,8 +28,9 @@ export default class Ingredients extends Component {
                   <Field
                     name={`${ingredient}.name`}
                     component={CustomInput}
+                    type='select'
                     placeholder='Ingredient (e.g. bread)'
-                    type='text'
+                    options={ingredientOptions}
                     validate={required} />
                   <Field
                     name={`${ingredient}.quantity`}

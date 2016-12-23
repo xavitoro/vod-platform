@@ -19,7 +19,6 @@ function submit(values) {
 export default class RecipeCreateForm extends Component {
   componentDidMount() {
     this.props.dispatch(fetchRecipeInfo())
-    console.log(this.props)
   }
   preventSubmit(e) {
     e.preventDefault()

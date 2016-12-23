@@ -22,6 +22,7 @@ export default function CustomInput({
       placeholder={placeholder}
       options={options}
       multi={multi}
+      style={{minWidth: 200}}
       onChange={(option) => { input.onChange(formatSelectValue(option))} }
       onBlur={(option) => input.onChange(formatSelectValue(option))} />
     :
