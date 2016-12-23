@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Field, FieldArray, reduxForm,  SubmissionError } from 'redux-form'
 import CustomInput from './CustomInput'
 import Ingredients from './Ingredients'
+import Steps from './Steps'
 
 const requiredFields = [
   'title',
@@ -202,20 +203,7 @@ export default class RecipeCreateForm extends Component {
           </div>*/}
 
           <FieldArray name='ingredients' component={Ingredients} />
-
-         {/* <p>Recipe Steps </p>
-          <ol id='stepList' className='form-group col-md-12'>
-            <li>
-              <h4>Step</h4>
-              <input type='text' name='p_new_step_picture' className='form-group col-md-12'
-                     placeholder='Picture URL' />
-              <input type='text' name='p_new_step_description' className='form-group col-md-12'
-                placeholder='Description' />
-              <input type='text' name='p_new_step_tips' className='form-group col-md-12'  placeholder='Tip' />
-              <a href='#' id='addNewStep'>Add Step</a>
-            </li>
-          </ol>*/}
-
+          <FieldArray name='steps' component={Steps} />
           <div>
             <input
               className='btn btn-primary'
