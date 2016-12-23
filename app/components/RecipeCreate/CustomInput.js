@@ -9,8 +9,12 @@ function formatSelectValue(data) {
 }
 
 export default function CustomInput({
-  input, placeholder, type, options, multi,
-  min, max,  meta: {touched: {touched, error}}
+  input,
+  placeholder,
+  type,
+  options,
+  multi,
+  meta: {touched, error}
 }) {
   const field = (type==='select') ?
     <Select
@@ -26,7 +30,7 @@ export default function CustomInput({
   return (
     <div className='form-group col-md-12'>
       {field}
-      {touched && error && <span>{error}</span>}
+      {touched && error && <span style={{color: 'red'}}>{error}</span>}
     </div>
   )
 }

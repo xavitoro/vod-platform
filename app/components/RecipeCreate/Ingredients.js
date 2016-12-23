@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Field} from 'redux-form'
 import CustomInput from './CustomInput'
+import {required} from './validations'
 
 export default class Ingredients extends Component {
   componentDidMount() {
@@ -23,17 +24,20 @@ export default class Ingredients extends Component {
                     name={`${ingredient}.name`}
                     component={CustomInput}
                     placeholder='Ingredient (e.g. bread)'
-                    type='text' />
+                    type='text'
+                    validate={required} />
                   <Field
                     name={`${ingredient}.quantity`}
                     component={CustomInput}
                     placeholder='Quantity ingredient (e.g. 2)'
-                    type='text' />
+                    type='text'
+                    validate={required} />
                   <Field
                     name={`${ingredient}.unit`}
                     component={CustomInput}
                     placeholder='Quantity unit (e.g. slice)'
-                    type='text' />
+                    type='text'
+                    validate={required} />
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
              </li>

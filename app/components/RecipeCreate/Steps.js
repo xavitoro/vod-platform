@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Field} from 'redux-form'
 import CustomInput from './CustomInput'
+import {required} from './validations'
 
 export default class Steps extends Component {
   componentDidMount() {
@@ -27,17 +28,20 @@ export default class Steps extends Component {
                     name={`${step}.picture`}
                     component={CustomInput}
                     placeholder='Picture URL'
-                    type='text' />
+                    type='text'
+                    validate={required} />
                   <Field
                     name={`${step}.description`}
                     component={CustomInput}
                     placeholder='Description'
-                    type='text' />
+                    type='text'
+                    validate={required} />
                   <Field
                     name={`${step}.tip`}
                     component={CustomInput}
                     placeholder='Tip'
-                    type='text' />
+                    type='text'
+                    validate={required} />
                 </div>
              </li>
             )

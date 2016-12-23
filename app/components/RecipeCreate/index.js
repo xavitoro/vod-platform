@@ -3,39 +3,7 @@ import { Field, FieldArray, reduxForm,  SubmissionError } from 'redux-form'
 import CustomInput from './CustomInput'
 import Ingredients from './Ingredients'
 import Steps from './Steps'
-
-const requiredFields = [
-  'title',
-  'slug',
-  'description',
-  'categories',
-  'tags',
-  'learningPath',
-  'courseType',
-  'pictureIngredients',
-  'picturePlating',
-  'videoThumbnail',
-  'videoPreview',
-  'videoPreview',
-  'length',
-  'servings',
-  'difficulty',
-  // 'author': [
-  //   "name",
-  //   "thumbnail",
-  //   "description"
-  // ],
-  // "ingredients": [{
-	// 		"name": "bread",
-	// 		"quantity": "2",
-	// 		"unit": "slices"
-  // }],
-  // "steps": [{
-  //   "picture": "4.jpg",
-  //   "description": "Toast the bread slices.",
-  //   "tip": "Crunchy outside, soft inside!"
-  // },
-]
+import {required} from './validations'
 
 function submit(values) {
   //validation
@@ -63,17 +31,20 @@ export default class RecipeCreateForm extends Component {
             name='title'
             component={CustomInput}
             placeholder='Recipe title'
-            type='text' />
+            type='text'
+            validate={required} />
           <Field
             name='slug'
             component={CustomInput}
             placeholder='Recipe slug'
-            type='text' />
+            type='text'
+            validate={required} />
           <Field
             name='description'
             component={CustomInput}
             placeholder='Recipe description'
-            type='text' />
+            type='text'
+            validate={required} />
 
           <p>Recipe Category</p>
           <Field
@@ -87,6 +58,7 @@ export default class RecipeCreateForm extends Component {
               {value: 'asian', label: 'Asian'},
               {value: 'mexican', label: 'Mexican'},
             ]}
+            validate={required}
           />
 
           <p>Recipe Tags (select multiple)</p>
@@ -104,6 +76,7 @@ export default class RecipeCreateForm extends Component {
               {value: 'grilled', label: 'grilled'},
               {value: 'roasted', label: 'roasted'}
             ]}
+            validate={required}
           />
 
           <p> Cooking Path (select multiple)</p>
@@ -120,6 +93,7 @@ export default class RecipeCreateForm extends Component {
              {value: 'french-basics', label: 'Learn the French basics'},
              {value: 'italian-basics', label: 'Learn the Italian basics'}
             ]}
+            validate={required}
           />
 
           <p>Recipe Type</p>
@@ -134,6 +108,7 @@ export default class RecipeCreateForm extends Component {
               {value: 'main-course', label: 'Main'},
               {value: 'dessert-course', label: 'Dessert'}
             ]}
+            validate={required}
           />
 
           <p>Recipe Pictures URLs</p>
@@ -141,41 +116,48 @@ export default class RecipeCreateForm extends Component {
             name='pictureIngredients'
             component={CustomInput}
             placeholder='Recipe ingredients picture'
-            type='text' />
+            type='text'
+            validate={required} />
           <Field
             name='picturePlating'
             component={CustomInput}
             placeholder='Recipe final picture'
-            type='text' />
+            type='text'
+            validate={required} />
 
           <p>Recipe Video URLs</p>
           <Field
             name='videoThumbnail'
             component={CustomInput}
             placeholder='Recipe thumbnail for the video'
-            type='text' />
+            type='text'
+            validate={required} />
           <Field
             name='videoPreview'
             component={CustomInput}
             placeholder='Recipe video preview'
-            type='text' />
+            type='text'
+            validate={required} />
           <Field
             name='videoFull'
             component={CustomInput}
             placeholder='Recipe video full-length'
-            type='text' />
+            type='text'
+            validate={required} />
 
           <p>Recipe Detailed Information</p>
            <Field
             name='length'
             component={CustomInput}
             placeholder='Recipe length (minutes)'
-            type='number' min='5' />
+            type='number' min='5'
+            validate={required} />
            <Field
             name='servings'
             component={CustomInput}
             placeholder='Recipe servings (people)'
-            type='number' min='1' />
+            type='number' min='1'
+            validate={required} />
 
           <p>Recipe Difficulty</p>
           <Field
@@ -189,6 +171,7 @@ export default class RecipeCreateForm extends Component {
               {value: 'medium', label: 'Medium'},
               {value: 'hard', label: 'Hard'}
             ]}
+            validate={required}
           />
 
          {/* <p>Author Information</p>
