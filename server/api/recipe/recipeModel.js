@@ -89,7 +89,7 @@ const RecipeSchema = Schema ({
     type: Number,
     min: 0,
     default:0
-  }
+  },
   equipment: [{
     type: Schema.Types.ObjectId,
     ref: 'recipeEquipment',
