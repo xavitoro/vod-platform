@@ -5,6 +5,8 @@ import Ingredients from './Ingredients'
 import Steps from './Steps'
 import {required} from './validations'
 import {fetchRecipeInfo} from '../../data/recipe'
+import {connect} from 'react-redux'
+import {getSelectOptions} from '../../utils/form'
 
 function submit(values) {
   //validation
@@ -12,7 +14,11 @@ function submit(values) {
   console.log(values, 'values')
 }
 
-
+@connect((state) => {
+  return {
+    tagOptions: getSelectOptions(state.tags, '_id')
+  }
+})
 @reduxForm({
   form: 'recipeCreateForm',
 })
@@ -24,7 +30,7 @@ export default class RecipeCreateForm extends Component {
     e.preventDefault()
   }
   render () {
-    const {submitting, handleSubmit} = this.props
+    const {submitting, handleSubmit, tagOptions} = this.props
     return (
        <div className="container subsection-recipes">
         <form id='create-new-video-recipe-form' onSubmit={handleSubmit(submit)}>
@@ -74,13 +80,7 @@ export default class RecipeCreateForm extends Component {
             placeholder='Choose one or more tags'
             multi={true}
             simpleValue={true}
-            options={[
-              {value: 'healthy', label: 'healthy'},
-              {value: 'veggie', label: 'veggie'},
-              {value: 'baked', label: 'baked'},
-              {value: 'grilled', label: 'grilled'},
-              {value: 'roasted', label: 'roasted'}
-            ]}
+            options={tagOptions}
             validate={required}
           />
 

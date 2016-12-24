@@ -1,4 +1,5 @@
 import {setIngredients} from './ingredients'
+import {setTags} from './tags'
 
 export function fetchRecipeInfo() {
   return function(dispatch) {
@@ -6,6 +7,7 @@ export function fetchRecipeInfo() {
       .then((res) => res.json())
       .then((data) => {
         dispatch(setIngredients(data.ingredients))
+        dispatch(setTags(data.tags))
       })
   }
 }
