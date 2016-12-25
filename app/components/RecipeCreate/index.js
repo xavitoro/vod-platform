@@ -14,6 +14,7 @@ import {browserHistory} from 'react-router'
     categoryOptions: getSelectOptions(state.categories, '_id'),
     tagOptions: getSelectOptions(state.tags, '_id'),
     learningPathOptions: getSelectOptions(state.learningPaths, '_id'),
+    authorOptions: getSelectOptions(state.authors, '_id')
   }
 })
 @reduxForm({
@@ -43,6 +44,7 @@ export default class RecipeCreateForm extends Component {
       categoryOptions,
       tagOptions,
       learningPathOptions,
+      authorOptions
     } = this.props
     return (
        <div className="container subsection-recipes">
@@ -178,6 +180,15 @@ export default class RecipeCreateForm extends Component {
               {value: 'medium', label: 'Medium'},
               {value: 'hard', label: 'Hard'}
             ]}
+            validate={required}
+          />
+          <p>Author</p>
+          <Field
+            name='author'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose Author '
+            options={authorOptions}
             validate={required}
           />
 
