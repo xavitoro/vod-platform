@@ -4,15 +4,9 @@ import CustomInput from './CustomInput'
 import Ingredients from './Ingredients'
 import Steps from './Steps'
 import {required} from './validations'
-import {fetchRecipeInfo} from '../../data/recipe'
+import {fetchRecipeInfo, createRecipe} from '../../data/recipe'
 import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
-
-function submit(values) {
-  //validation
-  //
-  console.log(values, 'values')
-}
 
 @connect((state) => {
   return {
@@ -25,11 +19,18 @@ function submit(values) {
   form: 'recipeCreateForm',
 })
 export default class RecipeCreateForm extends Component {
+  constructor(props) {
+    super(props)
+    this.submit = this.submit.bind(this)
+  }
   componentDidMount() {
     this.props.dispatch(fetchRecipeInfo())
   }
   preventSubmit(e) {
     e.preventDefault()
+  }
+  submit(values) {
+    this.props.dispatch(createRecipe({slug: 'new-recipe'}))
   }
   render () {
     const {
@@ -40,8 +41,10 @@ export default class RecipeCreateForm extends Component {
       learningPathOptions,
     } = this.props
     return (
+
        <div className="container subsection-recipes">
-        <form id='create-new-video-recipe-form' onSubmit={handleSubmit(submit)}>
+        <button onClick={this.submit}> Test Submit</button>
+        <form id='create-new-video-recipe-form' onSubmit={handleSubmit(this.submit)}>
           <fieldset>
             <legend>Add a new Videos to Keychn VOD Platform</legend>
           </fieldset>
@@ -195,7 +198,7 @@ export default class RecipeCreateForm extends Component {
               className='btn btn-primary'
               type='submit'
               value='Add New Recipe'
-              onSubmit={handleSubmit(submit)} />
+              onSubmit={handleSubmit(this.submit)} />
           </div>
 
         </form>

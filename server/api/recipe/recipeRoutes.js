@@ -48,8 +48,9 @@ recipeRouter.get('/:id', authMiddleware.checkUser, authMiddleware.checkAdmin, fu
   });
 });
 
-recipeRouter.post('/', authMiddleware.checkUser, authMiddleware.checkAdmin, function(req, res) {
+recipeRouter.post('/', function(req, res) {
   var recipe = req.body;
+  console.log(recipe)
   recipe.userId = req.currentUser._id;
   // recipe.created = new Date("<YYYY-mm-dd>");
   recipe.created = new Date.now();

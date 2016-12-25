@@ -16,3 +16,15 @@ export function fetchRecipeInfo() {
       })
   }
 }
+
+export function createRecipe(data) {
+  return function (dispatch) {
+    return fetch('/api/recipes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+  }
+}
