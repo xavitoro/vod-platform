@@ -16,7 +16,9 @@ function submit(values) {
 
 @connect((state) => {
   return {
-    tagOptions: getSelectOptions(state.tags, '_id')
+    categoryOptions: getSelectOptions(state.categories, '_id'),
+    tagOptions: getSelectOptions(state.tags, '_id'),
+    learningPathOptions: getSelectOptions(state.learningPaths, '_id'),
   }
 })
 @reduxForm({
@@ -30,7 +32,13 @@ export default class RecipeCreateForm extends Component {
     e.preventDefault()
   }
   render () {
-    const {submitting, handleSubmit, tagOptions} = this.props
+    const {
+      submitting,
+      handleSubmit,
+      categoryOptions,
+      tagOptions,
+      learningPathOptions,
+    } = this.props
     return (
        <div className="container subsection-recipes">
         <form id='create-new-video-recipe-form' onSubmit={handleSubmit(submit)}>
@@ -63,12 +71,7 @@ export default class RecipeCreateForm extends Component {
             component={CustomInput}
             type='select'
             placeholder='Choose one category'
-            options={[
-              {value: '', label: 'Choose one category'},
-              {value: 'spanish', label: 'Spanish'},
-              {value: 'asian', label: 'Asian'},
-              {value: 'mexican', label: 'Mexican'},
-            ]}
+            options={categoryOptions}
             validate={required}
           />
 
@@ -92,12 +95,7 @@ export default class RecipeCreateForm extends Component {
             placeholder='Choose one or more learning paths '
             multi={true}
             simpleValue={true}
-            options={[
-             {value: 'spanish-basics', label: 'Learn the Spanish basics'},
-             {value: 'modern-techniques-ferran', label: 'Learn the modern techniques with Ferran'},
-             {value: 'french-basics', label: 'Learn the French basics'},
-             {value: 'italian-basics', label: 'Learn the Italian basics'}
-            ]}
+            options={learningPathOptions}
             validate={required}
           />
 

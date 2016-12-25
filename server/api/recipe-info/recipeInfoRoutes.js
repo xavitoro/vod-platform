@@ -2,7 +2,7 @@ const recipeInfoRouter = require('express').Router();
 const tagModel = require('../tag/tagModel');
 const learningPathModel = require('../learningPath/learningPathModel');
 const categoryModel = require('../category/categoryModel');
-const ingredientModel = require('./ingredientModel')
+const ingredientModel = require('../recipe/ingredientModel')
 
 recipeInfoRouter.get('/recipe-info', function (req, res) {
   Promise.all([
