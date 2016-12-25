@@ -7,6 +7,7 @@ import {required} from './validations'
 import {fetchRecipeInfo, createRecipe} from '../../data/recipe'
 import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
+import {browserHistory} from 'react-router'
 
 @connect((state) => {
   return {
@@ -30,7 +31,10 @@ export default class RecipeCreateForm extends Component {
     e.preventDefault()
   }
   submit(values) {
-    this.props.dispatch(createRecipe({slug: 'new-recipe'}))
+    this.props.dispatch(createRecipe(values))
+      .then(() => {
+        browserHistory.push('/')
+      })
   }
   render () {
     const {
@@ -41,7 +45,6 @@ export default class RecipeCreateForm extends Component {
       learningPathOptions,
     } = this.props
     return (
-
        <div className="container subsection-recipes">
         <button onClick={this.submit}> Test Submit</button>
         <form id='create-new-video-recipe-form' onSubmit={handleSubmit(this.submit)}>
@@ -55,7 +58,7 @@ export default class RecipeCreateForm extends Component {
             placeholder='Recipe title'
             type='text'
             validate={required} />
-          <Field
+         <Field
             name='slug'
             component={CustomInput}
             placeholder='Recipe slug'
@@ -107,12 +110,11 @@ export default class RecipeCreateForm extends Component {
             name='courseType'
             component={CustomInput}
             type='select'
-            placeholder='Choose one category'
+            placeholder='Choose one recipe type'
             options={[
-              {value: '', label: 'Choose one recipe type'},
-              {value: 'starter-course', label: 'Starter'},
-              {value: 'main-course', label: 'Main'},
-              {value: 'dessert-course', label: 'Dessert'}
+              {value: 'starter', label: 'Starter'},
+              {value: 'main', label: 'Main'},
+              {value: 'dessert', label: 'Dessert'}
             ]}
             validate={required}
           />
@@ -172,24 +174,12 @@ export default class RecipeCreateForm extends Component {
             type='select'
             placeholder='Choose the difficulty'
             options={[
-              {value: '', label: 'Choose the difficulty'},
               {value: 'easy', label: 'Easy'},
               {value: 'medium', label: 'Medium'},
               {value: 'hard', label: 'Hard'}
             ]}
             validate={required}
           />
-
-         {/* <p>Author Information</p>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='authorThumbnail' placeholder='Author thumbnail URL' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='authorName' placeholder='Author name' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='authorDescription' placeholder='Author description' type='text' />
-          </div>*/}
 
           <FieldArray name='ingredients' component={Ingredients} />
           <FieldArray name='steps' component={Steps} />
@@ -198,6 +188,7 @@ export default class RecipeCreateForm extends Component {
               className='btn btn-primary'
               type='submit'
               value='Add New Recipe'
+              disabled={submitting}
               onSubmit={handleSubmit(this.submit)} />
           </div>
 

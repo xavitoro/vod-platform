@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const StepSchema = new Schema({
+const RecipeStepSchema = new Schema({
 
   picture: {
     type: String,
@@ -18,4 +18,4 @@ const StepSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('recipeStep', StepSchema);
+module.exports =  RecipeStepSchema;

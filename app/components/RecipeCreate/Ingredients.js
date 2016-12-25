@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
 
 @connect((state) => {
-  console.log(state)
   return {ingredientOptions: getSelectOptions(state.ingredients, '_id')}
 })
 export default class Ingredients extends Component {
@@ -27,7 +26,7 @@ export default class Ingredients extends Component {
               <li key={index} style={{paddingBottom: 10}}>
                 <div className='form-inline'>
                   <Field
-                    name={`${ingredient}.name`}
+                    name={`${ingredient}.ingredient`}
                     component={CustomInput}
                     type='select'
                     placeholder='Ingredient (e.g. bread)'
