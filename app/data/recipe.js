@@ -3,6 +3,7 @@ import {setTags} from './tags'
 import {setLearningPaths} from './learningPaths'
 import {setCategories} from './categories'
 import {setAuthors} from './authors'
+import {setEquipment} from './equipment'
 import { SubmissionError } from 'redux-form';
 
 export function fetchRecipeInfo() {
@@ -10,12 +11,13 @@ export function fetchRecipeInfo() {
     return fetch('/api/recipe-info')
       .then((res) => res.json())
       .then((data) => {
-        const {categories, tags, learningPaths, ingredients, authors} = data
+        const {categories, tags, learningPaths, ingredients, authors, equipment} = data
         categories && dispatch(setCategories(categories))
         tags && dispatch(setTags(tags))
         learningPaths && dispatch(setLearningPaths(learningPaths))
         ingredients && dispatch(setIngredients(ingredients))
         authors && dispatch(setAuthors(authors))
+        equipment && dispatch(setEquipment(equipment))
       })
   }
 }

@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const recipeIngredientSchema = require('./recipeIngredientSchema')
 const recipeStepSchema = require('./recipeStepSchema')
+const recipeEquipmentSchema = require('./recipeEquipmentSchema')
 
 const RecipeSchema = Schema ({
   title: {
@@ -72,11 +73,11 @@ const RecipeSchema = Schema ({
     type: Number,
     min: 1
   },
-  // author: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'chef',
-  //   required: true
-  // },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'chef',
+    required: true
+  },
   ingredients: [recipeIngredientSchema],
   steps: [recipeStepSchema],
   // price: {
@@ -84,11 +85,7 @@ const RecipeSchema = Schema ({
   //   min: 0,
   //   default:0
   // },
-  // equipment: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'recipeEquipment',
-  //   required: true
-  // }],
+  equipment: [recipeEquipmentSchema],
   // skillsLearnt: [{
   //   type: Schema.Types.ObjectId,
   //   ref: 'recipeSkillLearnt',

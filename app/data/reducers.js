@@ -5,6 +5,7 @@ import learningPaths from './learningPaths'
 import authors from './authors'
 import categories from './categories'
 import tags from './tags'
+import equipment from './equipment'
 
 const reducers = {
   ingredients,
@@ -12,6 +13,7 @@ const reducers = {
   authors,
   categories,
   tags,
+  equipment,
   form: formReducer
 }
 
