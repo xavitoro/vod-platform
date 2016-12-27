@@ -2,6 +2,9 @@
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const recipeIngredientSchema = require('./recipeIngredientSchema')
+const recipeStepSchema = require('./recipeStepSchema')
+const recipeEquipmentSchema = require('./recipeEquipmentSchema')
 
 const RecipeSchema = Schema ({
   title: {
@@ -75,44 +78,32 @@ const RecipeSchema = Schema ({
     ref: 'chef',
     required: true
   },
-  ingredients: [{
-    type: Schema.Types.ObjectId,
-    ref: 'recipeIngredient',
-    required: true
-  }],
-  steps: [{
-    type: Schema.Types.ObjectId,
-    ref: 'recipeStep',
-    required: true
-  }],
-  price: {
-    type: Number,
-    min: 0,
-    default:0
-  }
-  equipment: [{
-    type: Schema.Types.ObjectId,
-    ref: 'recipeEquipment',
-    required: true
-  }],
-  skillsLearnt: [{
-    type: Schema.Types.ObjectId,
-    ref: 'recipeSkillLearnt',
-    required: true
-  }],
-  comments: [{
-    type: Schema.Types.ObjectId,
-    ref: 'comment',
-  }],
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'user',
-    required: true
-  },
-  created: {
-    type: Date,
-    required: true
-  }
+  ingredients: [recipeIngredientSchema],
+  steps: [recipeStepSchema],
+  // price: {
+  //   type: Number,
+  //   min: 0,
+  //   default:0
+  // },
+  equipment: [recipeEquipmentSchema],
+  // skillsLearnt: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'recipeSkillLearnt',
+  //   required: true
+  // }],
+  // comments: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'comment',
+  // }],
+  // userId: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'user',
+  //   required: true
+  // },
+  // created: {
+  //   type: Date,
+  //   required: true
+  // }
 })
 
 module.exports = mongoose.model('recipe', RecipeSchema)

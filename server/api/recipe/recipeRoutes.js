@@ -28,8 +28,9 @@ var authMiddleware = require('../../middleware/authMiddleware');
 // });
 
 
-recipeRouter.get('/',authMiddleware.checkUser, authMiddleware.checkAdmin, function(req, res) {
-  recipeModel.find({}, function(err, recipes) {
+recipeRouter.get('/', function(req, res) {
+  recipeModel.find({}).populate('tags').exec(function(err, recipes) {
+
     if (err) {
       return res.status(403).send(err);
     }
@@ -48,18 +49,23 @@ recipeRouter.get('/:id', authMiddleware.checkUser, authMiddleware.checkAdmin, fu
   });
 });
 
-recipeRouter.post('/', authMiddleware.checkUser, authMiddleware.checkAdmin, function(req, res) {
+recipeRouter.post('/', function(req, res) {
   var recipe = req.body;
-  recipe.userId = req.currentUser._id;
+  console.log(recipe)
+  // recipe.userId = req.currentUser._id;
   // recipe.created = new Date("<YYYY-mm-dd>");
-  recipe.created = new Date.now();
+  // recipe.created = new Date.now();
   var newRecipe = recipeModel(recipe);
 
   // save the user
-  newRecipe.save(function(err) {
-    if (err) res.status(403).send(err);
+  newRecipe.save(function(err, recipe) {
+    console.log(recipe, 'creayed', err)
 
-    res.status(200).send(recipe);
+    if (err) {
+       res.status(403).send(err);
+    } else {
+      res.status(200).send(recipe);
+    }
   });
 });
 

@@ -3,9 +3,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const EquipmentSchema = new Schema({
-  name: {
-    type: String,
+const recipeEquipmentSchema = new Schema({
+  equipment: {
+    type: Schema.Types.ObjectId,
+    ref: 'equipment',
     required: true
   },
   quantity: {
@@ -14,4 +15,4 @@ const EquipmentSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('recipeEquipment', EquipmentSchema);
+module.exports = recipeEquipmentSchema;

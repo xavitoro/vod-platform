@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 
 const RecipeIngredientSchema = new Schema({
 
-  name: {
-    type: String,
-    required: true,
-    unique: true
+  ingredient: {
+    type: Schema.Types.ObjectId,
+    ref: 'ingredient',
+    required: true
   },
   quantity: {
     type: Number,
@@ -21,4 +21,4 @@ const RecipeIngredientSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('recipeIngredient', RecipeIngredientSchema);
+module.exports = RecipeIngredientSchema;

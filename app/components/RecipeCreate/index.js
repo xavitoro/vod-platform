@@ -3,31 +3,54 @@ import { Field, FieldArray, reduxForm,  SubmissionError } from 'redux-form'
 import CustomInput from './CustomInput'
 import Ingredients from './Ingredients'
 import Steps from './Steps'
+import Equipment from './Equipment'
 import {required} from './validations'
-import {fetchRecipeInfo} from '../../data/recipe'
+import {fetchRecipeInfo, createRecipe} from '../../data/recipe'
+import {connect} from 'react-redux'
+import {getSelectOptions} from '../../utils/form'
+import {browserHistory} from 'react-router'
 
-function submit(values) {
-  //validation
-  //
-  console.log(values, 'values')
-}
-
-
+@connect((state) => {
+  return {
+    categoryOptions: getSelectOptions(state.categories, '_id'),
+    tagOptions: getSelectOptions(state.tags, '_id'),
+    learningPathOptions: getSelectOptions(state.learningPaths, '_id'),
+    authorOptions: getSelectOptions(state.authors, '_id')
+  }
+})
 @reduxForm({
   form: 'recipeCreateForm',
 })
 export default class RecipeCreateForm extends Component {
+  constructor(props) {
+    super(props)
+    this.submit = this.submit.bind(this)
+  }
   componentDidMount() {
     this.props.dispatch(fetchRecipeInfo())
   }
   preventSubmit(e) {
     e.preventDefault()
   }
+  submit(values) {
+    this.props.dispatch(createRecipe(values))
+      .then(() => {
+        browserHistory.push('/')
+      })
+  }
   render () {
-    const {submitting, handleSubmit} = this.props
+    const {
+      submitting,
+      handleSubmit,
+      categoryOptions,
+      tagOptions,
+      learningPathOptions,
+      authorOptions
+    } = this.props
     return (
        <div className="container subsection-recipes">
-        <form id='create-new-video-recipe-form' onSubmit={handleSubmit(submit)}>
+        <button onClick={this.submit}> Test Submit</button>
+        <form id='create-new-video-recipe-form' onSubmit={handleSubmit(this.submit)}>
           <fieldset>
             <legend>Add a new Videos to Keychn VOD Platform</legend>
           </fieldset>
@@ -38,7 +61,7 @@ export default class RecipeCreateForm extends Component {
             placeholder='Recipe title'
             type='text'
             validate={required} />
-          <Field
+         <Field
             name='slug'
             component={CustomInput}
             placeholder='Recipe slug'
@@ -57,12 +80,7 @@ export default class RecipeCreateForm extends Component {
             component={CustomInput}
             type='select'
             placeholder='Choose one category'
-            options={[
-              {value: '', label: 'Choose one category'},
-              {value: 'spanish', label: 'Spanish'},
-              {value: 'asian', label: 'Asian'},
-              {value: 'mexican', label: 'Mexican'},
-            ]}
+            options={categoryOptions}
             validate={required}
           />
 
@@ -74,13 +92,7 @@ export default class RecipeCreateForm extends Component {
             placeholder='Choose one or more tags'
             multi={true}
             simpleValue={true}
-            options={[
-              {value: 'healthy', label: 'healthy'},
-              {value: 'veggie', label: 'veggie'},
-              {value: 'baked', label: 'baked'},
-              {value: 'grilled', label: 'grilled'},
-              {value: 'roasted', label: 'roasted'}
-            ]}
+            options={tagOptions}
             validate={required}
           />
 
@@ -92,12 +104,7 @@ export default class RecipeCreateForm extends Component {
             placeholder='Choose one or more learning paths '
             multi={true}
             simpleValue={true}
-            options={[
-             {value: 'spanish-basics', label: 'Learn the Spanish basics'},
-             {value: 'modern-techniques-ferran', label: 'Learn the modern techniques with Ferran'},
-             {value: 'french-basics', label: 'Learn the French basics'},
-             {value: 'italian-basics', label: 'Learn the Italian basics'}
-            ]}
+            options={learningPathOptions}
             validate={required}
           />
 
@@ -106,12 +113,11 @@ export default class RecipeCreateForm extends Component {
             name='courseType'
             component={CustomInput}
             type='select'
-            placeholder='Choose one category'
+            placeholder='Choose one recipe type'
             options={[
-              {value: '', label: 'Choose one recipe type'},
-              {value: 'starter-course', label: 'Starter'},
-              {value: 'main-course', label: 'Main'},
-              {value: 'dessert-course', label: 'Dessert'}
+              {value: 'starter', label: 'Starter'},
+              {value: 'main', label: 'Main'},
+              {value: 'dessert', label: 'Dessert'}
             ]}
             validate={required}
           />
@@ -171,33 +177,32 @@ export default class RecipeCreateForm extends Component {
             type='select'
             placeholder='Choose the difficulty'
             options={[
-              {value: '', label: 'Choose the difficulty'},
               {value: 'easy', label: 'Easy'},
               {value: 'medium', label: 'Medium'},
               {value: 'hard', label: 'Hard'}
             ]}
             validate={required}
           />
-
-         {/* <p>Author Information</p>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='authorThumbnail' placeholder='Author thumbnail URL' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='authorName' placeholder='Author name' type='text' />
-          </div>
-          <div className='form-group col-md-12'>
-            <input className='form-control' name='authorDescription' placeholder='Author description' type='text' />
-          </div>*/}
+          <p>Author</p>
+          <Field
+            name='author'
+            component={CustomInput}
+            type='select'
+            placeholder='Choose Author '
+            options={authorOptions}
+            validate={required}
+          />
 
           <FieldArray name='ingredients' component={Ingredients} />
           <FieldArray name='steps' component={Steps} />
+          <FieldArray name='equipment' component={Equipment} />
           <div>
             <input
               className='btn btn-primary'
               type='submit'
               value='Add New Recipe'
-              onSubmit={handleSubmit(submit)} />
+              disabled={submitting}
+              onSubmit={handleSubmit(this.submit)} />
           </div>
 
         </form>

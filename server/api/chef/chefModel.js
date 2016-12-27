@@ -5,7 +5,7 @@ const ChefSchema = new Schema({
   name: {
     type: String,
     required: true
-  }
+  },
   thumbnail: {
     type: String,
     required: true
@@ -14,11 +14,11 @@ const ChefSchema = new Schema({
     type: String,
     required: true
   },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'user',
-    required: true
-  }
+  // userId: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'user',
+  //   required: true
+  // }
 });
 
 module.exports = mongoose.model('chef', ChefSchema);
