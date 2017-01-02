@@ -5,6 +5,7 @@ const Schema = mongoose.Schema
 const recipeIngredientSchema = require('./recipeIngredientSchema')
 const recipeStepSchema = require('./recipeStepSchema')
 const recipeEquipmentSchema = require('./recipeEquipmentSchema')
+const recipeSkillLearntSchema = require('./recipeSkillLearntSchema')
 
 const RecipeSchema = Schema ({
   title: {
@@ -86,6 +87,7 @@ const RecipeSchema = Schema ({
   //   default:0
   // },
   equipment: [recipeEquipmentSchema],
+  skillsLearnt: [recipeSkillLearntSchema],
   // skillsLearnt: [{
   //   type: Schema.Types.ObjectId,
   //   ref: 'recipeSkillLearnt',

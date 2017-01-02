@@ -4,6 +4,7 @@ import CustomInput from './CustomInput'
 import Ingredients from './Ingredients'
 import Steps from './Steps'
 import Equipment from './Equipment'
+import Skills from './SkillsLearnt'
 import {required} from './validations'
 import {fetchRecipeInfo, createRecipe} from '../../data/recipe'
 import {connect} from 'react-redux'
@@ -196,6 +197,7 @@ export default class RecipeCreateForm extends Component {
           <FieldArray name='ingredients' component={Ingredients} />
           <FieldArray name='steps' component={Steps} />
           <FieldArray name='equipment' component={Equipment} />
+          <FieldArray name='skillsLearnt' component={Skills} />
           <div>
             <input
               className='btn btn-primary'

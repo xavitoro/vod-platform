@@ -6,6 +6,7 @@ import authors from './authors'
 import categories from './categories'
 import tags from './tags'
 import equipment from './equipment'
+import skillsLearnt from './skillsLearnt'
 
 const reducers = {
   ingredients,
@@ -14,6 +15,7 @@ const reducers = {
   categories,
   tags,
   equipment,
+  skillsLearnt,
   form: formReducer
 }
 

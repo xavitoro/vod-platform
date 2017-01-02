@@ -13,4 +13,4 @@ const RecipeSkillLearntSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('recipeSkillLearnt', RecipeSkillLearntSchema);
+module.exports = RecipeSkillLearntSchema
