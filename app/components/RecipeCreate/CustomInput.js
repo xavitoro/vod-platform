@@ -11,6 +11,8 @@ function formatSelectValue(data) {
 
 export default function CustomInput({
   input,
+  label,
+  helpText,
   placeholder,
   type,
   options,
@@ -30,8 +32,12 @@ export default function CustomInput({
     <input {...input} className='form-control' placeholder={placeholder}/>
   return (
     <div className={classnames('form-group', className)}>
-      {field}
-      {touched && error && <span style={{color: 'red'}}>{error}</span>}
+      <label className='col-xs-2'>{label}</label>
+      <div className='col-xs-10'>
+        {field}
+        <span className='help-block'>{helpText}</span>
+        {touched && error && <span style={{color: 'red'}}>{error}</span>}
+      </div>
     </div>
   )
 }

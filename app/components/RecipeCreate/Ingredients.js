@@ -19,14 +19,14 @@ export default class Ingredients extends Component {
     const {fields, ingredientOptions} = this.props
     return (
       <div>
-        <p>Recipe Ingredients </p>
+        <label>Recipe Ingredients </label>
         <ul className='list'>
           {fields.map((ingredient, index) => {
             return (
-              <li key={index} className='row' style={{paddingBottom: 10}}>
+              <li key={index} style={{paddingBottom: 10}}>
                 <Field
                   name={`${ingredient}.ingredient`}
-                  className='col-xs-3'
+                  label='Ingredient'
                   component={CustomInput}
                   type='select'
                   placeholder='Ingredient (e.g. bread)'
@@ -34,19 +34,19 @@ export default class Ingredients extends Component {
                   validate={required} />
                 <Field
                   name={`${ingredient}.quantity`}
-                  className='col-xs-3'
+                  label='Quantity'
                   component={CustomInput}
                   placeholder='Quantity ingredient (e.g. 2)'
                   type='text'
                   validate={required} />
                 <Field
                   name={`${ingredient}.unit`}
-                  className='col-xs-3'
+                  label="Unit"
                   component={CustomInput}
                   placeholder='Quantity unit (e.g. slice)'
                   type='text'
                   validate={required} />
-                <div className='col-xs-3'>
+                <div>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
               </li>

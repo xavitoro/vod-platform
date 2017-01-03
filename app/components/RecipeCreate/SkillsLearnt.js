@@ -20,20 +20,20 @@ export default class SkillsLearnt extends Component {
     const {fields, skillsLearntOptions} = this.props
     return (
       <div>
-        <p>Skills Learnt </p>
+        <label>Skills Learnt </label>
         <ol className='list'>
           {fields.map((skill, index) => {
             return (
-              <li className='row' key={index} style={{paddingBottom: 10}}>
+              <li key={index} style={{paddingBottom: 10}}>
                 <Field
                   name={`${skill}.name`}
-                  className='col-xs-10'
+                  label='Skill name'
                   component={CustomInput}
                   type='select'
                   placeholder='skill (e.g. grill a fish)'
                   options={skillsLearntOptions}
                   validate={required} />
-                <div className='col-xs-2'>
+                <div>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
               </li>

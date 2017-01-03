@@ -20,27 +20,27 @@ export default class Equipment extends Component {
     const {fields, equipmentOptions} = this.props
     return (
       <div>
-        <p>Equipment </p>
+        <label>Equipment </label>
         <ol className='list'>
           {fields.map((equipment, index) => {
             return (
-              <li className='row' key={index} style={{paddingBottom: 10}}>
+              <li key={index} style={{paddingBottom: 10}}>
                 <Field
                   name={`${equipment}.equipment`}
-                  className='col-xs-5'
                   component={CustomInput}
+                  label='Equipment'
                   type='select'
                   placeholder='equipment (e.g. pan)'
                   options={equipmentOptions}
                   validate={required} />
                 <Field
                   name={`${equipment}.quantity`}
-                  className='col-xs-5'
+                  label='Quantity'
                   component={CustomInput}
                   placeholder='Quantity equipment (e.g. 2)'
                   type='text'
                   validate={required} />
-                <div className='col-xs-2'>
+                <div>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
               </li>
