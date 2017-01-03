@@ -265,3 +265,7 @@ header > input {
 .details > header + section {
   margin-top: 25px;
 }
+
+.list {
+  list-style-type: none;
+}

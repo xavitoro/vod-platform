@@ -21,25 +21,28 @@ export default class SkillsLearnt extends Component {
     return (
       <div>
         <p>Skills Learnt </p>
-        <ol className='form-group col-md-12'>
+        <ol className='list'>
           {fields.map((skill, index) => {
             return (
-              <li key={index} style={{paddingBottom: 10}}>
-                <div className='form-inline'>
-                  <Field
-                    name={`${skill}.name`}
-                    component={CustomInput}
-                    type='select'
-                    placeholder='skill (e.g. grill a fish)'
-                    options={skillsLearntOptions}
-                    validate={required} />
+              <li className='row' key={index} style={{paddingBottom: 10}}>
+                <Field
+                  name={`${skill}.name`}
+                  className='col-xs-10'
+                  component={CustomInput}
+                  type='select'
+                  placeholder='skill (e.g. grill a fish)'
+                  options={skillsLearntOptions}
+                  validate={required} />
+                <div className='col-xs-2'>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
-             </li>
+              </li>
             )
           })}
-          <a onClick={() => fields.push({}) }>Add skill learnt</a>
         </ol>
+        <div>
+          <a onClick={() => fields.push({}) }>Add skill learnt</a>
+        </div>
       </div>
     )
   }

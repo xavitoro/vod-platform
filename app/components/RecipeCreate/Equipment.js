@@ -21,31 +21,35 @@ export default class Equipment extends Component {
     return (
       <div>
         <p>Equipment </p>
-        <ol className='form-group col-md-12'>
+        <ol className='list'>
           {fields.map((equipment, index) => {
             return (
-              <li key={index} style={{paddingBottom: 10}}>
-                <div className='form-inline'>
-                  <Field
-                    name={`${equipment}.equipment`}
-                    component={CustomInput}
-                    type='select'
-                    placeholder='equipment (e.g. pan)'
-                    options={equipmentOptions}
-                    validate={required} />
-                  <Field
-                    name={`${equipment}.quantity`}
-                    component={CustomInput}
-                    placeholder='Quantity equipment (e.g. 2)'
-                    type='text'
-                    validate={required} />
+              <li className='row' key={index} style={{paddingBottom: 10}}>
+                <Field
+                  name={`${equipment}.equipment`}
+                  className='col-xs-5'
+                  component={CustomInput}
+                  type='select'
+                  placeholder='equipment (e.g. pan)'
+                  options={equipmentOptions}
+                  validate={required} />
+                <Field
+                  name={`${equipment}.quantity`}
+                  className='col-xs-5'
+                  component={CustomInput}
+                  placeholder='Quantity equipment (e.g. 2)'
+                  type='text'
+                  validate={required} />
+                <div className='col-xs-2'>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
-             </li>
+              </li>
             )
           })}
-          <a onClick={() => fields.push({}) }>Add equipment</a>
         </ol>
+        <div>
+          <a onClick={() => fields.push({}) }>Add equipment</a>
+        </div>
       </div>
     )
   }

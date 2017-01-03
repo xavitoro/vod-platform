@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
+import classnames from 'classnames'
 
 function formatSelectValue(data) {
   if (!Array.isArray(data)) {
@@ -14,6 +15,7 @@ export default function CustomInput({
   type,
   options,
   multi,
+  className,
   meta: {touched, error}
 }) {
   const field = (type==='select') ?
@@ -22,14 +24,12 @@ export default function CustomInput({
       placeholder={placeholder}
       options={options}
       multi={multi}
-      style={{minWidth: 200}}
       onChange={(option) => { input.onChange(formatSelectValue(option))} }
       onBlur={(option) => input.onChange(formatSelectValue(option))} />
     :
     <input {...input} className='form-control' placeholder={placeholder}/>
-
   return (
-    <div className='form-group col-md-12'>
+    <div className={classnames('form-group', className)}>
       {field}
       {touched && error && <span style={{color: 'red'}}>{error}</span>}
     </div>
