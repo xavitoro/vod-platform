@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
+import Header from './HeaderFooter/Header'
+import Footer from './HeaderFooter/Footer'
 
 const Main = React.createClass({
   render: function () {

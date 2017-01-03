@@ -1,5 +1,5 @@
 import React from 'react'
-import RecipeFromAPI from '../components/RecipeFromAPI'
+import RecipeFromAPI from '../components/RecipeDisplay/RecipeFromAPI'
 import keychnRecipeHelper from '../utils/keychn_api/keychnRecipeHelper'
 
 var RecipeContainer = React.createClass({
