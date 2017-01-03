@@ -15,6 +15,7 @@ function Recipe (props) {
         <p>Length: {props.recipe.length} minutes</p>
         <p>Difficulty: {props.recipe.difficulty}</p>
         <p>Servings: {props.recipe.servings} people</p>
+        <p>Price: {props.recipe.price} people</p>
       </div>
 
     </div>
@@ -29,6 +30,7 @@ Recipe.propTypes = {
     length: PropTypes.string.isRequired,
     difficulty: PropTypes.string.isRequired,
     servings: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
   })
 }
 module.exports = Recipe
