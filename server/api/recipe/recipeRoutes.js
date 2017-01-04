@@ -29,14 +29,15 @@ var authMiddleware = require('../../middleware/authMiddleware');
 
 
 recipeRouter.get('/', function(req, res) {
-  recipeModel.find({}).populate('tags').exec(function(err, recipes) {
-
-    if (err) {
-      return res.status(403).send(err);
-    }
-    // object of all the recipes
-    res.status(200).send(recipes);
-  });
+  recipeModel.find({})
+             .deepPopulate('author tags ingredients.ingredient equipment.equipment learningPath categories skillsLearnt')
+             .exec(function(err, recipes) {
+                if (err) {
+                  return res.status(403).send(err);
+                }
+                // object of all the recipes
+                res.status(200).send(recipes);
+            });
 });
 
 recipeRouter.get('/:id', authMiddleware.checkUser, authMiddleware.checkAdmin, function(req, res) {
