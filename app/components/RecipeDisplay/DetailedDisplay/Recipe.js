@@ -3,7 +3,7 @@ const PropTypes = React.PropTypes
 import RecipeComponent from '../OverviewDisplay/RecipeComponent'
 import IngredientList from './IngredientList'
 import StepList from './StepList'
-
+import EquipmentList from './EquipmentList'
 
 //props.recipe.name ..
 function Recipe (props) {
@@ -19,6 +19,7 @@ function Recipe (props) {
         <p>Difficulty: {props.recipe.difficulty}</p>
         <p>Servings: {props.recipe.servings} people</p>
         <p>Price: {props.recipe.price} euros</p>
+        <EquipmentList {...props.recipe}/>
         <IngredientList {...props.recipe}/>
         <StepList {...props.recipe}/>
       </div>
@@ -38,6 +39,7 @@ Recipe.propTypes = {
     price: PropTypes.string.isRequired,
     ingredients: PropTypes.array.isRequired,
     steps: PropTypes.array.isRequired,
+    equipment: PropTypes.array.isRequired,
   })
 }
 module.exports = Recipe
