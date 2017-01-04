@@ -2,6 +2,8 @@ import React from 'react'
 const PropTypes = React.PropTypes
 import RecipeComponent from '../OverviewDisplay/RecipeComponent'
 import IngredientList from './IngredientList'
+import StepList from './StepList'
+
 
 //props.recipe.name ..
 function Recipe (props) {
@@ -18,6 +20,7 @@ function Recipe (props) {
         <p>Servings: {props.recipe.servings} people</p>
         <p>Price: {props.recipe.price} euros</p>
         <IngredientList {...props.recipe}/>
+        <StepList {...props.recipe}/>
       </div>
 
     </div>
@@ -34,6 +37,7 @@ Recipe.propTypes = {
     servings: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     ingredients: PropTypes.array.isRequired,
+    steps: PropTypes.array.isRequired,
   })
 }
 module.exports = Recipe

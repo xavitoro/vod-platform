@@ -2,10 +2,7 @@ import React from 'react'
 const PropTypes=React.PropTypes
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
-import {
-  StyleSheet, css
-}
-from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite'
 
 function RecipeComponent(props) {
   return (
