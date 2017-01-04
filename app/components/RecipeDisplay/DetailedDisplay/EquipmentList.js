@@ -5,6 +5,7 @@ function EquipmentList (props) {
   return (
     <div className="container subsection-equipment">
       <div className="row">
+      <h4>Equipment</h4>
         {props.equipment
           .map((utensil, index) => {
             var {name} = utensil

@@ -5,6 +5,7 @@ function IngredientList (props) {
   return (
     <div className="container subsection-ingredients">
       <div className="row">
+      <h4>Ingredients</h4>
         {props.ingredients
           .map((ingredient, index) => {
             var {name, quantity, unit} = ingredient
