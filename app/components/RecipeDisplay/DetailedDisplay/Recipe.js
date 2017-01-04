@@ -4,6 +4,7 @@ import RecipeComponent from '../OverviewDisplay/RecipeComponent'
 import IngredientList from './IngredientList'
 import StepList from './StepList'
 import EquipmentList from './EquipmentList'
+import SkillsLearntList from './SkillsLearntList'
 
 //props.recipe.name ..
 function Recipe (props) {
@@ -22,6 +23,7 @@ function Recipe (props) {
         <EquipmentList {...props.recipe}/>
         <IngredientList {...props.recipe}/>
         <StepList {...props.recipe}/>
+        <SkillsLearntList {...props.recipe}/>
       </div>
 
     </div>
@@ -40,6 +42,7 @@ Recipe.propTypes = {
     ingredients: PropTypes.array.isRequired,
     steps: PropTypes.array.isRequired,
     equipment: PropTypes.array.isRequired,
+    skillsLearnt: PropTypes.array.isRequired,
   })
 }
 module.exports = Recipe
