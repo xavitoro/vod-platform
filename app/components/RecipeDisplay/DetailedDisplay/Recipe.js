@@ -1,6 +1,6 @@
 import React from 'react'
 const PropTypes = React.PropTypes
-import RecipeComponent from './RecipeComponent'
+import RecipeComponent from '../OverviewDisplay/RecipeComponent'
 import IngredientList from './IngredientList'
 
 //props.recipe.name ..
