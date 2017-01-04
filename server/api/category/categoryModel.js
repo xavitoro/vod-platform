@@ -1,7 +1,9 @@
 'use strict'
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
+import idPlugin from '../../plugins/idPlugin'
 const Schema = mongoose.Schema;
+
 
 const CategorySchema = new Schema ({
   name: {
@@ -15,5 +17,7 @@ const CategorySchema = new Schema ({
     required: true
   },
 });
+
+CategorySchema.plugin(idPlugin)
 
 module.exports = mongoose.model('category', CategorySchema);

@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
 
 @connect((state) => {
-  return {ingredientOptions: getSelectOptions(state.ingredients, '_id')}
+  return {ingredientOptions: getSelectOptions(state.ingredients, 'id')}
 })
 export default class Ingredients extends Component {
   componentDidMount() {
@@ -19,38 +19,41 @@ export default class Ingredients extends Component {
     const {fields, ingredientOptions} = this.props
     return (
       <div>
-        <p>Recipe Ingredients </p>
-        <ol className='form-group col-md-12'>
+        <label>Recipe Ingredients </label>
+        <ul className='list'>
           {fields.map((ingredient, index) => {
             return (
               <li key={index} style={{paddingBottom: 10}}>
-                <div className='form-inline'>
-                  <Field
-                    name={`${ingredient}.ingredient`}
-                    component={CustomInput}
-                    type='select'
-                    placeholder='Ingredient (e.g. bread)'
-                    options={ingredientOptions}
-                    validate={required} />
-                  <Field
-                    name={`${ingredient}.quantity`}
-                    component={CustomInput}
-                    placeholder='Quantity ingredient (e.g. 2)'
-                    type='text'
-                    validate={required} />
-                  <Field
-                    name={`${ingredient}.unit`}
-                    component={CustomInput}
-                    placeholder='Quantity unit (e.g. slice)'
-                    type='text'
-                    validate={required} />
+                <Field
+                  name={`${ingredient}.ingredient`}
+                  label='Ingredient'
+                  component={CustomInput}
+                  type='select'
+                  placeholder='Ingredient (e.g. bread)'
+                  options={ingredientOptions}
+                  validate={required} />
+                <Field
+                  name={`${ingredient}.quantity`}
+                  label='Quantity'
+                  component={CustomInput}
+                  placeholder='Quantity ingredient (e.g. 2)'
+                  type='text'
+                  validate={required} />
+                <Field
+                  name={`${ingredient}.unit`}
+                  label="Unit"
+                  component={CustomInput}
+                  placeholder='Quantity unit (e.g. slice)'
+                  type='text'
+                  validate={required} />
+                <div>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
-             </li>
+              </li>
             )
           })}
-          <a onClick={() => fields.push({}) }>Add Ingredient</a>
-        </ol>
+        </ul>
+        <div><a onClick={() => fields.push({}) }>Add Ingredient</a></div>
       </div>
     )
   }

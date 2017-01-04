@@ -7,7 +7,7 @@ import {getSelectOptions} from '../../utils/form'
 
 @connect((state) => {
   console.log(state.equipment)
-  return {equipmentOptions: getSelectOptions(state.equipment, '_id')}
+  return {equipmentOptions: getSelectOptions(state.equipment, 'id')}
 })
 export default class Equipment extends Component {
   componentDidMount() {
@@ -20,32 +20,36 @@ export default class Equipment extends Component {
     const {fields, equipmentOptions} = this.props
     return (
       <div>
-        <p>Equipment </p>
-        <ol className='form-group col-md-12'>
+        <label>Equipment </label>
+        <ol className='list'>
           {fields.map((equipment, index) => {
             return (
               <li key={index} style={{paddingBottom: 10}}>
-                <div className='form-inline'>
-                  <Field
-                    name={`${equipment}.equipment`}
-                    component={CustomInput}
-                    type='select'
-                    placeholder='equipment (e.g. pan)'
-                    options={equipmentOptions}
-                    validate={required} />
-                  <Field
-                    name={`${equipment}.quantity`}
-                    component={CustomInput}
-                    placeholder='Quantity equipment (e.g. 2)'
-                    type='text'
-                    validate={required} />
+                <Field
+                  name={`${equipment}.equipment`}
+                  component={CustomInput}
+                  label='Equipment'
+                  type='select'
+                  placeholder='equipment (e.g. pan)'
+                  options={equipmentOptions}
+                  validate={required} />
+                <Field
+                  name={`${equipment}.quantity`}
+                  label='Quantity'
+                  component={CustomInput}
+                  placeholder='Quantity equipment (e.g. 2)'
+                  type='text'
+                  validate={required} />
+                <div>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
-             </li>
+              </li>
             )
           })}
-          <a onClick={() => fields.push({}) }>Add equipment</a>
         </ol>
+        <div>
+          <a onClick={() => fields.push({}) }>Add equipment</a>
+        </div>
       </div>
     )
   }

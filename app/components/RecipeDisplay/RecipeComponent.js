@@ -72,7 +72,7 @@ RecipeComponent.propTypes={
     thumbnail: PropTypes.string.isRequired
   }),
   categories: PropTypes.array.isRequired,
-  _id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired
 }
 
 module.exports=RecipeComponent

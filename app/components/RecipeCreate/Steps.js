@@ -14,30 +14,33 @@ export default class Steps extends Component {
     const {fields} = this.props
     return (
       <div>
-        <p>Steps</p>
-        <ul className='form-group col-md-12' style={{ listStyleType: 'none' }} >
+        <label>Steps</label>
+        <ul className='list'>
           {fields.map((step, index) => {
             return (
               <li key={index} style={{paddingBottom: 10}}>
                 <div className=''>
                   <div className='clearfix'>
-                    <div>Step {index + 1}</div>
+                    <label>Step {index + 1}</label>
                     <div className='pull-right'><a onClick={() => fields.remove(index)}>Remove</a></div>
                   </div>
                   <Field
                     name={`${step}.picture`}
+                    label='Picture'
                     component={CustomInput}
                     placeholder='Picture URL'
                     type='text'
                     validate={required} />
                   <Field
                     name={`${step}.description`}
+                    label='Description'
                     component={CustomInput}
                     placeholder='Description'
                     type='text'
                     validate={required} />
                   <Field
                     name={`${step}.tip`}
+                    label='Tip'
                     component={CustomInput}
                     placeholder='Tip'
                     type='text'

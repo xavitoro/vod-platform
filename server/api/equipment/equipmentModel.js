@@ -1,6 +1,8 @@
 'use strict'
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
+import idPlugin from '../../plugins/idPlugin'
+
 const Schema = mongoose.Schema;
 
 const equipmentSchema = new Schema ({
@@ -10,5 +12,7 @@ const equipmentSchema = new Schema ({
     required: true
   },
 });
+
+equipmentSchema.plugin(idPlugin)
 
 module.exports = mongoose.model('equipment', equipmentSchema);

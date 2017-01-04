@@ -7,7 +7,7 @@ import {getSelectOptions} from '../../utils/form'
 
 @connect((state) => {
   console.log(state.skilsLearnt)
-  return {skillsLearntOptions: getSelectOptions(state.skilsLearnt, '_id')}
+  return {skillsLearntOptions: getSelectOptions(state.skilsLearnt, 'id')}
 })
 export default class SkillsLearnt extends Component {
   componentDidMount() {
@@ -20,26 +20,29 @@ export default class SkillsLearnt extends Component {
     const {fields, skillsLearntOptions} = this.props
     return (
       <div>
-        <p>Skills Learnt </p>
-        <ol className='form-group col-md-12'>
+        <label>Skills Learnt </label>
+        <ol className='list'>
           {fields.map((skill, index) => {
             return (
               <li key={index} style={{paddingBottom: 10}}>
-                <div className='form-inline'>
-                  <Field
-                    name={`${skill}.name`}
-                    component={CustomInput}
-                    type='select'
-                    placeholder='skill (e.g. grill a fish)'
-                    options={skillsLearntOptions}
-                    validate={required} />
+                <Field
+                  name={`${skill}.name`}
+                  label='Skill name'
+                  component={CustomInput}
+                  type='select'
+                  placeholder='skill (e.g. grill a fish)'
+                  options={skillsLearntOptions}
+                  validate={required} />
+                <div>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
-             </li>
+              </li>
             )
           })}
-          <a onClick={() => fields.push({}) }>Add skill learnt</a>
         </ol>
+        <div>
+          <a onClick={() => fields.push({}) }>Add skill learnt</a>
+        </div>
       </div>
     )
   }

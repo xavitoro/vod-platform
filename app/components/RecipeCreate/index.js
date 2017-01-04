@@ -62,7 +62,7 @@ export default class RecipeCreateForm extends Component {
             placeholder='Recipe title'
             type='text'
             validate={required} />
-          <Field
+         <Field
             name='slug'
             component={CustomInput}
             placeholder='Recipe slug'
@@ -170,13 +170,6 @@ export default class RecipeCreateForm extends Component {
             placeholder='Recipe servings (people)'
             type='number' min='1'
             validate={required} />
-
-            <Field
-             name='price'
-             component={CustomInput}
-             placeholder='Recipe price (€)'
-             type='number' min='0'
-             validate={required} />
 
           <p>Recipe Difficulty</p>
           <Field
