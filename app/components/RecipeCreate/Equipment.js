@@ -7,7 +7,7 @@ import {getSelectOptions} from '../../utils/form'
 
 @connect((state) => {
   console.log(state.equipment)
-  return {equipmentOptions: getSelectOptions(state.equipment, '_id')}
+  return {equipmentOptions: getSelectOptions(state.equipment, 'id')}
 })
 export default class Equipment extends Component {
   componentDidMount() {

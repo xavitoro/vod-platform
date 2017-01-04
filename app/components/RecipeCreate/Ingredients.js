@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
 
 @connect((state) => {
-  return {ingredientOptions: getSelectOptions(state.ingredients, '_id')}
+  return {ingredientOptions: getSelectOptions(state.ingredients, 'id')}
 })
 export default class Ingredients extends Component {
   componentDidMount() {

@@ -1,6 +1,8 @@
 'use strict'
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
+import idPlugin from '../../plugins/idPlugin'
+
 const Schema = mongoose.Schema;
 
 const RecipeIngredientSchema = new Schema({
@@ -20,5 +22,7 @@ const RecipeIngredientSchema = new Schema({
     required: true
   }
 });
+
+RecipeIngredientSchema.plugin(idPlugin)
 
 module.exports = RecipeIngredientSchema;

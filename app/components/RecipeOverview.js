@@ -10,7 +10,7 @@ function RecipeOverview (props) {
   return (
     <div className={`grid-item col-md-6 ${css(styles.recipeoverview)}`}>
       <RecipeComponent {...props}/>
-      <Link to={`/recipe-details/${props._id}`} className={`${css(styles.link)}`} >
+      <Link to={`/recipe-details/${props.id}`} className={`${css(styles.link)}`} >
         Read more...
       </Link>
     </div>

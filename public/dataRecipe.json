@@ -73,7 +73,7 @@
 		}],
 		"userId": "firstuserid",
 		"created": 1481199199,
-		"_id": "1"
+		"id": "1"
 	}, {
 		"title": "Baby Octopus with onions",
 		"slug": "baby-octopus-with-onions",
@@ -177,7 +177,7 @@
 		}],
 		"userId": "seconduserid",
 		"created": 1461199199,
-		"_id": "2"
+		"id": "2"
 	}, {
 		"title": "Guacamole",
 		"slug": "guacamole",
@@ -271,7 +271,7 @@
 		}],
 		"userId": "seconduserid",
 		"created": 1441199199,
-		"_id": "3"
+		"id": "3"
 	}, {
 		"title": "Carne Asada Tacos",
 		"slug": "carne-asada-tacos",
@@ -394,6 +394,6 @@
 		}],
 		"userId": "seconduserid",
 		"created": 1401199199,
-		"_id": "4"
+		"id": "4"
 	}]
 }

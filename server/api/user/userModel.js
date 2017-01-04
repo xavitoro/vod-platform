@@ -1,6 +1,8 @@
 'use strict'
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
+import idPlugin from '../../plugins/idPlugin'
+
 const passportLocalMongoose = require('passport-local-mongoose');
 const Schema = mongoose.Schema;
 
@@ -31,7 +33,8 @@ const UserSchema = new Schema({
   }
 });
 
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(idPlugin)
+UserSchema.plugin(passportLocalMongoose)
 
 // // Xavi Code
 // UserSchema.pre('save', function(next) {

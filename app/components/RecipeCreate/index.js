@@ -13,10 +13,10 @@ import {browserHistory} from 'react-router'
 
 @connect((state) => {
   return {
-    categoryOptions: getSelectOptions(state.categories, '_id'),
-    tagOptions: getSelectOptions(state.tags, '_id'),
-    learningPathOptions: getSelectOptions(state.learningPaths, '_id'),
-    authorOptions: getSelectOptions(state.authors, '_id')
+    categoryOptions: getSelectOptions(state.categories, 'id'),
+    tagOptions: getSelectOptions(state.tags, 'id'),
+    learningPathOptions: getSelectOptions(state.learningPaths, 'id'),
+    authorOptions: getSelectOptions(state.authors, 'id')
   }
 })
 @reduxForm({

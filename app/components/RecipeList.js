@@ -9,7 +9,7 @@ function RecipeList (props) {
         {props.recipes
           .map((recipe) => {
             return (
-              <RecipeOverview {...recipe} key={recipe._id} />
+              <RecipeOverview {...recipe} key={recipe.id} />
             )
           })}
           </div>

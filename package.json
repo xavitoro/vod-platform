@@ -4,7 +4,7 @@
   "description": "video platform containing cooking videos",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "nodemon server/index.js  --exec babel-node --presets es2015,stage-0",
     "prod": "webpack -p",
     "lint": "eslint app/**/*.js webpack.config.js"
   },
@@ -49,6 +49,7 @@
     "babel-preset-es2016": "^6.16.0",
     "babel-preset-es2017": "6.16.0",
     "babel-preset-react": "6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "babel-register": "6.16.0",
     "chai": "^3.5.0",
     "colors": "^1.1.2",

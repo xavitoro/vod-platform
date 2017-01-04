@@ -1,11 +1,12 @@
 'use strict'
 
 const mongoose = require('mongoose')
+import idPlugin from '../../plugins/idPlugin'
+
 const Schema = mongoose.Schema
 const recipeIngredientSchema = require('./recipeIngredientSchema')
 const recipeStepSchema = require('./recipeStepSchema')
 const recipeEquipmentSchema = require('./recipeEquipmentSchema')
-const recipeSkillLearntSchema = require('./recipeSkillLearntSchema')
 var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 const RecipeSchema = Schema ({
@@ -106,6 +107,7 @@ const RecipeSchema = Schema ({
   //   required: true
   // }
 })
+RecipeSchema.plugin(idPlugin)
 RecipeSchema.plugin(deepPopulate)
 
 module.exports = mongoose.model('recipe', RecipeSchema)
