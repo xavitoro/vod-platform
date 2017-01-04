@@ -1,16 +1,18 @@
 import React from 'react'
 const PropTypes = React.PropTypes
 
-function EquipmentList (props) {
+function IngredientList (props) {
   return (
-    <div className="container subsection-equipment">
+    <div className="container subsection-ingredients">
       <div className="row">
-        {props.equipment
-          .map((utensil, index) => {
-            var {name} = utensil
+        {props.ingredients
+          .map((ingredient, index) => {
+            var {name, quantity, unit} = ingredient
             return (
-              <div key={index} className = 'utensil'>
-                <div className='utensil-name'> {`Name: ${name}`}</div>
+              <div key={index} className = 'ingredient'>
+                <div className='ingredient-quantity'> {`Qty: ${quantity}`}</div>
+                <div className='ingredient-name'> {`Name: ${name}`}</div>
+                <div className='ingredient-unit'> {`Unit: ${unit}`}</div>
               </div>
             )
           })}
@@ -18,8 +20,8 @@ function EquipmentList (props) {
     </div>
   )
 }
-EquipmentList.propTypes = {
-  equipment:PropTypes.array.isRequired
+IngredientList.propTypes = {
+  ingredients:PropTypes.array.isRequired
 }
 
-module.exports = EquipmentList
+module.exports = IngredientList
