@@ -75,6 +75,7 @@ export default class RecipeCreateForm extends Component {
              component={CustomInput}
              placeholder='Recipe slug'
              type='text'
+             readOnly={!!slug}
              validate={required} />
            <Field
              name='description'
