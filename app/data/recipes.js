@@ -58,10 +58,14 @@ export function fetchRecipe(slug) {
     }
 }
 
-export function createRecipe(data) {
+export function createOrUpdateRecipe(data, slug) {
   return function (dispatch) {
-    return fetch('/api/recipes', {
-      method: 'POST',
+    let url = `/api/recipes`
+    if (slug) {
+      url = `${url}/${slug}`
+    }
+    return fetch(url, {
+      method: slug ? 'PUT': 'POST',
       headers: {
         'Content-Type': 'application/json'
       },

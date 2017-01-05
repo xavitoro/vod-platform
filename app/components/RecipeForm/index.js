@@ -6,7 +6,7 @@ import Steps from './Steps'
 import Equipment from './Equipment'
 import Skills from './SkillsLearnt'
 import {required} from './validations'
-import {fetchRecipeInfo, createRecipe, fetchRecipe, recipeBySlug} from '../../data/recipes'
+import {fetchRecipeInfo, createOrUpdateRecipe, fetchRecipe, recipeBySlug} from '../../data/recipes'
 import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
 import {browserHistory} from 'react-router'
@@ -39,7 +39,8 @@ export default class RecipeCreateForm extends Component {
     e.preventDefault()
   }
   submit(values) {
-    this.props.dispatch(createRecipe(values))
+    const {routeParams: {slug}} = this.props
+    this.props.dispatch(createOrUpdateRecipe(values, slug))
       .then(() => {
         browserHistory.push('/')
       })
@@ -51,7 +52,10 @@ export default class RecipeCreateForm extends Component {
       categoryOptions,
       tagOptions,
       learningPathOptions,
-      authorOptions
+      authorOptions,
+      routeParams: {
+        slug
+      }
     } = this.props
     return (
        <div className="container subsection-recipes">
@@ -205,9 +209,9 @@ export default class RecipeCreateForm extends Component {
            <FieldArray name='skillsLearnt' component={Skills} />
            <div>
              <input
-              className='btn btn-primary'
-              type='submit'
-              value='Add New Recipe'
+               className='btn btn-primary'
+               type='submit'
+               value={slug ? 'Update':  'Add New Recipe'}
               disabled={submitting}
               onSubmit={handleSubmit(this.submit)} />
           </div>
