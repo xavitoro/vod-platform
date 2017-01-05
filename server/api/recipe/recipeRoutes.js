@@ -40,8 +40,8 @@ recipeRouter.get('/', function(req, res) {
             });
 });
 
-recipeRouter.get('/:id', authMiddleware.checkUser, authMiddleware.checkAdmin, function(req, res) {
-  recipeModel.findById(req.params.id, function(err, recipe) {
+recipeRouter.get('/:slug', function(req, res) {
+  recipeModel.findOne({slug: req.params.slug}, function(err, recipe) {
     if (err) {
       return res.status(403).send(err);
     }
@@ -70,9 +70,9 @@ recipeRouter.post('/', function(req, res) {
   });
 });
 
-recipeRouter.put('/:id', authMiddleware.checkUser, authMiddleware.checkAdmin, function(req, res) {
+recipeRouter.put('/:slug', function(req, res) {
 
-  recipeModel.findOneAndUpdate({_id:req.params.id}, req.body, function (err, recipe) {
+  recipeModel.findOneAndUpdate({slug:req.params.slug}, req.body, function (err, recipe) {
     if (err) {
       return res.status(403).send(err);
     }
