@@ -6,17 +6,18 @@ import Steps from './Steps'
 import Equipment from './Equipment'
 import Skills from './SkillsLearnt'
 import {required} from './validations'
-import {fetchRecipeInfo, createRecipe} from '../../data/recipe'
+import {fetchRecipeInfo, createRecipe, fetchRecipe, recipeBySlug} from '../../data/recipes'
 import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
 import {browserHistory} from 'react-router'
 
-@connect((state) => {
+@connect((state, {routeParams: {slug}}) => {
   return {
     categoryOptions: getSelectOptions(state.categories, '_id'),
     tagOptions: getSelectOptions(state.tags, '_id'),
     learningPathOptions: getSelectOptions(state.learningPaths, '_id'),
-    authorOptions: getSelectOptions(state.authors, '_id')
+    authorOptions: getSelectOptions(state.authors, '_id'),
+    initialValues: recipeBySlug(state, slug)
   }
 })
 @reduxForm({
@@ -28,7 +29,11 @@ export default class RecipeCreateForm extends Component {
     this.submit = this.submit.bind(this)
   }
   componentDidMount() {
-    this.props.dispatch(fetchRecipeInfo())
+    const {routeParams: {slug}, dispatch} = this.props
+    dispatch(fetchRecipeInfo())
+    if (slug) {
+      dispatch(fetchRecipe(slug))
+    }
   }
   preventSubmit(e) {
     e.preventDefault()
@@ -48,10 +53,10 @@ export default class RecipeCreateForm extends Component {
       learningPathOptions,
       authorOptions
     } = this.props
+    console.log(this.props.recipe)
     return (
        <div className="container subsection-recipes">
-        <button onClick={this.submit}> Test Submit</button>
-        <form id='create-new-video-recipe-form' onSubmit={handleSubmit(this.submit)}>
+         <form id='create-new-video-recipe-form' onSubmit={handleSubmit(this.submit)}>
           <fieldset>
             <legend>Add a new Videos to Keychn VOD Platform</legend>
           </fieldset>
