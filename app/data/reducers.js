@@ -8,8 +8,10 @@ import tags from './tags'
 import equipment from './equipment'
 import skillsLearnt from './skillsLearnt'
 import recipes from './recipes'
+import user from './user'
 
 const reducers = {
+  user,
   recipes,
   ingredients,
   learningPaths,
