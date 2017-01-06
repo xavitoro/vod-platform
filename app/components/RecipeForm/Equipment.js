@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Field} from 'redux-form'
 import CustomInput from '../Form/CustomInput'
-import {required} from './validations'
+import {required} from '../Form/validations'
 import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
 
