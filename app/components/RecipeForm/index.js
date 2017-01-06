@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Field, FieldArray, reduxForm,  SubmissionError } from 'redux-form'
-import CustomInput from './CustomInput'
+import CustomInput from '../Form/CustomInput'
 import Ingredients from './Ingredients'
 import Steps from './Steps'
 import Equipment from './Equipment'
