@@ -213,8 +213,8 @@ export default class RecipeCreateForm extends Component {
                className='btn btn-primary'
                type='submit'
                value={slug ? 'Update':  'Add New Recipe'}
-              disabled={submitting}
-              onSubmit={handleSubmit(this.submit)} />
+               disabled={submitting}
+               onSubmit={handleSubmit(this.submit)} />
           </div>
 
         </form>
