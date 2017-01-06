@@ -5,7 +5,7 @@ import Ingredients from './Ingredients'
 import Steps from './Steps'
 import Equipment from './Equipment'
 import Skills from './SkillsLearnt'
-import {required} from '../Form/validations'
+import {required, url} from '../Form/validations'
 import {fetchRecipeInfo, createOrUpdateRecipe, fetchRecipe, recipeBySlug} from '../../data/recipes'
 import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
@@ -139,13 +139,13 @@ export default class RecipeCreateForm extends Component {
              component={CustomInput}
              placeholder='Recipe ingredients picture'
              type='text'
-             validate={required} />
+             validate={[required, url]} />
            <Field
              name='picturePlating'
              component={CustomInput}
              placeholder='Recipe final picture'
              type='text'
-             validate={required} />
+             validate={[required, url]} />
 
            <p>Recipe Video URLs</p>
            <Field
@@ -153,19 +153,19 @@ export default class RecipeCreateForm extends Component {
              component={CustomInput}
              placeholder='Recipe thumbnail for the video'
              type='text'
-             validate={required} />
+             validate={[required, url]} />
            <Field
              name='videoPreview'
              component={CustomInput}
              placeholder='Recipe video preview'
              type='text'
-             validate={required} />
+             validate={[required, url]} />
            <Field
              name='videoFull'
              component={CustomInput}
              placeholder='Recipe video full-length'
              type='text'
-             validate={required} />
+             validate={[required, url]} />
 
            <p>Recipe Detailed Information</p>
            <Field
@@ -173,13 +173,13 @@ export default class RecipeCreateForm extends Component {
              component={CustomInput}
              placeholder='Recipe length (minutes)'
              type='number' min='5'
-             validate={required} />
+             validate={[required, number]} />
            <Field
              name='servings'
              component={CustomInput}
              placeholder='Recipe servings (people)'
              type='number' min='1'
-             validate={required} />
+             validate={[required, number]} />
 
            <p>Recipe Difficulty</p>
            <Field

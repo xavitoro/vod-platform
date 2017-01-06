@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Field} from 'redux-form'
 import CustomInput from '../Form/CustomInput'
-import {required} from '../Form/validations'
+import {required, url} from '../Form/validations'
 
 export default class Steps extends Component {
   componentDidMount() {
@@ -30,7 +30,7 @@ export default class Steps extends Component {
                     component={CustomInput}
                     placeholder='Picture URL'
                     type='text'
-                    validate={required} />
+                    validate={[required, url]} />
                   <Field
                     name={`${step}.description`}
                     label='Description'
