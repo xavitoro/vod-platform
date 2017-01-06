@@ -2,11 +2,11 @@ import React from 'react'
 import CustomInput from '../Form/CustomInput'
 import {required, email} from '../Form/validations'
 import { Field, reduxForm, SubmissionError } from 'redux-form'
-import {signUp} from '../../data/user'
+import {signIn} from '../../data/user'
 import {browserHistory} from 'react-router'
 
 @reduxForm({
-  form: 'signup'
+  form: 'signin'
 })
 export default class SignUpForm extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class SignUpForm extends React.Component {
     this.submit = this.submit.bind(this)
   }
   submit(values) {
-    this.props.dispatch(signUp(values))
+    this.props.dispatch(signIn(values))
       .then(() => {
         browserHistory.push('/')
       })
@@ -40,7 +40,7 @@ export default class SignUpForm extends React.Component {
         <input
           className='btn btn-primary'
           type='submit'
-          value='Sign up'
+          value='Sign in'
           disabled={submitting}
           onSubmit={handleSubmit(this.submit)} />
       </form>

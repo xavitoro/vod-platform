@@ -4,7 +4,13 @@ const UPDATE_USER = 'UPDATE_USER'
 
 export function signUp(data) {
   return function(dispatch) {
-    return post('/api/register', data)
+    return post('/api/signup', data)
+  }
+}
+
+export function signIn(data) {
+  return function(dispatch) {
+    return post('/api/signin', data)
   }
 }
 
