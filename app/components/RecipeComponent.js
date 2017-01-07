@@ -12,6 +12,7 @@ function RecipeComponent(props) {
     <div className='card-recipe col-md-12'>
       <div className='recipe-video-preview-holder'>
         <img
+        height={state.width/1.62}
           className={
             `img-responsive recipe-video-preview ${css(styles.thumbnail)}`
           }
