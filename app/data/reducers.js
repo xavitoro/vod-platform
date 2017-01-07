@@ -6,14 +6,18 @@ import authors from './authors'
 import categories from './categories'
 import tags from './tags'
 import equipment from './equipment'
+import skillsLearnt from './skillsLearnt'
+import recipes from './recipes'
 
 const reducers = {
+  recipes,
   ingredients,
   learningPaths,
   authors,
   categories,
   tags,
   equipment,
+  skillsLearnt,
   form: formReducer
 }
 

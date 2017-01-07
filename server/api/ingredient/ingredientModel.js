@@ -1,9 +1,11 @@
 'use strict'
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
+import idPlugin from '../../plugins/idPlugin'
+
 const Schema = mongoose.Schema;
 
-const IngreidentSchema = new Schema ({
+const IngredientSchema = new Schema ({
   name: {
     type: String,
     unique: true,
@@ -16,4 +18,5 @@ const IngreidentSchema = new Schema ({
   },
 });
 
-module.exports = mongoose.model('ingredient', IngreidentSchema)
+IngredientSchema.plugin(idPlugin)
+module.exports = mongoose.model('ingredient', IngredientSchema)

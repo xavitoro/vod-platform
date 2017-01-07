@@ -16,6 +16,7 @@ if (env === 'development') {
     publicPath: config.output.publicPath
   }))
   app.use(require('webpack-hot-middleware')(compiler))
+  console.log(path.join(__dirname, '../public'))
   app.use('/public', express.static(path.join(__dirname, '../public')))
   app.use(express.static(path.join(__dirname, '../dist')))
   app.use(morgan('combined'))

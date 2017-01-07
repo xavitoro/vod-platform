@@ -2,10 +2,7 @@ import React from 'react'
 const PropTypes=React.PropTypes
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
-import {
-  StyleSheet, css
-}
-from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite'
 
 function RecipeComponent(props) {
   return (
@@ -73,7 +70,7 @@ RecipeComponent.propTypes={
     thumbnail: PropTypes.string.isRequired
   }),
   categories: PropTypes.array.isRequired,
-  _id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired
 }
 
 module.exports=RecipeComponent

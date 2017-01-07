@@ -5,6 +5,7 @@ const categoryModel = require('../category/categoryModel');
 const ingredientModel = require('../ingredient/ingredientModel')
 const chefModel = require('../chef/chefModel')
 const equipmentModel = require('../equipment/equipmentModel')
+const skillLearntModel = require('../skillLearnt/skillLearntModel')
 
 recipeInfoRouter.get('/recipe-info', function (req, res) {
   Promise.all([
@@ -13,16 +14,18 @@ recipeInfoRouter.get('/recipe-info', function (req, res) {
     learningPathModel.find({}),
     ingredientModel.find({}),
     chefModel.find({}),
-    equipmentModel.find({})
+    equipmentModel.find({}),
+    skillLearntModel.find({})
   ]).then(function (data) {
-    const [categories, tags, learningPaths, ingredients, authors, equipment] = data
+    const [categories, tags, learningPaths, ingredients, authors, equipment, skillsLearnt] = data
     res.json({
       categories,
       tags,
       learningPaths,
       ingredients,
       authors,
-      equipment
+      equipment,
+      skillsLearnt
     })
   })
 })

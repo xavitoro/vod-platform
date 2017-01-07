@@ -8,7 +8,7 @@
 var config = require('./config/config');
 var app = require('./server');
 var logger = require('./util/logger');
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
 
 mongoose.connect('mongodb://localhost:27017/vod-development' , (err, resp) => {

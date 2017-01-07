@@ -1,10 +1,13 @@
 'use strict'
 
 const mongoose = require('mongoose')
+import idPlugin from '../../plugins/idPlugin'
+
 const Schema = mongoose.Schema
 const recipeIngredientSchema = require('./recipeIngredientSchema')
 const recipeStepSchema = require('./recipeStepSchema')
 const recipeEquipmentSchema = require('./recipeEquipmentSchema')
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 const RecipeSchema = Schema ({
   title: {
@@ -71,7 +74,13 @@ const RecipeSchema = Schema ({
   },
   servings: {
     type: Number,
+    required: true,
     min: 1
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0
   },
   author: {
     type: Schema.Types.ObjectId,
@@ -86,11 +95,10 @@ const RecipeSchema = Schema ({
   //   default:0
   // },
   equipment: [recipeEquipmentSchema],
-  // skillsLearnt: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'recipeSkillLearnt',
-  //   required: true
-  // }],
+  skillsLearnt: [{
+    type: Schema.Types.ObjectId,
+    ref: 'skillLearnt'
+  }],
   // comments: [{
   //   type: Schema.Types.ObjectId,
   //   ref: 'comment',
@@ -105,5 +113,7 @@ const RecipeSchema = Schema ({
   //   required: true
   // }
 })
+RecipeSchema.plugin(idPlugin)
+RecipeSchema.plugin(deepPopulate)
 
 module.exports = mongoose.model('recipe', RecipeSchema)
