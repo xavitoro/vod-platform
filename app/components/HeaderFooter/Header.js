@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router'
-
 import { StyleSheet, css } from 'aphrodite'
+import {connect} from 'react-redux'
+import {logout} from '../../data/user'
 
-const Header=React.createClass({
-  render: function() {
+@connect(null, {logout})
+class Header extends React.Component {
+  render() {
+    const {logout} = this.props
     return (
       <header className={`navigation__header ${css(styles.header)}`}>
         <nav role='navigation' className='navbar header-navigation-holder'>
@@ -32,8 +35,13 @@ const Header=React.createClass({
                 </ul>
                 <ul className='nav navbar-nav navbar-right header__navigation-list'>
                   <li className=''>
-                    <a className='sign-in-link' href='/'>
+                    <Link className='sign-in-link' to='/signin'>
                       Sign In
+                    </Link>
+                  </li>
+                  <li className=''>
+                    <a className='sign-in-link' href='/logout'>
+                      Sign Out
                     </a>
                   </li>
                 </ul>
@@ -51,7 +59,7 @@ const Header=React.createClass({
       </header>
     )
   }
-})
+}
 
 module.exports=Header
 
