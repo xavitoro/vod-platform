@@ -1,10 +1,10 @@
-var express = require('express')
-var app = express()
-var api = require('./api/api')
-var err = require('./middleware/err')
-var path = require('path')
-var morgan = require('morgan')
+import express from 'express'
+import api from './api/api'
+import err from './middleware/err'
+import path from 'path'
+import morgan from 'morgan'
 
+var app = express()
 var env = process.env.NODE_ENV || 'development'
 
 if (env === 'development') {

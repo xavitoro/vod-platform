@@ -1,12 +1,24 @@
 const userRouter = require('express').Router();
 const passport = require('passport');
+var cookieParser = require('cookie-parser');
+var session = require('cookie-session');
 const jwt = require('jsonwebtoken');
 const userModel = require('./userModel');
 const logger = require('../../util/logger');
 const authMiddleware = require('../../middleware/authMiddleware');
+const LocalStrategy = require('passport-local').Strategy;
+
+userRouter.use(cookieParser());
+userRouter.use(session({keys: ['secretkey1', 'secretkey2', '...']}));
+
 
 const secretKey = process.env.SECRET_KEY || 'vodvod';
 
+userRouter.use(passport.initialize());
+userRouter.use(passport.session());
+passport.use(new LocalStrategy(userModel.authenticate()));
+passport.serializeUser(userModel.serializeUser());
+passport.deserializeUser(userModel.deserializeUser());
 
 userRouter.get('/', authMiddleware.checkUser, function(req, res) {
   userModel.find({}, function(err, users) {
@@ -29,6 +41,7 @@ userRouter.get('/:id', function(req, res) {
 });
 
 userRouter.post('/register', function(req, res) {
+  console.log(req.body)
   userModel.register(new userModel({
     username : req.body.username,
     email : req.body.email,
