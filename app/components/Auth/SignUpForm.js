@@ -15,14 +15,23 @@ export default class SignUpForm extends React.Component {
   }
   submit(values) {
     this.props.dispatch(signUp(values))
-      .then(() => {
-        browserHistory.push('/')
+      .then((res) => {
+        if (res.status === 200) {
+          browserHistory.push('/')
+        }
       })
   }
   render() {
     const {submitting, handleSubmit} = this.props
     return (
       <form onSubmit={handleSubmit(this.submit)}>
+        <Field
+          name='username'
+          component={CustomInput}
+          label='Username'
+          placeholder='Username'
+          type='text'
+          validate={[required]} />
         <Field
           name='email'
           component={CustomInput}

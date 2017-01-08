@@ -23,13 +23,9 @@ const UserSchema = new Schema({
   },
   facebook: {
     type: String,
-    unique: true,
-    required: false
   },
   isAdmin: {
-    type: Boolean,
-    unique: true,
-    required: true
+    type: Boolean
   }
 });
 
