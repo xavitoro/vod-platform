@@ -1,9 +1,10 @@
-'use strict'
-
 import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
 import idPlugin from '../../plugins/idPlugin'
+import passportLocalMongoose from 'passport-local-mongoose'
 
-const passportLocalMongoose = require('passport-local-mongoose');
+const SALT_WORK_FACTOR = 10;
+
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -32,7 +33,7 @@ const UserSchema = new Schema({
 UserSchema.plugin(idPlugin)
 UserSchema.plugin(passportLocalMongoose)
 
-// // Xavi Code
+// // // Xavi Code
 // UserSchema.pre('save', function(next) {
 //     var user = this;
 //
@@ -54,11 +55,11 @@ UserSchema.plugin(passportLocalMongoose)
 //     });
 // });
 //
-// UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-//     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-//         if (err) return cb(err);
-//         cb(null, isMatch);
-//     });
+// UserSchema.methods.verifyPassword = function(candidatePassword, cb) {
+//   console.log('compare', candidatePassword, this.password, this)
+//   bcrypt.compare(candidatePassword, this.hash, function(err, isMatch) {
+//     err ? cb(err): cb(null, isMatch);
+//   });
 // };
 
 module.exports = mongoose.model('user', UserSchema);

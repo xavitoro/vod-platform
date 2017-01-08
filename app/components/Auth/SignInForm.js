@@ -15,8 +15,11 @@ export default class SignUpForm extends React.Component {
   }
   submit(values) {
     this.props.dispatch(signIn(values))
-      .then(() => {
-        browserHistory.push('/')
+      .then((res) => {
+        
+        if (res.status === 200) {
+          browserHistory.push('/')
+        }
       })
   }
   render() {
@@ -24,12 +27,12 @@ export default class SignUpForm extends React.Component {
     return (
       <form onSubmit={handleSubmit(this.submit)}>
         <Field
-          name='email'
+          name='username'
           component={CustomInput}
-          label='Email'
-          placeholder='Email'
+          label='Username'
+          placeholder='Username'
           type='text'
-          validate={[required, email]} />
+          validate={[required]} />
         <Field
           name='password'
           label='Password'

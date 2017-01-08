@@ -9,6 +9,7 @@ export function signUp(data) {
 }
 
 export function signIn(data) {
+  console.log(data)
   return function(dispatch) {
     return post('/api/users/login', data)
   }

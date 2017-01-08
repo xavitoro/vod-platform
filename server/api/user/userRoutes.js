@@ -17,6 +17,7 @@ const secretKey = process.env.SECRET_KEY || 'vodvod';
 userRouter.use(passport.initialize());
 userRouter.use(passport.session());
 passport.use(new LocalStrategy(userModel.authenticate()));
+
 passport.serializeUser(userModel.serializeUser());
 passport.deserializeUser(userModel.deserializeUser());
 
@@ -63,15 +64,16 @@ userRouter.post('/register', function(req, res) {
   });
 });
 
-userRouter.post('/login', passport.authenticate('local'), function(req, res) {
-  var user = req.user;
+userRouter.post('/login',
+  passport.authenticate('local'),
+  function(req, res) {
+    var user = req.user;
+    var token = jwt.sign(user, secretKey);
 
-  var token = jwt.sign(user, secretKey);
-
-  res.status(200).json({
-    user: user,
-    token: token
-  });
+    res.status(200).json({
+      user: user,
+      token: token
+    });
 });
 
 userRouter.get('/logout', function(req, res) {
