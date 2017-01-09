@@ -28,7 +28,7 @@ app.get('/test', checkUser, function (req, res) {
 })
 
 app.get('/*', function (req, res) {
-  console.log('session', req.session)
+  // console.log('cookies', req.cookies)
   res.sendFile(path.join(__dirname, 'views', 'index.html'))
 })
 

@@ -1,5 +1,6 @@
 import {post} from './utils/network'
 import {browserHistory} from 'react-router'
+import {get} from './utils/network'
 
 const UPDATE_USER = 'UPDATE_USER'
 
@@ -18,7 +19,7 @@ export function signIn(data) {
 
 export function logout() {
   return function(dispatch) {
-    return fetch('/api/users/logout')
+    return get('/api/users/logout')
       .then(res => {
         if (res.status === 200) {
           browserHistory.push('/')
