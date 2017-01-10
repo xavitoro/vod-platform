@@ -6,30 +6,32 @@ import { StyleSheet, css } from 'aphrodite'
 
 class CustomImage extends Component {
    constructor(props) {
-        super(props);
-        this.state = {dimensions: {}};
-        this.onImgLoad = this.onImgLoad.bind(this);
+        super(props)
+        this.state = {dimensions: {}}
+        this.onImgLoad = this.onImgLoad.bind(this)
     }
     onImgLoad({target:img}) {
-        this.setState({dimensions:{height:img.height,
-                                   width:img.width}});
+        this.setState({
+          dimensions:{
+            height:img.width/1.62,
+            width:img.width
+          }
+        });
     }
     render(){
-        const {src} = `/public/img/recipes/${this.props}`;
+        const src = `/public/img/recipes/${this.props.videoThumbnail}`;
         const {width, height} = this.state.dimensions;
 
-        return (<img
-                  src={src}
-                  className={`img-responsive recipe-video-preview ${css(styles.thumbnail)}`}
-                />
-               );
+        return (
+          <img src={src} className={`img-responsive recipe-video-preview ${css(styles.thumbnail)}`} />
+        );
     }
 }
 
-module.exports=CustomImage
+module.exports = CustomImage
 
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
   thumbnail: {
     width: '100%',
   },

@@ -3,21 +3,21 @@ const PropTypes=React.PropTypes
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
 import { StyleSheet, css } from 'aphrodite'
-import CustomImage from './CustomImage'
+import CustomImage from '../OverviewDisplay/CustomImage'
 
-function RecipeComponent(props) {
+function RecipeComponentDetailed(props) {
   return (
-    <div className='card-recipe col-md-12'>
-      <div className='recipe-video-preview-holder'>
+    <div className='card-recipe-detailed col-md-12'>
+      <div className='recipe-video-preview-holder-detailed'>
         <CustomImage {...props}/>
       </div>
-      <div className='card-recipe-inner'>
-        <h3 className='recipe-title'> {
+      <div className='card-recipe-inner-detailed'>
+        <h3 className='recipe-title-detailed'> {
             props.title
           }
         </h3>
       </div>
-      <div className='recipe-author'>
+      <div className='recipe-author-detailed'>
         <img className={
             `img-responsive recipe-author-thumbnail ${css(styles.author)}`
           }
@@ -25,7 +25,7 @@ function RecipeComponent(props) {
             `/public/img/recipes/${props.author.thumbnail}`
           }
         />
-        <h4 className='recipe-author-name'> {
+        <h4 className='recipe-author-name-detailed'> {
             props.author.name
           }
         </h4>
@@ -39,12 +39,12 @@ function RecipeComponent(props) {
           Date:
             <Moment unix format='MM/YYYY'>{props.created}</Moment>
           </div>
-        <div className="recipe categories">
+        <div className="recipe categories-detailed">
           Categories: {
             props.categories.join(' | ')
           }
         </div>
-        <div className="recipe-description"> {
+        <div className="recipe-description-detailed"> {
             props.description
           }
         </div>
@@ -53,7 +53,7 @@ function RecipeComponent(props) {
   )
 }
 
-RecipeComponent.propTypes={
+RecipeComponentDetailed.propTypes={
   videoThumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -66,7 +66,7 @@ RecipeComponent.propTypes={
   id: PropTypes.string.isRequired
 }
 
-module.exports=RecipeComponent
+module.exports = RecipeComponentDetailed
 
 
 const styles=StyleSheet.create({

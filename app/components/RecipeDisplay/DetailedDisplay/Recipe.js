@@ -1,6 +1,6 @@
 import React from 'react'
 const PropTypes = React.PropTypes
-import RecipeComponent from '../OverviewDisplay/RecipeComponent'
+import RecipeComponentDetailed from './RecipeComponentDetailed'
 import IngredientList from './IngredientList'
 import StepList from './StepList'
 import EquipmentList from './EquipmentList'
@@ -11,7 +11,7 @@ function Recipe (props) {
   // console.log(props);
   return (
     <div className='section-recipe-details'>
-      <RecipeComponent {...props.recipe}/>
+      <RecipeComponentDetailed {...props.recipe}/>
       <div className = 'basic-recipe-information'>
         <p>Tags: {props.recipe.tags.join(' | ')}</p>
         <p>Learning Path: {props.recipe.learningPath.join(' | ')}</p>
