@@ -3,6 +3,7 @@ import api from './api/api'
 import err from './middleware/err'
 import path from 'path'
 import {checkUser} from './middleware/authMiddleware'
+import passport from 'passport'
 
 var app = express()
 
@@ -23,12 +24,13 @@ app.get('/logout', function (req, res) {
   res.redirect('/')
 })
 
-app.get('/test', checkUser, function (req, res) {
+app.get('/test', function (req, res) {
+  console.log(req.session.id, req.user)
   res.send('check user worked')
 })
 
 app.get('/*', function (req, res) {
-  // console.log('cookies', req.cookies)
+  // console.log('cookies', req.session.id)
   res.sendFile(path.join(__dirname, 'views', 'index.html'))
 })
 

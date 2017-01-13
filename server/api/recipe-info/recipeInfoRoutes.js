@@ -10,7 +10,7 @@ import passport from 'passport'
 import {checkUser} from '../../middleware/authMiddleware'
 
 recipeInfoRouter.get('/recipe-info', function (req, res) {
-  console.log('recipe-info', req.cookies, 'user', req.user)
+  console.log('recipe-info', req.session.id, 'user', req.user)
   Promise.all([
     categoryModel.find({}),
     tagModel.find({}),

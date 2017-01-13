@@ -3,6 +3,7 @@
 export function post(url, data) {
   return fetch(url, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -12,6 +13,6 @@ export function post(url, data) {
 
 export function get(url) {
   return fetch(url, {
-    credentials: 'same-origin'
+    credentials: 'include'
   })
 }

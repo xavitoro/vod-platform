@@ -4,8 +4,10 @@ var express = require('express')
 var path = require('path')
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
+// var session = require('express-session');
+var session = require('cookie-session');
 var LocalStrategy = require('passport-local').Strategy;
+// const MongoStore = require('connect-mongo')(session);
 
 var userModel = require('../api/user/userModel')
 
@@ -14,6 +16,42 @@ const secretKey = process.env.SECRET_KEY || 'vodvod';
 
 // SETUP global middleware here
 module.exports = function(app) {
+  // app.use(bodyParser.urlencoded({ extended: true }));
+  // app.use(bodyParser.json());
+  // app.use(cookieParser(secretKey));
+  // app.use(session({
+  //   secret: secretKey,
+  //   resave: false,
+  //   saveUninitialized: true,
+  //   store: new MongoStore({ url: 'mongodb://localhost/vod-development' }),
+  //   cookie: {
+  //     secure: false
+  //   }
+  // }));
+
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended: false}));
+  app.use(cookieParser());
+  app.use(session({keys: ['secretkey1', 'secretkey2', '...']}));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  passport.use(userModel.createStrategy())
+
+  // passport.serializeUser(userModel.serializeUser());
+  // passport.deserializeUser(userModel.deserializeUser());
+  passport.serializeUser(function(user, done) {
+    console.log('serializeUser!', user, user.id)
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function(id, done) {
+    console.log('deserializeUser', id)
+    userModel.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
   if (env === 'development') {
     var webpack = require('webpack')
     var config = require('../../webpack.config')
@@ -28,20 +66,6 @@ module.exports = function(app) {
     app.use(express.static(path.join(__dirname, '../../dist')))
     app.use(morgan('dev'))
   }
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json());
-  app.use(cookieParser());
-  app.use(session({
-    secret: 'some secret',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
-  }));
 
-  app.use(passport.initialize());
-  app.use(passport.session());
-  passport.use(new LocalStrategy(userModel.authenticate()));
 
-  passport.serializeUser(userModel.serializeUser());
-  passport.deserializeUser(userModel.deserializeUser());
 };
