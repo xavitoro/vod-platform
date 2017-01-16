@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 function getRecipeInfo (recipeId) {
-  return axios.get('https://api.keychn.com/recipes/' + recipeId); // it returns an object containing a recipe with the detailed information
+  return axios.get(`https://api.keychn.com/recipes/${recipeId}`); // it returns an object containing a recipe with the detailed information
 }
 
 var helpers = {

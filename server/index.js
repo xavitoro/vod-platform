@@ -19,6 +19,6 @@ mongoose.connect('mongodb://localhost:27017/vod-development' , (err, resp) => {
   console.log('Connection to the MongoDB properly done');
 
   app.listen(config.port);
-  logger.log('API REST listening on http://localhost:' + config.port);
+  logger.log(`API REST listening on http://localhost:${config.port}`);
 
 });

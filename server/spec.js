@@ -123,7 +123,7 @@ describe('[RECIPES]'.bgMagenta, function(){
       .end(function(err, resp) {
         var paAmbTomaquet = resp.body;
         request(app)
-          .delete('/api/recipes/' + paAmbTomaquet.id)
+          .delete(`/api/recipes/${paAmbTomaquet.id}`)
           .end(function(err, resp) {
             var deletedRecipe = resp.body
             expectChai(deletedRecipe).to.eql(paAmbTomaquet);
