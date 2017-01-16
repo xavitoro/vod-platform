@@ -1,5 +1,5 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
+// const PropTypes = React.PropTypes
 
 function EquipmentList (props) {
   return (
@@ -23,4 +23,4 @@ EquipmentList.propTypes = {
   equipment:PropTypes.array.isRequired
 }
 
-module.exports = EquipmentList
+export default EquipmentList

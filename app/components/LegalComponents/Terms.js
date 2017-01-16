@@ -150,4 +150,4 @@ function Terms() {
   )
 }
 
-module.exports = Terms
+export default Terms

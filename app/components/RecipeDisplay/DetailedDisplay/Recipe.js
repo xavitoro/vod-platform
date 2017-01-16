@@ -1,5 +1,5 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
+
 import RecipeComponentDetailed from './RecipeComponentDetailed'
 import IngredientList from './IngredientList'
 import StepList from './StepList'
@@ -45,4 +45,4 @@ Recipe.propTypes = {
     skillsLearnt: PropTypes.array.isRequired,
   })
 }
-module.exports = Recipe
+export default Recipe

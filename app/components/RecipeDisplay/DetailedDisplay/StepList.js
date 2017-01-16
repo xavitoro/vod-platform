@@ -1,5 +1,5 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
+
 import { StyleSheet, css } from 'aphrodite'
 
 function StepList (props) {
@@ -35,7 +35,7 @@ StepList.propTypes = {
   steps:PropTypes.array.isRequired
 }
 
-module.exports = StepList
+export default StepList
 
 const styles=StyleSheet.create({
   stepPicture: {

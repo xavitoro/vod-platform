@@ -27,7 +27,7 @@ function Footer() {
   )
 }
 
-module.exports = Footer
+export default Footer
 
 const styles = StyleSheet.create({
   footer: {

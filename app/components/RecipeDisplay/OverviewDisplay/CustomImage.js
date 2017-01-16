@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-const PropTypes=React.PropTypes
+import React, {Component, PropTypes} from 'react'
+
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
 import { StyleSheet, css } from 'aphrodite'
@@ -28,7 +28,7 @@ class CustomImage extends Component {
     }
 }
 
-module.exports = CustomImage
+export default CustomImage
 
 
 const styles = StyleSheet.create({

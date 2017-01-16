@@ -1,5 +1,5 @@
-import React from 'react'
-const PropTypes=React.PropTypes
+import React, { PropTypes } from 'react'
+
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
 import { StyleSheet, css } from 'aphrodite'
@@ -66,7 +66,7 @@ RecipeComponentDetailed.propTypes={
   id: PropTypes.string.isRequired
 }
 
-module.exports = RecipeComponentDetailed
+export default RecipeComponentDetailed
 
 
 const styles=StyleSheet.create({

@@ -1,5 +1,4 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
 
 function IngredientList (props) {
   return (
@@ -25,4 +24,4 @@ IngredientList.propTypes = {
   ingredients:PropTypes.array.isRequired
 }
 
-module.exports = IngredientList
+export default IngredientList

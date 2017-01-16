@@ -96,4 +96,4 @@ function PrivacyPolicy() {
   )
 }
 
-module.exports = PrivacyPolicy
+export default PrivacyPolicy

@@ -12,4 +12,4 @@ function RecipeFromAPI (props) {
     : <div>Recipe From KEYCHN API: {puke(props)}</div>
 }
 
-module.exports = RecipeFromAPI
+export default RecipeFromAPI

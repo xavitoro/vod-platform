@@ -16,7 +16,7 @@ function RecipeOverview (props) {
     </div>
   )
 }
-module.exports = RecipeOverview
+export default RecipeOverview
 
 const styles = StyleSheet.create({
   recipeoverview: {

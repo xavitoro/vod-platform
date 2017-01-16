@@ -1,5 +1,5 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
+
 import RecipeOverview from './RecipeOverview'
 import {fetchRecipes} from '../../../data/recipes'
 import {connect} from 'react-redux'

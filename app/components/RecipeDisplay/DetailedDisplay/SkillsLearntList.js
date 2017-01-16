@@ -1,5 +1,5 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
+
 
 function SkillsLearntList (props) {
   return (
@@ -23,4 +23,4 @@ SkillsLearntList.propTypes = {
   skillsLearnt:PropTypes.array.isRequired
 }
 
-module.exports = SkillsLearntList
+export default SkillsLearntList
