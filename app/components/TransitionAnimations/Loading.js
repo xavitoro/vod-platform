@@ -23,21 +23,21 @@ var Loading = React.createClass({
     text: PropTypes.string,
     speed: PropTypes.number,
   },
-  getDefaultProps: function () {
+  getDefaultProps() {
     return {
       text: 'Loading',
       speed: 300
     }
   },
-  getInitialState: function () {
+  getInitialState() {
     this.originalText = this.props.text;
     return {
       text: this.originalText
     }
   },
-  componentDidMount: function () {
+  componentDidMount() {
     var stopper = this.originalText + '...'
-    this.interval = setInterval(function () {
+    this.interval = setInterval(() => {
       if (this.state.text === stopper) {
         this.setState({
           text: this.originalText
@@ -47,12 +47,12 @@ var Loading = React.createClass({
           text: this.state.text + '.'
         })
       }
-    }.bind(this), this.props.speed)
+    }, this.props.speed)
   },
-  componentWillUnmount: function () {
+  componentWillUnmount() {
     window.clearInterval(this.interval)
   },
-  render: function () {
+  render() {
     return (
       <div style={styles.container}>
         <p style={styles.content}>{this.state.text}</p>
@@ -61,4 +61,4 @@ var Loading = React.createClass({
   }
 })
 
-module.exports = Loading
+export default Loading
