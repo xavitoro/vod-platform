@@ -7,23 +7,23 @@ import EquipmentList from './EquipmentList'
 import SkillsLearntList from './SkillsLearntList'
 
 //props.recipe.name ..
-function Recipe (props) {
+function Recipe ({ recipe }) {
   // console.log(props);
   return (
     <div className='section-recipe-details'>
-      <RecipeComponentDetailed {...props.recipe}/>
+      <RecipeComponentDetailed {...recipe}/>
       <div className = 'basic-recipe-information'>
-        <p>Tags: {props.recipe.tags.join(' | ')}</p>
-        <p>Learning Path: {props.recipe.learningPath.join(' | ')}</p>
-        <p>Course Type: {props.recipe.courseType}</p>
-        <p>Length: {props.recipe.length} minutes</p>
-        <p>Difficulty: {props.recipe.difficulty}</p>
-        <p>Servings: {props.recipe.servings} people</p>
-        <p>Price: {props.recipe.price} euros</p>
-        <EquipmentList {...props.recipe}/>
-        <IngredientList {...props.recipe}/>
-        <StepList {...props.recipe}/>
-        <SkillsLearntList {...props.recipe}/>
+        <p>Tags: {recipe.tags.join(' | ')}</p>
+        <p>Learning Path: {recipe.learningPath.join(' | ')}</p>
+        <p>Course Type: {recipe.courseType}</p>
+        <p>Length: {recipe.length} minutes</p>
+        <p>Difficulty: {recipe.difficulty}</p>
+        <p>Servings: {recipe.servings} people</p>
+        <p>Price: {recipe.price} euros</p>
+        <EquipmentList {...recipe}/>
+        <IngredientList {...recipe}/>
+        <StepList {...recipe}/>
+        <SkillsLearntList {...recipe}/>
       </div>
 
     </div>

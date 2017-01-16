@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 
 
-function SkillsLearntList (props) {
+function SkillsLearntList ({ skillsLearnt }) {
   return (
     <div className="container subsection-skills-learnt">
       <div className="row">
         <h4>Skills Learnt in this recipe</h4>
-        {props.skillsLearnt
+        {skillsLearnt
           .map((skill, index) => {
             var {name} = skill
             return (

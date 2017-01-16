@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 
 import { StyleSheet, css } from 'aphrodite'
 
-const Header=React.createClass({
-  render: function() {
+const Header = React.createClass({
+  render() {
     return (
       <header className={`navigation__header ${css(styles.header)}`}>
         <nav role='navigation' className='navbar header-navigation-holder'>

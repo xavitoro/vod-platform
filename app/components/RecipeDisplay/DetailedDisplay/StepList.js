@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react'
 
 import { StyleSheet, css } from 'aphrodite'
 
-function StepList (props) {
+function StepList ({ steps }) {
   return (
     <div className="container subsection-steps">
       <div className="row">
-        {props.steps
+        {steps
           .map((step, index) => {
             var {picture, description, tip} = step
             return (

@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 // const PropTypes = React.PropTypes
 
-function EquipmentList (props) {
+function EquipmentList ({ equipment }) {
   return (
     <div className="container subsection-equipment">
       <div className="row">
       <h4>Equipment</h4>
-        {props.equipment
+        {equipment
           .map((utensil, index) => {
             var {name} = utensil
             return (

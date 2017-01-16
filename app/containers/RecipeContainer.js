@@ -13,7 +13,7 @@ var RecipeContainer = React.createClass({
     }
   },
   componentDidMount() {
-    const clickedRecipe = this.props. // should get the id from the recipe clicked.
+    const clickedRecipe = this.props. // WHAT ??? should get the id from the recipe clicked.
     keychnRecipeHelper.getRecipe()
       .then((clickedRecipe) => { // Assumption: the object return is an object
         this.setState({
