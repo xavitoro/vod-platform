@@ -6,4 +6,4 @@ function Home() {
   )
 }
 
-module.exports = Footer
+export default Home

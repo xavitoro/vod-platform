@@ -7,13 +7,9 @@ function getRecipeInfo (recipeId) {
 var helpers = {
   getRecipe: function () {
     return getRecipeInfo ()
-    .then(function (info) {
-      return info.map(function (recipe) {
-        return recipe.data // to be modified, depending on the properties of the object returned
-      })
-    })
-    .catch(function (err) {console.warn('Error in getRecipe: ', err)})
+    .then((info) => { info.map((recipe) => { recipe.data } ) }) // to be modified, depending on the properties of the object returned
+    .catch((err) => { console.warn('Error in getRecipe: ', err) })
   }
 }
 
-module.exports = helpers
+export default helpers
