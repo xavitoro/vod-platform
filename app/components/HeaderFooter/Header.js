@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import { StyleSheet, css } from 'aphrodite'
-
 const Header = React.createClass({
   render() {
     return (
@@ -23,19 +21,3 @@ const Header = React.createClass({
 })
 
 export default Header
-
-const styles=StyleSheet.create({
-  header: {
-    //background: 'rgba(250, 255, 109, 1)',
-    //padding: '5px 50px',
-    width: '100%',
-    'min-height': '40px',
-    'z-index': '1050',
-    // position: 'fixed',
-    left: 0,
-    top: 0,
-  },
-  icon: {
-    width: 100,
-  },
-})
