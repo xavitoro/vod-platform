@@ -3,13 +3,16 @@ import React, { PropTypes } from 'react'
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
 import { StyleSheet, css } from 'aphrodite'
-import CustomImage from '../OverviewDisplay/CustomImage'
 
 function RecipeComponentDetailed(props) {
   return (
     <div className='card-recipe-detailed col-md-12'>
       <div className='recipe-video-preview-holder-detailed'>
-        <CustomImage {...props}/>
+        <img className='recipe-video-preview-detailed'
+          src={
+            `/public/img/recipes/${props.videoThumbnail}`
+          }
+        />
       </div>
       <div className='card-recipe-inner-detailed'>
         <h3 className='recipe-title-detailed'> {

@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
-// const PropTypes = React.PropTypes
 
-function EquipmentList ({ equipment }) {
+
+
+function EquipmentList ({equipment}) {
   return (
     <div className="container subsection-equipment">
       <div className="row">
