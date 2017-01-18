@@ -6,48 +6,17 @@ import { StyleSheet, css } from 'aphrodite'
 const Header = React.createClass({
   render() {
     return (
-      <header className={`navigation__header ${css(styles.header)}`}>
-        <nav role='navigation' className='navbar header-navigation-holder'>
-          <div className="navbar navbar-default navbar-static-top">
-            <div className="container header__inner ">
-              <div className="navbar-header">
-                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                </button>
-                <a href='http://learnlayout.com/inline-block.html' className='header__logo-link'>
-                  <img className={`header__logo ${css(styles.icon)}`} src='../../public/img/KeychnSignature.png' alt='Logo mobile'/>
-                </a>
-              </div>
-              <div className="collapse navbar-collapse header__navigation" id="header-navigation">
-                <ul className='nav navbar-nav header__navigation-list'>
-                  <li className=''>
-                    <a className='recipe_list-link' href='/'>
-                      Recipes
-                    </a>
-                  </li>
-                  <li className=''><Link to='/recipe/create' href='/'>Create Recipe</Link></li>
-                </ul>
-                <ul className='nav navbar-nav navbar-right header__navigation-list'>
-                  <li className=''>
-                    <a className='sign-in-link' href='/'>
-                      Sign In
-                    </a>
-                  </li>
-                </ul>
-                <ul className='nav navbar-nav navbar-right header__navigation-list'>
-                  <li className=''>
-                    <a className='user-profile-link' href='/'>
-                      Xavi
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+      <header className='navigation__header'>
+        <div className='group container nav-wrapper'>
+          <div className='keychn-logo'>
+            <Link to='/' href='/'><img className = 'logo' src="../../public/img/KeychnSignature.png" /></Link>
           </div>
-        </nav>
+          <nav className='primary-nav'>
+            <Link to='/' href='/'>Recipes</Link>
+            <Link to='/recipe/create' href='/'>Create Recipe</Link>
+            <Link to='/register' href='/' id ='register'>Register</Link>
+          </nav>
+        </div>
       </header>
     )
   }
