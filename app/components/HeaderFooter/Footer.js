@@ -13,9 +13,12 @@ function Footer() {
         </div>
         <nav className='primary-nav'>
           <Link to='/' href='/'>Recipes</Link>
-          <Link to='/recipe/create' href='/'>Create Recipe</Link>
           <Link to='/register' href='/' id ='register'>Register</Link>
+        </nav>
+        <nav className='secondary-nav'>
           <Link to='/aboutus' href='/'>About us</Link>
+          <Link to={'/terms'} >Terms</Link>
+          <Link to={'/privacy-policy'} >Privacy</Link>
         </nav>
       </div>
     </footer>
