@@ -1,0 +1,516 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+  ========================================
+  Custom styles
+  ========================================
+*/
+body {
+  color: #888;
+  font: 300 16px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+/*
+  ========================================
+  Grid
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.container,
+.grid {
+  margin: 0 auto;
+  width: 70%;
+}
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.grid,
+.col-1-3,
+.recipe-item,
+.col-2-3 {
+  padding: 10px;
+}
+.subsection-recipes {
+  padding: 22px 80px 66px 80px;
+}
+.col-1-3,
+.recipe-item,
+.col-2-3  {
+  display: inline-block;
+  vertical-align: top;
+}
+.recipe-item {
+  width: 48%;
+  margin: 1%;
+}
+.col-2-3 {
+  width: 66.66%;
+}
+
+@media only screen and (max-width : 610px) {
+  /* Smartphone view: 1 tile */
+  .container,
+  .grid {
+    margin: 0 auto;
+    width: 95%;
+  }
+  .subsection-recipes {
+    padding: 22px 0px 22px 0px;
+  }
+  .recipe-item  {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width : 880px) and (min-width : 611px) {
+  /* Medium desktop: 2 tiles */
+  .container,
+  .grid {
+    margin: 0 auto;
+    width: 95%;
+  }
+  .subsection-recipes {
+    padding: 22px 5px 66px 5px;
+  }
+  .recipe-item {
+    width: 48%;
+    margin: 1%;
+  }
+}
+
+@media only screen and (max-width : 1080px) and (min-width : 881px) {
+  /* Medium desktop: 2 tiles */
+  .container,
+  .grid {
+    margin: 0 auto;
+    width: 90%;
+  }
+  .subsection-recipes {
+    padding: 22px 20px 66px 20px;
+  }
+  .recipe-item {
+    width: 48%;
+    margin: 1%;
+  }
+}
+
+@media only screen and (max-width : 1300px) and (min-width : 1081px) {
+  /* Medium desktop: 2 tiles */
+  .container,
+  .grid {
+    margin: 0 auto;
+    width: 85%;
+  }
+  .subsection-recipes {
+    padding: 22px 80px 66px 80px;
+  }
+  .recipe-item {
+    width: 48%;
+    margin: 1%;
+  }
+}
+
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+
+/*
+  ========================================
+  Typography
+  ========================================
+*/
+
+h1 {
+  margin: 22px 0;
+}
+h3, h4, p {
+  margin-bottom: 11px;
+}
+
+h1, h2, h3, h4 {
+  color: rgba(0, 0, 0, 0.65);
+}
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 44px;
+}
+h3 {
+  font-size: 21px;
+}
+h4 {
+  font-size: 18px;
+}
+time, h5 {
+  color: rgba(0, 0, 0, 0.43);
+  font-size: 12px;
+}
+span {
+  font-size: 12px;
+}
+.card-recipe h3, .card-recipe-inner-detailed h3  {
+  font-weight: 400;
+}
+.recipe-author-name {
+  font-weight: 400;
+}
+.recipe-categories li, .recipe-categories-detailed li {
+  color: #898989;
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.recipe-description h5, .recipe-description-detailed h5{
+  font-size: 15px;
+  font-weight: 400;
+  margin: 5px 0 0 5px;
+}
+
+#register {
+  color:#00ab6b;
+}
+
+/*
+  ========================================
+  Links
+  ========================================
+*/
+
+a:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+a {
+  color: rgba(0, 0, 0, 0.43);
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+#register:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+#register {
+  color:#00ab6b;
+}
+/*
+  ========================================
+  Buttons
+  ========================================
+*/
+
+.btn {
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0;
+}
+
+.btn-alt {
+  border: 1px solid #e7e7e7;
+  padding: 5px 30px;
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+  background-color: #00ab6b;
+  text-decoration: none;
+  color: white;
+}
+
+/*
+  ========================================
+  Home
+  ========================================
+*/
+
+.recipe-video-preview-holder img {
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 22px;
+  max-width: 100%;
+
+}
+
+/*
+  ========================================
+  Primary header
+  ========================================
+*/
+.navigation__header {
+  width: 100%;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 10px 0;
+}
+ .keychn-logo, .primary-nav {
+  display: inline-block;
+  vertical-align: middle;
+}
+.primary-nav {
+  font-size: 14px;
+  font-weight: 400;
+}
+.logo {
+  width: 10%;
+  min-width: 85px;
+}
+/*
+  ========================================
+  Navigation
+  ========================================
+*/
+
+nav {
+  text-align: right;
+}
+/*
+  ========================================
+  Primary footer
+  ========================================
+*/
+
+.primary-footer {
+  color: rgba(0, 0, 0, 0.43);
+  font-size: 14px;
+  padding: 20px 0;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+}
+
+.primary-footer small {
+  float: left;
+  font-weight: 400;
+  margin-right: 20px;
+}
+
+
+/*
+  ========================================
+  Sections
+  ========================================
+*/
+
+.recipe-item {
+  border: 1px solid #e7e7e7;
+  border-radius: 3px;
+}
+.recipe-author, .recipe-author-detailed  {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.round-img {
+  border-radius: 50%;
+}
+.recipe-author-avatar, .recipe-author-avatar-detailed {
+  max-height: 35px;
+  max-width: 35px;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+  border: 1px solid rgba(0,0,0,.05);
+}
+.recipe-author-name, .recipe-author-name-detailed  {
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.43);
+  margin-left: 5px;
+}
+
+.recipe-categories h5 {
+  float: left;
+  margin-right: 10px;
+}
+.recipe-categories li, .recipe-categories-detailed li, .tags li {
+  display:inline-block;
+  border: 1px solid #dfe2e5;
+  border-radius: 5px;
+  padding: 1px 3px;
+  margin: 1px;
+}
+
+/*
+  ========================================
+  DETAILED RECIPE INFORMATION (recipe.html)
+  ========================================
+*/
+/*<<<<<<<<< Card Recipe Detailed (class name) >>>>>>>>>>>*/
+.recipe-image-detailed {
+  width: 100%;
+  border-radius: 3px;
+}
+.recipe-author-detailed  {
+  float: right;
+}
+.recipe-author-name-detailed  {
+  margin-right: 5px;
+}
+.recipe-author-avatar-detailed {
+  max-height: 50px;
+  max-width: 50px;
+}
+.recipe-categories-detailed {
+  margin-left: 5px;
+}
+.card-content-detailed, .basic-recipe-information, .recipe-material, .steps {
+  border-bottom: 1px dashed #e7e7e7;
+  padding-bottom: 10px;
+}
+.basic-recipe-information {
+  padding-bottom: 5px;
+  background-color: #f8f8f8;
+}
+/*<<<<<<<<< Recipe Details (class name) >>>>>>>>>>>*/
+
+  /*Basic Recipe Information (class name)*/
+
+.basic-recipe-information, .recipe-material {
+  text-align: center;
+}
+.basic-recipe-information div {
+  display: inline-block;
+  margin: 10px 10px 5px 10px;
+}
+.tags li {
+  color: #898989;
+  font-size: 8px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background-color: rgba(250, 255, 109, 1);
+}
+.learning-path {
+  text-transform: capitalize;
+}
+
+  /* Recipe Material (class name)*/
+.equipment, .ingredients {
+  display:inline-block;
+  vertical-align: top;
+  margin: 10px 10px 5px 10px;
+}
+.equipment h5, .ingredients h5, .step h5, .skills-learnt h5 {
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 5px;
+}
+.utensil-name, .ingredient-wrapper {
+  text-align: left;
+}
+.ingredient-wrapper div {
+  display: inline-block;
+}
+
+  /*Steps (class name)*/
+.steps {
+  text-align: center;
+  width: 100%;
+}
+.steps, .step {
+  margin: 10px 10px 5px 10px;
+}
+
+.step h5, .step-description, .skills-learnt h5, .skill  {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.step-picture {
+  width: 60%;
+  border-radius: 3px;
+  max-width: 560px;
+}
+
+@media only screen and (max-width : 760px) {
+  .step-picture {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width : 1080px) and (min-width : 759px) {
+  .step-picture {
+    width: 70%;
+  }
+}
+
+.step-tip {
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 5px;
+}
