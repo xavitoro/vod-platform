@@ -6,13 +6,15 @@ const Header = React.createClass({
     return (
       <header className='navigation__header'>
         <div className='group container nav-wrapper'>
-          <div className='keychn-logo'>
-            <Link to='/' href='/'><img className = 'logo' src="../../public/img/KeychnSignature.png" /></Link>
-          </div>
           <nav className='primary-nav'>
-            <Link to='/' href='/'>Recipes</Link>
-            <Link to='/recipe/create' href='/'>Create Recipe</Link>
-            <Link to='/register' href='/' id ='register'>Register</Link>
+            <div className='nav-wrapper'>
+              <Link to='/' href='/'><img className = 'keychn-logo' src="../../public/img/KeychnSignature.png" /></Link>
+              <ul className= 'menu-link'>
+                <li><Link to='/' href='/'>Recipes</Link></li>
+                <li><Link to='/recipe/create' href='/'>Create Recipe</Link></li>
+                <li><Link to='/register' href='/' id ='register'>Register</Link></li>
+              </ul>
+            </div>
           </nav>
           <div className='secondary-header'>
             <h1>Learn with chefs</h1>

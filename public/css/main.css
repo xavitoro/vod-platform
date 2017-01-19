@@ -317,18 +317,18 @@ a {
   padding-top: 10px;
 }
 
- .keychn-logo, .primary-nav {
-  display: inline-block;
-  vertical-align: middle;
-}
 .primary-nav {
   font-size: 16px;
   font-weight: bold;
 }
-.logo {
+.keychn-logo {
   width: 10%;
   min-width: 85px;
 }
+.menu-link, .menu-link li {
+ display: inline-block;
+}
+
 .secondary-header {
   width: 100vw;
   position: relative;
