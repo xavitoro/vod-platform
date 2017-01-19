@@ -19,7 +19,7 @@ function SkillsLearntList ({ skillsLearnt }) {
   )
 }
 SkillsLearntList.propTypes = {
-  skillsLearnt:PropTypes.array.isRequired
+  skillsLearnt: PropTypes.array.isRequired
 }
 
 export default SkillsLearntList

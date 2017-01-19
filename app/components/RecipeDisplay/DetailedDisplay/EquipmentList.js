@@ -17,7 +17,7 @@ function EquipmentList ({equipment}) {
   )
 }
 EquipmentList.propTypes = {
-  equipment:PropTypes.array.isRequired
+  equipment: PropTypes.array.isRequired
 }
 
 export default EquipmentList

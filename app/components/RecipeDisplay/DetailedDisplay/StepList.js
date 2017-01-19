@@ -32,7 +32,7 @@ function StepList ({ steps }) {
   )
 }
 StepList.propTypes = {
-  steps:PropTypes.array.isRequired
+  steps: PropTypes.array.isRequired
 }
 
 export default StepList

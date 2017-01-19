@@ -13,7 +13,7 @@ function LearningPathList ({ learningPath }) {
   )
 }
 LearningPathList.propTypes = {
-  learningPath:PropTypes.array.isRequired
+  learningPath: PropTypes.array.isRequired
 }
 
 export default LearningPathList
