@@ -53,8 +53,8 @@ table {
   ========================================
 */
 body {
-  color: #888;
-  font: 300 16px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #585858;
+  font: 300 16px/22px Roboto, Nunito, Helvetica, Arial, sans-serif;
 }
 
 
@@ -314,20 +314,69 @@ a {
   width: 100%;
   background-color: #f8f8f8;
   border-bottom: 1px solid #e7e7e7;
-  padding: 10px 0;
+  padding-top: 10px;
 }
+
  .keychn-logo, .primary-nav {
   display: inline-block;
   vertical-align: middle;
 }
 .primary-nav {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: bold;
 }
 .logo {
   width: 10%;
   min-width: 85px;
 }
+.secondary-header {
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+  margin-top: 10px;
+  text-align: center;
+  /*background-image: url('../img/imageheader.png');*/
+  background-color: tomato;
+  padding: 15px 0;
+}
+.secondary-header h1, .secondary-header p {
+  color: white;
+}
+.secondary-header h1 {
+  margin: 5px;
+  font: 64px Roboto, sans-serif;
+  font-weight: 300;
+}
+.secondary-header p {
+  font: 18px Roboto, sans-serif;
+  font-weight: 400;
+}
+.form-email {
+  margin-bottom: 10px;
+}
+#email-value, #submit-email {
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid;
+  padding: 5px;
+  margin: 0 5px;
+}
+#email-value {
+  font: 16px Roboto, sans-serif;
+  font-weight: lighter;;
+  width: 250px;
+  border-color: #e7e7e7;
+}
+#submit-email {
+  color: black;
+  font: 16px Roboto, sans-serif;
+  font-weight: bold;
+  width: 200px;
+  border-color: rgba(250, 255, 109, 1);
+  background-color: rgba(250, 255, 109, 1);
+}
+
 /*
   ========================================
   Navigation
