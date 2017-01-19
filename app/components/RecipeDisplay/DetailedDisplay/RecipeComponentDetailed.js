@@ -1,12 +1,9 @@
 import React, { PropTypes } from 'react'
-
-import Moment from 'react-moment'
-  // const Moment=require('react-moment').default
-import { StyleSheet, css } from 'aphrodite'
+import CategoryList from './CategoryList'
 
 function RecipeComponentDetailed(props) {
   return (
-    <div className='card-recipe-detailed col-md-12'>
+    <section className ='card-recipe-detailed'>
       <div className='recipe-video-preview-holder-detailed'>
         <img className='recipe-video-preview-detailed'
           src={
@@ -15,44 +12,23 @@ function RecipeComponentDetailed(props) {
         />
       </div>
       <div className='card-recipe-inner-detailed'>
-        <h3 className='recipe-title-detailed'> {
-            props.title
-          }
-        </h3>
+        <h3> {props.title}</h3>
       </div>
       <div className='recipe-author-detailed'>
-        <img className={
-            `img-responsive recipe-author-thumbnail ${css(styles.author)}`
-          }
+        <span className='recipe-author-name-detailed'>{props.author.name}</span>
+        <img className='recipe-author-avatar-detailed round-img'
           src={
             `/public/img/recipes/${props.author.thumbnail}`
           }
         />
-        <h4 className='recipe-author-name-detailed'> {
-            props.author.name
-          }
-        </h4>
       </div>
-      <div className={
-          `card-content ${css(styles.cardcontent)}`
-        }>
-        <div className={
-            `creation-date ${css(styles.date)}`
-          }>
-          Date:
-            <Moment unix format='MM/YYYY'>{props.created}</Moment>
-          </div>
-        <div className="recipe categories-detailed">
-          Categories: {
-            props.categories.join(' | ')
-          }
-        </div>
-        <div className="recipe-description-detailed"> {
-            props.description
-          }
+      <div className='card-content-detailed'>
+        <CategoryList {...props}/>
+        <div className='recipe-description-detailed'>
+          <h5>{props.description}</h5>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -70,20 +46,3 @@ RecipeComponentDetailed.propTypes={
 }
 
 export default RecipeComponentDetailed
-
-
-const styles=StyleSheet.create({
-  author: {
-    width: 30,
-    height: 30,
-    borderRadius: 50,
-    float: 'left',
-    'margin-right': 10,
-  },
-  cardcontent: {
-    float: 'left',
-  },
-  date: {
-    float: 'right',
-  }
-})
