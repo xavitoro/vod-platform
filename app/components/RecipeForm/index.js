@@ -39,8 +39,8 @@ export default class RecipeCreateForm extends Component {
     e.preventDefault()
   }
   submit(values) {
-    const {routeParams: {slug}} = this.props
-    this.props.dispatch(createOrUpdateRecipe(values, slug))
+    const {routeParams: {slug}, dispatch} = this.props
+    dispatch(createOrUpdateRecipe(values, slug))
       .then(() => {
         browserHistory.push('/')
       })
@@ -216,7 +216,6 @@ export default class RecipeCreateForm extends Component {
               disabled={submitting}
               onSubmit={handleSubmit(this.submit)} />
           </div>
-
         </form>
       </div>
     )
