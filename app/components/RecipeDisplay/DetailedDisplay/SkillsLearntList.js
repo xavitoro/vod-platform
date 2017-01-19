@@ -2,20 +2,17 @@ import React, { PropTypes } from 'react'
 
 function SkillsLearntList ({ skillsLearnt }) {
   return (
-    <div className="container subsection-skills-learnt">
-      <div className="row">
-        <h4>Skills Learnt in this recipe</h4>
-        {skillsLearnt
-          .map((skill, index) => {
-            var {name} = skill
-            return (
-              <div key={index} className = 'skill'>
-                <div className='skill-name'> {`> ${name}`}</div>
-              </div>
-            )
-          })}
-      </div>
-    </div>
+    <section className='skills-learnt'>
+      <h5>Skills learnt in this recipe</h5>
+      {skillsLearnt
+        .map((skill, index) => {
+          var {name} = skill
+          return (
+            <div key={index} className = 'skill'>{name}</div>
+          )
+        })
+      }
+    </section>
   )
 }
 SkillsLearntList.propTypes = {
