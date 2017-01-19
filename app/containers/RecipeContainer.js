@@ -31,4 +31,4 @@ var RecipeContainer = React.createClass({
   }
 })
 
-module.exports = RecipeContainer;
+export default RecipeContainer
