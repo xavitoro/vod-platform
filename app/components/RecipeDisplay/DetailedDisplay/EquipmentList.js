@@ -2,20 +2,18 @@ import React, { PropTypes } from 'react'
 
 function EquipmentList ({equipment}) {
   return (
-    <div className="container subsection-equipment">
-      <div className="row">
-      <h4>Equipment</h4>
+    <section className ='equipment'>
+      <h5>Equipment</h5>
+      <div className='utensil-wrapper'>
         {equipment
           .map((utensil, index) => {
             var {name} = utensil
             return (
-              <div key={index} className = 'utensil'>
-                <div className='utensil-name'> {`Name: ${name}`}</div>
-              </div>
+              <div key={index} className='utensil-name'>{name}</div>
             )
           })}
       </div>
-    </div>
+    </section>
   )
 }
 EquipmentList.propTypes = {
