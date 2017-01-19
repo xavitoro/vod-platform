@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 
 import RecipeComponentDetailed from './RecipeComponentDetailed'
+import TagList from './TagList'
+import LearningPathList from './LearningPathList'
 import IngredientList from './IngredientList'
 import StepList from './StepList'
 import EquipmentList from './EquipmentList'
@@ -8,25 +10,32 @@ import SkillsLearntList from './SkillsLearntList'
 
 //props.recipe.name ..
 function Recipe ({ recipe }) {
-  // console.log(props);
+  console.log('WHHHHHHHH', recipe);
   return (
-    <div className='section-recipe-details'>
+    <section className='section-recipe-details grid container'>
       <RecipeComponentDetailed {...recipe}/>
-      <div className = 'basic-recipe-information'>
-        <p>Tags: {recipe.tags.join(' | ')}</p>
-        <p>Learning Path: {recipe.learningPath.join(' | ')}</p>
-        <p>Course Type: {recipe.courseType}</p>
-        <p>Length: {recipe.length} minutes</p>
-        <p>Difficulty: {recipe.difficulty}</p>
-        <p>Servings: {recipe.servings} people</p>
-        <p>Price: {recipe.price} euros</p>
-        <EquipmentList {...recipe}/>
-        <IngredientList {...recipe}/>
-        <StepList {...recipe}/>
-        <SkillsLearntList {...recipe}/>
-      </div>
-
-    </div>
+      <section className='recipe-details'>
+        <section className= 'basic-recipe-information'>
+          <TagList {...recipe}/>
+          <LearningPathList {...recipe}/>
+          <p>Course Type: {recipe.courseType}</p>
+          <p>Length: {recipe.length} minutes</p>
+          <p>Difficulty: {recipe.difficulty}</p>
+          <p>Servings: {recipe.servings} people</p>
+          <p>Price: {recipe.price} euros</p>
+        </section>
+        <section className='recipe-material'>
+          <EquipmentList {...recipe}/>
+          <IngredientList {...recipe}/>
+        </section>
+        <section className='steps'>
+          <StepList {...recipe}/>
+        </section>
+        <section className='skills-learnt'>
+          <SkillsLearntList {...recipe}/>
+        </section>
+      </section>
+    </section>
   )
 }
 

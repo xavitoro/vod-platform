@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 
-
 function SkillsLearntList ({ skillsLearnt }) {
   return (
     <div className="container subsection-skills-learnt">

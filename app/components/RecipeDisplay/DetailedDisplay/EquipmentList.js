@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react'
 
-
-
 function EquipmentList ({equipment}) {
   return (
     <div className="container subsection-equipment">
