@@ -4,31 +4,23 @@ import { StyleSheet, css } from 'aphrodite'
 
 function StepList ({ steps }) {
   return (
-    <div className="container subsection-steps">
-      <div className="row">
-        {steps
-          .map((step, index) => {
-            var {picture, description, tip} = step
-            return (
-              <div key={index} className = 'step'>
-                <h4>Step {index + 1 }</h4>
-                <div className='step-picture-holder'>
-                  <img
-                    className={
-                      `img-responsive step-picture ${css(styles.stepPicture)}`
-                    }
-                    src={
-                      `/public/img/recipes/${picture}`
-                    }
-                  />
-                </div>
-                <div className='step-description'> {`Description: ${description}`}</div>
-                <div className='step-tip'> {`Tip: ${tip}`}</div>
+    <section className='steps'>
+      {steps
+        .map((step, index) => {
+          var {picture, description, tip} = step
+          return (
+            <div key={index} className = 'step'>
+              <h5>Step {index + 1 }</h5>
+              <div className='step-description'>{description}</div>
+              <div className='step-tip'> {`Tip: ${tip}`}</div>
+              <div className='step-picture-holder'>
+                <img className='step-picture' src={`/public/img/recipes/${picture}`}/>
               </div>
-            )
-          })}
-      </div>
-    </div>
+            </div>
+          )
+        })
+      }
+    </section>
   )
 }
 StepList.propTypes = {
@@ -36,9 +28,3 @@ StepList.propTypes = {
 }
 
 export default StepList
-
-const styles=StyleSheet.create({
-  stepPicture: {
-    width: '20%',
-  }
-})

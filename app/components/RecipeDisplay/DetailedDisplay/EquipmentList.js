@@ -11,7 +11,8 @@ function EquipmentList ({equipment}) {
             return (
               <div key={index} className='utensil-name'>{name}</div>
             )
-          })}
+          })
+        }
       </div>
     </section>
   )

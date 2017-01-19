@@ -14,7 +14,8 @@ function IngredientList ( { ingredients }) {
               <div className='ingredient-name'>{name}</div>
             </div>
           )
-        })}
+        })
+      }
     </section>
   )
 }
