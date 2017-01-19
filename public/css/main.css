@@ -222,11 +222,17 @@ time, h5 {
 span {
   font-size: 12px;
 }
-.card-recipe h3, .card-recipe-inner-detailed h3  {
+.card-recipe h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-recipe-inner-detailed h3  {
   font-weight: 400;
 }
 .recipe-author-name {
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: lighter;
 }
 .recipe-categories li, .recipe-categories-detailed li {
   color: #898989;
@@ -236,7 +242,11 @@ span {
   letter-spacing: 1.5px;
 }
 
-.recipe-description h5, .recipe-description-detailed h5{
+.recipe-description h5 {
+  font-size: 16px;
+  font-weight: lighter;
+}
+ .recipe-description-detailed h5{
   font-size: 15px;
   font-weight: 400;
   margin: 5px 0 0 5px;
@@ -289,6 +299,11 @@ a {
   background-color: #00ab6b;
   text-decoration: none;
   color: white;
+}
+
+.recipe-detailed-info {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /*
@@ -418,7 +433,7 @@ nav {
 */
 
 .recipe-item {
-  border: 1px solid #e7e7e7;
+  border: 1px solid #F4F4F4;
   border-radius: 3px;
 }
 .recipe-author, .recipe-author-detailed  {
