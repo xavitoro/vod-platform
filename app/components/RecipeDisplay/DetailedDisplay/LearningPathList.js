@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 
 function LearningPathList ({ learningPath }) {
   return (
-    <div className='tags'>
+    <div className='learning-path'>
       <h5>Learning Path: </h5>
       <ul>
         {learningPath

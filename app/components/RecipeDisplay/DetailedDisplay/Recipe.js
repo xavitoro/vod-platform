@@ -18,22 +18,33 @@ function Recipe ({ recipe }) {
         <section className= 'basic-recipe-information'>
           <TagList {...recipe}/>
           <LearningPathList {...recipe}/>
-          <p>Course Type: {recipe.courseType}</p>
-          <p>Length: {recipe.length} minutes</p>
-          <p>Difficulty: {recipe.difficulty}</p>
-          <p>Servings: {recipe.servings} people</p>
-          <p>Price: {recipe.price} euros</p>
+          <div class='course-type'>
+            <h5>Course Type: </h5>
+            <p>{recipe.courseType}</p>
+          </div>
+          <div class='length'>
+            <h5>Estimated time: </h5>
+            <p>{recipe.length} minutes</p>
+          </div>
+          <div class='difficulty'>
+            <h5>Difficulty: </h5>
+            <p>{recipe.difficulty}</p>
+          </div>
+          <div class='servings'>
+            <h5>Servings: </h5>
+            <p>{recipe.servings} people</p>
+          </div>
+          <div class='price'>
+            <h5>Price: </h5>
+            <p>{recipe.price} €</p>
+          </div>
         </section>
         <section className='recipe-material'>
           <EquipmentList {...recipe}/>
           <IngredientList {...recipe}/>
         </section>
-        <section className='steps'>
-          <StepList {...recipe}/>
-        </section>
-        <section className='skills-learnt'>
-          <SkillsLearntList {...recipe}/>
-        </section>
+        <StepList {...recipe}/>
+        <SkillsLearntList {...recipe}/>
       </section>
     </section>
   )

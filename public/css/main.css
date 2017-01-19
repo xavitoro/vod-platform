@@ -458,7 +458,7 @@ nav {
   letter-spacing: 1.5px;
   background-color: rgba(250, 255, 109, 1);
 }
-.learning-path {
+.learning-path, .utensil-name {
   text-transform: capitalize;
 }
 
