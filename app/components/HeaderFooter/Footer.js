@@ -11,10 +11,6 @@ function Footer() {
           <Link href='https://www.twitter.com/keychn/'><img className = 'logo-social-media' src="../../public/icons/twitter.svg" /></Link>
           <Link href='https://www.instagram.com/keychn/'><img className = 'logo-social-media' src="../../public/icons/instagram.svg" /></Link>
         </div>
-        <nav className='primary-nav'>
-          <Link to='/' href='/'>Recipes</Link>
-          <Link to='/register' href='/' id ='register'>Register</Link>
-        </nav>
         <nav className='secondary-nav'>
           <Link to='/aboutus' href='/'>About us</Link>
           <Link to={'/terms'} >Terms</Link>
