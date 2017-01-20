@@ -7,7 +7,7 @@ function RecipeComponentDetailed(props) {
       <div className='recipe-video-preview-holder-detailed'>
         <img className='recipe-video-preview-detailed'
           src={
-            `/public/img/recipes/${props.videoThumbnail}`
+            `/public/img/${props.videoFull}`
           }
         />
       </div>
@@ -33,7 +33,7 @@ function RecipeComponentDetailed(props) {
 }
 
 RecipeComponentDetailed.propTypes={
-  videoThumbnail: PropTypes.string.isRequired,
+  videoFull: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   created: PropTypes.number.isRequired,

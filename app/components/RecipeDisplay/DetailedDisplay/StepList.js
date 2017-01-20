@@ -14,7 +14,7 @@ function StepList ({ steps }) {
               <div className='step-description'>{description}</div>
               <div className='step-tip'> {`Tip: ${tip}`}</div>
               <div className='step-picture-holder'>
-                <img className='step-picture' src={`/public/img/recipes/${picture}`}/>
+                <img className='step-picture' src={`/public/img/${picture}`}/>
               </div>
             </div>
           )

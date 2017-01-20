@@ -8,7 +8,7 @@ function RecipeComponent(props) {
   return (
     <div className='recipe-component'>
       <div className='recipe-video-preview-holder'>
-        <img className='recipe-image' src={`/public/img/recipes/${props.videoThumbnail}`}/>
+        <img className='recipe-image' src={`/public/img/${props.videoThumbnail}`}/>
       </div>
       <div className='card-recipe'>
         <h3>{props.title}</h3>
