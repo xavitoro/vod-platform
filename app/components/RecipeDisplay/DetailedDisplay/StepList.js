@@ -5,12 +5,13 @@ import { StyleSheet, css } from 'aphrodite'
 function StepList ({ steps }) {
   return (
     <section className='steps'>
+      <h5>Steps</h5>
       {steps
         .map((step, index) => {
           var {picture, description, tip} = step
           return (
             <div key={index} className = 'step'>
-              <h5>Step {index + 1 }</h5>
+              <h5>{index + 1 }</h5>
               <div className='step-description'>{description}</div>
               <div className='step-tip'> {`Tip: ${tip}`}</div>
               <div className='step-picture-holder'>

@@ -54,7 +54,7 @@ table {
 */
 body {
   color: #585858;
-  font: 300 16px/22px Roboto, Nunito, Helvetica, Arial, sans-serif;
+  font: 300 16px/22px 'Roboto', 'Nunito', Helvetica, Arial, sans-serif;
 }
 
 
@@ -228,12 +228,15 @@ span {
 }
 
 .card-recipe-inner-detailed h3  {
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -0.5px;
 }
-.recipe-author-name {
+.recipe-author-name, .recipe-author-name-detailed {
   font-size: 13px;
   font-weight: lighter;
 }
+
 .recipe-categories li, .recipe-categories-detailed li {
   color: #898989;
   font-size: 10px;
@@ -242,14 +245,14 @@ span {
   letter-spacing: 1.5px;
 }
 
-.recipe-description h5 {
+.recipe-description h5, .recipe-description-detailed h5 {
   font-size: 16px;
   font-weight: lighter;
 }
  .recipe-description-detailed h5{
-  font-size: 15px;
-  font-weight: 400;
-  margin: 5px 0 0 5px;
+  margin: 5px 0;
+  text-align: center;
+  clear: both;
 }
 
 #register {
@@ -360,11 +363,11 @@ a {
 }
 .secondary-header h1 {
   margin: 5px;
-  font: 64px Roboto, sans-serif;
+  font: 64px 'Roboto', sans-serif;
   font-weight: 300;
 }
 .secondary-header p {
-  font: 18px Roboto, sans-serif;
+  font: 18px 'Roboto', sans-serif;
   font-weight: 400;
 }
 .form-email {
@@ -378,14 +381,14 @@ a {
   margin: 0 5px;
 }
 #email-value {
-  font: 16px Roboto, sans-serif;
+  font: 16px 'Roboto', sans-serif;
   font-weight: lighter;;
   width: 250px;
   border-color: #e7e7e7;
 }
 #submit-email {
   color: black;
-  font: 16px Roboto, sans-serif;
+  font: 16px 'Roboto', sans-serif;
   font-weight: bold;
   width: 200px;
   border-color: rgba(250, 255, 109, 1);
@@ -472,6 +475,10 @@ nav {
   margin: 1px;
 }
 
+.recipe-categories-detailed li {
+  float: right;
+}
+
 /*
   ========================================
   DETAILED RECIPE INFORMATION (recipe.html)
@@ -482,8 +489,13 @@ nav {
   width: 100%;
   border-radius: 3px;
 }
+
+.card-recipe-inner-detailed {
+  text-align: center;
+  margin-top: 25px;
+}
 .recipe-author-detailed  {
-  float: right;
+  float: left;
 }
 .recipe-author-name-detailed  {
   margin-right: 5px;
@@ -497,7 +509,7 @@ nav {
 }
 .card-content-detailed, .basic-recipe-information, .recipe-material, .steps {
   border-bottom: 1px dashed #e7e7e7;
-  padding-bottom: 10px;
+  padding: 10px 0 20px 0;
 }
 .basic-recipe-information {
   padding-bottom: 5px;
@@ -514,6 +526,16 @@ nav {
   display: inline-block;
   margin: 10px 10px 5px 10px;
 }
+
+.course-type h5, .length h5, .difficulty h5, .servings h5, .price h5 {
+  font-size: 13px;
+  font-weight: normal;
+}
+.course-type p, .length p, .difficulty p, .servings p, .price p {
+  color: #888;
+  font-size: 18px;
+  font-weight: normal;
+}
 .tags li {
   color: #898989;
   font-size: 8px;
@@ -527,36 +549,90 @@ nav {
 }
 
   /* Recipe Material (class name)*/
+.recipe-material, .steps {
+  margin: 30px 0;
+}
 .equipment, .ingredients {
   display:inline-block;
   vertical-align: top;
-  margin: 10px 10px 5px 10px;
+  margin: 0px 30px;
 }
-.equipment h5, .ingredients h5, .step h5, .skills-learnt h5 {
-  font-size: 15px;
-  font-weight: 600;
+.equipment h5, .ingredients h5, .steps h5, .skills-learnt h5 {
+  font-size: 32px;
+  font-weight: normal;;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
-.utensil-name, .ingredient-wrapper {
+
+
+@media only screen and (max-width : 475px) {
+  .ingredients h5 {
+    margin-top: 15px;
+  }
+}
+
+.utensil-name {
+  text-align: center;
+  margin-bottom: 8px;
+}
+.ingredient-wrapper {
   text-align: left;
+  margin-left: 20px;
+  margin-bottom: 8px;
 }
 .ingredient-wrapper div {
   display: inline-block;
+  font-size: 18px;
+}
+
+.ingredient-quantity {
+  font-weight: 900;
 }
 
   /*Steps (class name)*/
 .steps {
-  text-align: center;
+  /*text-align: center;*/
   width: 100%;
-}
-.steps, .step {
-  margin: 10px 10px 5px 10px;
+  margin:
 }
 
-.step h5, .step-description, .skills-learnt h5, .skill  {
+.step h5 {
+  font-family: 'Nunito';
+  font-size: 36px;
+  font-weight: bold;
+}
+.step h5, .step-description, .skill  {
   text-align: center;
-  margin-bottom: 5px;
+}
+
+.step h5 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.step-picture-holder {
+  text-align: center;
+}
+.skill  {
+  text-align: center;
+  font-family: 'Nunito';
+  font-size: 24px;
+  margin: 30px 0;
+}
+.step-description {
+  font-family: 'Nunito', sans-serif;;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.step-tip {
+  font-family: 'Nunito', sans-serif;;
+  font-size: 18px;
+  font-weight: lighter;
+  font-style: italic;
+  margin-bottom: 30px;
+  text-align: center;
+
 }
 
 .step-picture {
@@ -580,5 +656,4 @@ nav {
 .step-tip {
   font-size: 14px;
   font-style: italic;
-  margin-bottom: 5px;
 }

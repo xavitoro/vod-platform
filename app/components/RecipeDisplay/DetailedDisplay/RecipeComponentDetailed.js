@@ -15,12 +15,12 @@ function RecipeComponentDetailed(props) {
         <h3> {props.title}</h3>
       </div>
       <div className='recipe-author-detailed'>
-        <span className='recipe-author-name-detailed'>{props.author.name}</span>
         <img className='recipe-author-avatar-detailed round-img'
           src={
             `/public/img/recipes/${props.author.thumbnail}`
           }
         />
+        <span className='recipe-author-name-detailed'>{props.author.name}</span>
       </div>
       <div className='card-content-detailed'>
         <CategoryList {...props}/>
