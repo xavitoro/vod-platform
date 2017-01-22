@@ -3,14 +3,15 @@ const PropTypes=React.PropTypes
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
 import { StyleSheet, css } from 'aphrodite'
-import CustomImage from '../OverviewDisplay/CustomImage'
+import MainImage from '../../ImageComponents/MainImage'
 
 function RecipeComponentDetailed(props) {
   return (
     <div className='card-recipe-detailed col-md-12'>
       <div className='recipe-video-preview-holder-detailed'>
-        <CustomImage {...props}/>
+        <MainImage {...props}/>
       </div>
+      <div className='recipe-detailed'>
       <div className='card-recipe-inner-detailed'>
         <h3 className='recipe-title-detailed'> {
             props.title
@@ -49,6 +50,7 @@ function RecipeComponentDetailed(props) {
           }
         </div>
       </div>
+    </div>
     </div>
   )
 }

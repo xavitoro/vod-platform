@@ -3,13 +3,13 @@ const PropTypes=React.PropTypes
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
 import { StyleSheet, css } from 'aphrodite'
-import CustomImage from './CustomImage'
+import DynamicImage from '../../ImageComponents/DynamicImage'
 
 function RecipeComponent(props) {
   return (
     <div className='card-recipe col-md-12'>
       <div className='recipe-video-preview-holder'>
-        <CustomImage {...props}/>
+      <DynamicImage {...props}/>
       </div>
       <div className='card-recipe-inner'>
         <h3 className='recipe-title'> {
@@ -70,6 +70,9 @@ module.exports=RecipeComponent
 
 
 const styles=StyleSheet.create({
+  thumbnail: {
+    width: '100%',
+  },
   author: {
     width: 30,
     height: 30,
