@@ -1,5 +1,5 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
+
 import RecipeOverview from './RecipeOverview'
 import {fetchRecipes} from '../../../data/recipes'
 import {connect} from 'react-redux'
@@ -16,15 +16,13 @@ export default class RecipeList extends React.Component {
   render() {
     console.log(this.props.newRecipes)
     return (
-      <div className="container subsection-recipes">
-        <div className="row">
-          {this.props.recipes
-            .map((recipe) => {
-              return (
-                <RecipeOverview {...recipe} key={recipe.id} />
-              )
-            })}
-        </div>
+      <div className="container grid subsection-recipes">
+        {this.props.recipes
+          .map((recipe) => {
+            return (
+              <RecipeOverview {...recipe} key={recipe.id} />
+            )
+          })}
       </div>
     )
   }

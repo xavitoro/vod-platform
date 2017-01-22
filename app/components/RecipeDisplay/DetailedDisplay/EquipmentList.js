@@ -1,26 +1,24 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
 
-function EquipmentList (props) {
+function EquipmentList ({equipment}) {
   return (
-    <div className="container subsection-equipment">
-      <div className="row">
-      <h4>Equipment</h4>
-        {props.equipment
+    <section className ='equipment'>
+      <h5>Equipment</h5>
+      <div className='utensil-wrapper'>
+        {equipment
           .map((utensil, index) => {
             var {name} = utensil
             return (
-              <div key={index} className = 'utensil'>
-                <div className='utensil-name'> {`Name: ${name}`}</div>
-              </div>
+              <div key={index} className='utensil-name'>{name}</div>
             )
-          })}
+          })
+        }
       </div>
-    </div>
+    </section>
   )
 }
 EquipmentList.propTypes = {
-  equipment:PropTypes.array.isRequired
+  equipment: PropTypes.array.isRequired
 }
 
-module.exports = EquipmentList
+export default EquipmentList

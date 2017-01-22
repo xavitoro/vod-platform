@@ -6,23 +6,23 @@ var RecipeContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: function () {
+  getInitialState() {
     return {
       isLoading: true,
       recipe: {},
     }
   },
-  componentDidMount: function () {
-    const clickedRecipe = this.props. // should get the id from the recipe clicked.
+  componentDidMount() {
+    const clickedRecipe = this.props. // WHAT ??? should get the id from the recipe clicked.
     keychnRecipeHelper.getRecipe()
-      .then(function (clickedRecipe) { // Assumption: the object return is an object
+      .then((clickedRecipe) => { // Assumption: the object return is an object
         this.setState({
           isLoading: false,
           recipe: recipe
         })
-      }.bind(this))
+      })
   },
-  render: function () {
+  render() {
     return (
       <RecipeFromAPI
         isLoading={this.state.isLoading}
@@ -31,4 +31,4 @@ var RecipeContainer = React.createClass({
   }
 })
 
-module.exports = RecipeContainer;
+export default RecipeContainer

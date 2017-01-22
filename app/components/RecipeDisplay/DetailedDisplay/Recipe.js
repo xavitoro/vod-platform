@@ -1,32 +1,52 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
+
 import RecipeComponentDetailed from './RecipeComponentDetailed'
+import TagList from './TagList'
+import LearningPathList from './LearningPathList'
 import IngredientList from './IngredientList'
 import StepList from './StepList'
 import EquipmentList from './EquipmentList'
 import SkillsLearntList from './SkillsLearntList'
 
 //props.recipe.name ..
-function Recipe (props) {
-  // console.log(props);
+function Recipe ({ recipe }) {
+  console.log('WHHHHHHHH', recipe);
   return (
-    <div className='section-recipe-details'>
-      <RecipeComponentDetailed {...props.recipe}/>
-      <div className = 'basic-recipe-information'>
-        <p>Tags: {props.recipe.tags.join(' | ')}</p>
-        <p>Learning Path: {props.recipe.learningPath.join(' | ')}</p>
-        <p>Course Type: {props.recipe.courseType}</p>
-        <p>Length: {props.recipe.length} minutes</p>
-        <p>Difficulty: {props.recipe.difficulty}</p>
-        <p>Servings: {props.recipe.servings} people</p>
-        <p>Price: {props.recipe.price} euros</p>
-        <EquipmentList {...props.recipe}/>
-        <IngredientList {...props.recipe}/>
-        <StepList {...props.recipe}/>
-        <SkillsLearntList {...props.recipe}/>
-      </div>
-
-    </div>
+    <section className='section-recipe-details grid container'>
+      <RecipeComponentDetailed {...recipe}/>
+      <section className='recipe-details'>
+        <section className= 'basic-recipe-information'>
+          <TagList {...recipe}/>
+          <LearningPathList {...recipe}/>
+          <div class='course-type'>
+            <h5>Course Type: </h5>
+            <p>{recipe.courseType}</p>
+          </div>
+          <div class='length'>
+            <h5>Estimated time: </h5>
+            <p>{recipe.length} minutes</p>
+          </div>
+          <div class='difficulty'>
+            <h5>Difficulty: </h5>
+            <p>{recipe.difficulty}</p>
+          </div>
+          <div class='servings'>
+            <h5>Servings: </h5>
+            <p>{recipe.servings} people</p>
+          </div>
+          <div class='price'>
+            <h5>Price: </h5>
+            <p>{recipe.price} €</p>
+          </div>
+        </section>
+        <section className='recipe-material'>
+          <EquipmentList {...recipe}/>
+          <IngredientList {...recipe}/>
+        </section>
+        <StepList {...recipe}/>
+        <SkillsLearntList {...recipe}/>
+      </section>
+    </section>
   )
 }
 
@@ -45,4 +65,4 @@ Recipe.propTypes = {
     skillsLearnt: PropTypes.array.isRequired,
   })
 }
-module.exports = Recipe
+export default Recipe

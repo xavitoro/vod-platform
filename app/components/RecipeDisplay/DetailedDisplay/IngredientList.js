@@ -1,28 +1,27 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
 
-function IngredientList (props) {
+function IngredientList ( { ingredients }) {
   return (
-    <div className="container subsection-ingredients">
-      <div className="row">
-      <h4>Ingredients</h4>
-        {props.ingredients
-          .map((ingredient, index) => {
-            var {name, quantity, unit} = ingredient
-            return (
-              <div key={index} className = 'ingredient'>
-                <div className='ingredient-quantity'> {`Qty: ${quantity}`}</div>
-                <div className='ingredient-name'> {`Name: ${name}`}</div>
-                <div className='ingredient-unit'> {`Unit: ${unit}`}</div>
-              </div>
-            )
-          })}
-      </div>
-    </div>
+    <section className='ingredients'>
+      <h5>Ingredients</h5>
+      {ingredients
+        .map((ingredient, index) => {
+          var {name, quantity, unit} = ingredient
+          return (
+            <div key={index} className = 'ingredient-wrapper'>
+              <div className='ingredient-quantity'>{quantity}&nbsp;&nbsp;</div>
+              <div className='ingredient-unit'>{unit}&nbsp;</div>
+              <div className='ingredient-name'>{name}</div>
+            </div>
+          )
+        })
+      }
+    </section>
   )
 }
+
 IngredientList.propTypes = {
-  ingredients:PropTypes.array.isRequired
+  ingredients: PropTypes.array.isRequired
 }
 
-module.exports = IngredientList
+export default IngredientList

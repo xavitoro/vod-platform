@@ -1,37 +1,24 @@
 import React from 'react'
 import {Link } from 'react-router'
-import { StyleSheet, css } from 'aphrodite'
 
 function Footer() {
   return (
-    <footer>
-      <div className={`container navigation__footer ${css(styles.footer)}`}>
-        <div className='row'>
-          <div className='col-sm-6 footer-social'>
-            <a href='https://www.facebook.com/keychn/'><i className='fa fa-facebook fa-2x' aria-hidden='true'></i></a>
-            <a href='https://twitter.com/keychn'><i className='fa fa-twitter fa-2x' aria-hidden='true'></i></a>
-            <a href='https://www.instagram.com/keychn/'><i className='fa fa-instagram fa-2x' aria-hidden='true'></i></a>
-            <a href='http://pinterest.com/keychn'><i className='fa fa-pinterest fa-2x' aria-hidden='true'></i></a>
-          </div>
-        <div className='col-sm-6 footer-social'>
-          <ul className='nav navbar-nav navbar-right'>
-            <li><Link to={'/terms'} >Terms</Link></li>
-            <li><Link to={'/privacy-policy'} >Privacy</Link></li>
-            <li><a href='http://blog.keychn.com'>Blog</a></li>
-            <li><a href='mailto:mise@keychn.com'>Contact</a></li>
-          </ul>
+    <footer className='primary-footer'>
+      <div className='group container nav-wrapper'>
+        <small>&copy; Keychn Experience</small>
+        <div className='social-icons'>
+          <Link href='https://www.facebook.com/keychn/'><img className = 'logo-social-media' src="../../public/icons/facebook.svg" /></Link>
+          <Link href='https://www.twitter.com/keychn/'><img className = 'logo-social-media' src="../../public/icons/twitter.svg" /></Link>
+          <Link href='https://www.instagram.com/keychn/'><img className = 'logo-social-media' src="../../public/icons/instagram.svg" /></Link>
         </div>
+        <nav className='secondary-nav'>
+          <Link to='/aboutus' href='/'>About us</Link>
+          <Link to={'/terms'} >Terms</Link>
+          <Link to={'/privacy-policy'} >Privacy</Link>
+        </nav>
       </div>
-    </div>
-  </footer>
+    </footer>
   )
 }
 
-module.exports = Footer
-
-const styles = StyleSheet.create({
-  footer: {
-    background: 'rgba(250, 255, 109, 1)',
-    width: '100%',
-  },
-})
+export default Footer

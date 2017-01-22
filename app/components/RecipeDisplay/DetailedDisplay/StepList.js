@@ -1,44 +1,31 @@
-import React from 'react'
-const PropTypes = React.PropTypes
+import React, { PropTypes } from 'react'
+
 import { StyleSheet, css } from 'aphrodite'
 
-function StepList (props) {
+function StepList ({ steps }) {
   return (
-    <div className="container subsection-steps">
-      <div className="row">
-        {props.steps
-          .map((step, index) => {
-            var {picture, description, tip} = step
-            return (
-              <div key={index} className = 'step'>
-                <h4>Step {index + 1 }</h4>
-                <div className='step-picture-holder'>
-                  <img
-                    className={
-                      `img-responsive step-picture ${css(styles.stepPicture)}`
-                    }
-                    src={
-                      `/public/img/recipes/${picture}`
-                    }
-                  />
-                </div>
-                <div className='step-description'> {`Description: ${description}`}</div>
-                <div className='step-tip'> {`Tip: ${tip}`}</div>
+    <section className='steps'>
+      <h5>Steps</h5>
+      {steps
+        .map((step, index) => {
+          var {picture, description, tip} = step
+          return (
+            <div key={index} className = 'step'>
+              <h5>{index + 1 }</h5>
+              <div className='step-description'>{description}</div>
+              <div className='step-tip'> {`Tip: ${tip}`}</div>
+              <div className='step-picture-holder'>
+                <img className='step-picture' src={`/public/img/${picture}`}/>
               </div>
-            )
-          })}
-      </div>
-    </div>
+            </div>
+          )
+        })
+      }
+    </section>
   )
 }
 StepList.propTypes = {
-  steps:PropTypes.array.isRequired
+  steps: PropTypes.array.isRequired
 }
 
-module.exports = StepList
-
-const styles=StyleSheet.create({
-  stepPicture: {
-    width: '20%',
-  }
-})
+export default StepList
