@@ -5,13 +5,13 @@
 // automatically require the index.js on the root
 
 // setup config first before anything by requiring it
-var config = require('./config/config');
+var config = require('./config');
 var app = require('./server');
 var logger = require('./util/logger');
 import mongoose from 'mongoose'
 
 
-mongoose.connect('mongodb://localhost:27017/vod-development' , (err, resp) => {
+mongoose.connect(config.db , (err, resp) => {
   if (err) {
     return logger.log(`Error while trying to connect to the MongoDB: ${err}`);
   };
