@@ -342,9 +342,12 @@ a {
 .keychn-logo {
   width: 10%;
   min-width: 85px;
+  vertical-align: middle;
+  float: left;
 }
 .menu-link, .menu-link li {
  display: inline-block;
+ padding: 0.5em;
 }
 
 .secondary-header {
@@ -369,6 +372,9 @@ a {
 .secondary-header p {
   font: 18px 'Roboto', sans-serif;
   font-weight: 400;
+}
+.form-input {
+  vertical-align: middle;
 }
 .form-email {
   margin-bottom: 10px;
