@@ -2,12 +2,7 @@ import React, { PropTypes } from 'react'
 
 import Moment from 'react-moment'
   // const Moment=require('react-moment').default
-<<<<<<< HEAD
-import { StyleSheet, css } from 'aphrodite'
-import DynamicImage from '../../ImageComponents/DynamicImage'
-=======
 // import { StyleSheet, css } from 'aphrodite'
->>>>>>> upstream/feat-recipe-catalog
 
 function RecipeComponent(props) {
   return (
@@ -54,28 +49,4 @@ RecipeComponent.propTypes={
   id: PropTypes.string.isRequired
 }
 
-<<<<<<< HEAD
-module.exports=RecipeComponent
-
-
-const styles=StyleSheet.create({
-  thumbnail: {
-    width: '100%',
-  },
-  author: {
-    width: 30,
-    height: 30,
-    borderRadius: 50,
-    float: 'left',
-    'margin-right': 10,
-  },
-  cardcontent: {
-    float: 'left',
-  },
-  date: {
-    float: 'right',
-  }
-})
-=======
 export default RecipeComponent
->>>>>>> upstream/feat-recipe-catalog

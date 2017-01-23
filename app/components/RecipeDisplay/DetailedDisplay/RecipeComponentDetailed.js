@@ -1,14 +1,5 @@
-<<<<<<< HEAD
-import React from 'react'
-const PropTypes=React.PropTypes
-import Moment from 'react-moment'
-  // const Moment=require('react-moment').default
-import { StyleSheet, css } from 'aphrodite'
-import MainImage from '../../ImageComponents/MainImage'
-=======
 import React, { PropTypes } from 'react'
 import CategoryList from './CategoryList'
->>>>>>> upstream/feat-recipe-catalog
 
 function RecipeComponentDetailed(props) {
   return (
@@ -20,7 +11,6 @@ function RecipeComponentDetailed(props) {
           }
         />
       </div>
-      <div className='recipe-detailed'>
       <div className='card-recipe-inner-detailed'>
         <h3> {props.title}</h3>
       </div>
@@ -38,12 +28,7 @@ function RecipeComponentDetailed(props) {
           <h5>{props.description}</h5>
         </div>
       </div>
-<<<<<<< HEAD
-    </div>
-    </div>
-=======
     </section>
->>>>>>> upstream/feat-recipe-catalog
   )
 }
 
