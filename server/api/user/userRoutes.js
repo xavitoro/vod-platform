@@ -26,29 +26,6 @@ userRouter.get('/:id', function(req, res) {
   });
 });
 
-// userRouter.post('/register', function(req, res) {
-//   console.log(req.body)
-//   userModel.register(new userModel({
-//     username : req.body.username,
-//     email : req.body.email,
-//     isAdmin: false
-//   }), req.body.password, function(err, user) {
-//      if (err) {
-//         return res.status(403).send(err);
-//      }
-//
-//      passport.authenticate('local')(req, res, function () {
-//
-//        var token = jwt.sign(user, secretKey);
-//
-//        res.status(200).send({
-//          user: user,
-//          token: token
-//        });
-//      });
-//   });
-// });
-
 userRouter.post('/register', function(req, res, next) {
   console.log('registering user');
   userModel.register(new userModel({username: req.body.username}), req.body.password, function(err) {
@@ -67,18 +44,9 @@ userRouter.post('/login', passport.authenticate('local'), function(req, res) {
   res.redirect('/');
 });
 
-// userRouter.post('/login',
-//   passport.authenticate('local'),
-//   function(req, res) {
-//     var user = req.user;
-//     req.logIn(user, function (err) { // <-- Log user in
-//        return res.redirect('/');
-//     });
-// });
-
 userRouter.get('/logout', function(req, res) {
-    // req.logout()
-    res.send('')
+    req.logout()
+    res.redirect('/')
 });
 
 

@@ -16,18 +16,6 @@ const secretKey = process.env.SECRET_KEY || 'vodvod';
 
 // SETUP global middleware here
 module.exports = function(app) {
-  // app.use(bodyParser.urlencoded({ extended: true }));
-  // app.use(bodyParser.json());
-  // app.use(cookieParser(secretKey));
-  // app.use(session({
-  //   secret: secretKey,
-  //   resave: false,
-  //   saveUninitialized: true,
-  //   store: new MongoStore({ url: 'mongodb://localhost/vod-development' }),
-  //   cookie: {
-  //     secure: false
-  //   }
-  // }));
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: false}));
@@ -38,19 +26,8 @@ module.exports = function(app) {
   app.use(passport.session());
   passport.use(userModel.createStrategy())
 
-  // passport.serializeUser(userModel.serializeUser());
-  // passport.deserializeUser(userModel.deserializeUser());
-  passport.serializeUser(function(user, done) {
-    console.log('serializeUser!', user, user.id)
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    console.log('deserializeUser', id)
-    userModel.findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
+  passport.serializeUser(userModel.serializeUser());
+  passport.deserializeUser(userModel.deserializeUser());
 
   if (env === 'development') {
     var webpack = require('webpack')

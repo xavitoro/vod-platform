@@ -30,7 +30,6 @@ app.get('/test', function (req, res) {
 })
 
 app.get('/*', function (req, res) {
-  // console.log('cookies', req.session.id)
   res.sendFile(path.join(__dirname, 'views', 'index.html'))
 })
 
