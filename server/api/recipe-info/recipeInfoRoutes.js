@@ -6,8 +6,11 @@ const ingredientModel = require('../ingredient/ingredientModel')
 const chefModel = require('../chef/chefModel')
 const equipmentModel = require('../equipment/equipmentModel')
 const skillLearntModel = require('../skillLearnt/skillLearntModel')
+import passport from 'passport'
+import {checkUser} from '../../middleware/authMiddleware'
 
 recipeInfoRouter.get('/recipe-info', function (req, res) {
+  console.log('recipe-info', req.session.id, 'user', req.user)
   Promise.all([
     categoryModel.find({}),
     tagModel.find({}),

@@ -30,7 +30,7 @@ export default function CustomInput({
       onChange={(option) => { input.onChange(formatSelectValue(option))} }
       onBlur={(option) => input.onChange(formatSelectValue(option))} />
     :
-    <input {...input} className='form-control' placeholder={placeholder} readOnly={readOnly} />
+    <input {...input} type={type || 'text'} className='form-control' placeholder={placeholder} readOnly={readOnly} />
   return (
     <div className={classnames('form-group', className)}>
       <label className='col-xs-2'>{label}</label>

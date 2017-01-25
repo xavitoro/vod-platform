@@ -7,6 +7,7 @@ import {setEquipment} from './equipment'
 import {setSkillsLearnt} from './skillsLearnt'
 import { SubmissionError } from 'redux-form'
 import _ from 'lodash'
+import {get} from './utils/network'
 // constants
 const SET_RECIPES = 'SET_RECIPES'
 const ADD_RECIPE = 'ADD_RECIPE'
@@ -22,7 +23,7 @@ export function addRecipe(recipe) {
 
 export function fetchRecipes() {
   return function (dispatch) {
-    return fetch('/api/recipes')
+    return get('/api/recipes')
       .then((res) => res.json())
       .then(recipes => {
         console.log(recipes, 'rec')
@@ -33,7 +34,7 @@ export function fetchRecipes() {
 
 export function fetchRecipeInfo() {
   return function(dispatch) {
-    return fetch('/api/recipe-info')
+    return get('/api/recipe-info')
       .then((res) => res.json())
       .then((data) => {
         const {categories, tags, learningPaths, ingredients, authors, equipment, skillsLearnt} = data
@@ -50,7 +51,7 @@ export function fetchRecipeInfo() {
 
 export function fetchRecipe(slug) {
   return function(dispatch) {
-    return fetch(`/api/recipes/${slug}`)
+    return get(`/api/recipes/${slug}`)
       .then((res) => res.json())
       .then((recipe) => {
          dispatch(addRecipe(recipe))
@@ -66,6 +67,7 @@ export function createOrUpdateRecipe(data, slug) {
     }
     return fetch(url, {
       method: slug ? 'PUT': 'POST',
+      credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json'
       },
