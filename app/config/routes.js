@@ -8,15 +8,14 @@ import PrivacyPolicy from '../components/LegalComponents/PrivacyPolicy'
 import preload from '../../public/dataRecipe.json'
 import RecipeListContainer from '../containers/RecipeListContainer'
 import RecipeForm from '../components/RecipeForm'
-import SignUpForm from '../components/Auth/SignUpForm'
+import RegisterForm from '../components/Auth/RegisterForm'
 import SignInForm from '../components/Auth/SignInForm'
-
 
 const routes = (
   <Router history={browserHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={(props) => <RecipeList recipes={preload.recipes} {...props} />}/>
-      <Route path='signup' component={SignUpForm} />
+      <Route path='register' component={RegisterForm} />
       <Route path='signin' component={SignInForm} />
 
       {/* <IndexRoute component={RecipeListContainer}/> // once the API is properly connected */}
