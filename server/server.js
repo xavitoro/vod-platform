@@ -14,9 +14,7 @@ require('./middleware/appMiddleware')(app)
 app.use('/api', api)
 
 // set up global error handling
-// // pattern 1
-// app.use(err)
-// pattern 2
+
 app.use(err())
 
 app.get('/logout', function (req, res) {
@@ -29,11 +27,8 @@ app.get('/test', function (req, res) {
   res.send('check user worked')
 })
 
-app.get('/*', function (req, res) {
+app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'views', 'index.html'))
 })
-
-
-
 
 module.exports = app

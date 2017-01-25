@@ -4,7 +4,7 @@ import {get} from './utils/network'
 
 const UPDATE_USER = 'UPDATE_USER'
 
-export function signUp(data) {
+export function register(data) {
   return function(dispatch) {
     return post('/api/users/register', data)
   }

@@ -1,9 +1,9 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/app/index.html',
-  filename: 'index.html',
-  inject: 'body'
-});
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+//   template: __dirname + '/app/index.html',
+//   filename: 'index.html',
+//   inject: 'body'
+// });
 
 module.exports = {
   devtool: "#inline-source-map",
@@ -22,5 +22,5 @@ module.exports = {
       { test: /\.css$/, loaders: [ 'style-loader', 'css-loader' ]}
     ]
   },
-  plugins: [HTMLWebpackPluginConfig]
+  // plugins: [HTMLWebpackPluginConfig]
 };
