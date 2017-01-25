@@ -3,7 +3,7 @@
 require('colors');
 var _ = require('lodash');
 
-var config = require('../config/config');
+var config = require('../config');
 
 // create a noop (no operation) function for when loggin is disabled
 var noop = function(){};

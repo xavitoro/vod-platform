@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Field} from 'redux-form'
-import CustomInput from './CustomInput'
-import {required} from './validations'
+import CustomInput from '../Form/CustomInput'
+import {required, number} from '../Form/validations'
 import {connect} from 'react-redux'
 import {getSelectOptions} from '../../utils/form'
 
@@ -39,7 +39,7 @@ export default class Equipment extends Component {
                   component={CustomInput}
                   placeholder='Quantity equipment (e.g. 2)'
                   type='text'
-                  validate={required} />
+                  validate={[required, number]} />
                 <div>
                   <a onClick={() => fields.remove(index)}>Remove</a>
                 </div>
