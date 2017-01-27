@@ -10,6 +10,7 @@ import RecipeListContainer from '../containers/RecipeListContainer'
 import RecipeForm from '../components/RecipeForm'
 import RegisterForm from '../components/Auth/RegisterForm'
 import SignInForm from '../components/Auth/SignInForm'
+import SampleVideo from '../components/Video/Sample'
 
 const routes = (
   <Router history={browserHistory}>
@@ -30,6 +31,7 @@ const routes = (
       <Route path='/recipes/:slug/edit' component={RecipeForm} />
       <Route path='terms' component={Terms} />
       <Route path='privacy-policy' component={PrivacyPolicy} />
+      <Route path='sample-video' component={SampleVideo} />
     </Route>
   </Router>
 )

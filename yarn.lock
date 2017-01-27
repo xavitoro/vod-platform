@@ -3910,6 +3910,12 @@ react-input-autosize@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-1.1.0.tgz#3fe1ac832387d8abab85f6051ceab1c9e5570853"
 
+react-jwplayer:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/react-jwplayer/-/react-jwplayer-0.3.2.tgz#0d6e534f8f8c2a7b6bd9364e331f9702aeef23c4"
+  dependencies:
+    react "^15.3.2"
+
 react-moment@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.0.3.tgz#3eac0884fdcc3e88a6e83f79d6965d2312575987"
@@ -3940,6 +3946,14 @@ react-select:
   dependencies:
     classnames "^2.2.4"
     react-input-autosize "^1.1.0"
+
+react@^15.3.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
+  dependencies:
+    fbjs "^0.8.4"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
 
 react@15.3.2:
   version "15.3.2"
