@@ -4,10 +4,13 @@ import Footer from './HeaderFooter/Footer'
 
 const Main = React.createClass({
   render: function () {
+    const {location} = this.props
     return (
       <div className='main-container'>
-        <Header />
-        {this.props.children}
+        <Header location={location}/>
+        <div className='container'>
+          {this.props.children}
+        </div>
         <Footer />
       </div>
     )
